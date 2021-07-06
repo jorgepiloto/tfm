@@ -1,0 +1,4 @@
+poliastro==0.15.2
+pandas
+xlrd
+i3ipc
