@@ -7,7 +7,7 @@ BINDIR = bin
 FIGDIR = fig
 TEXDIR = tex
 SRCDIR = src
-CHDIRS = $(SRCDIR)
+CHDIRS = $(SRCDIR)/00_introduction
 STRUCTURE := $(PROJECTDIR) $(CHDIRS) $(TEXDIR)
 
 # Main project file
