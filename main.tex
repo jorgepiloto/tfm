@@ -8,6 +8,7 @@
 
 % Bibliography setup
 \usepackage[backend=biber, style=ieee, citestyle=authoryear, sorting=ynt]{biblatex}
+\bibliography{bib/articles_modern}
 
 % Custom commands: always the last ones to import to properly override default
 \input{tex/commands.tex}
@@ -27,10 +28,12 @@
 
 % ---------- BEGIN OF CONTENT FILES -------------
 
+\input{src/00_introduction/intro.tex}
+
 % ----------- END OF CONTENT FILES -------------
 
 
 % Cite the bibliography
-\printbibliography
+%\printbibliography
 
 \end{document}
