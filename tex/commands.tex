@@ -1,0 +1,112 @@
+% Custom paragraph distance
+\setlength{\parskip}{1em plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}
+
+% Beautiful captions for figures
+\captionsetup[figure]{
+  format=hang,
+  name=Fig.,
+  singlelinecheck=off,
+  labelsep=colon,
+  labelfont=bf,
+  font=small
+}
+
+% Improve quotations
+\newcommand{\quoteauthor}[2]
+{
+  \begin{flushright}
+    \rightskip=1.8cm\textit{``{#1}''} \\
+    \vspace{.2em}
+    \rightskip=.8cm---{#2}
+  \end{flushright}
+}
+
+% Improve hyperlinks when citing references
+\DeclareCiteCommand{\citetitle}
+{\boolfalse{citetracker}%
+  \boolfalse{pagetracker}%
+  \usebibmacro{prenote}}
+{\ifciteindex
+  {\indexfield{indextitle}}
+  {}%
+  \printtext[bibhyperref]{\printfield[citetitle]{labeltitle}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+  \printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+  \printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+  \printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+  \printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+  \printtext[bibhyperref]{ \usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+  \printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\textcite}
+{\boolfalse{cbx:parens}}
+{\usebibmacro{citeindex}%
+  \printtext[bibhyperref]{\usebibmacro{textcite}}}
+{\ifbool{cbx:parens}
+  {\bibcloseparen\global\boolfalse{cbx:parens}}
+  {}%
+  \multicitedelim}
+{\usebibmacro{textcite:postnote}}
+
+\DeclareCiteCommand{\citeauthor}%
+{\boolfalse{citetracker}%
+  \boolfalse{pagetracker}%
+  \usebibmacro{prenote}}
+{\ifciteindex
+  {\indexnames{labelname}}
+  {}%
+  \printtext[bibhyperref]{\printnames{labelname}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+% Reduce top and lower space in equations
+\xpatchcmd{\NCC@ignorepar}{%
+  \abovedisplayskip\abovedisplayshortskip}
+{%
+  \abovedisplayskip\abovedisplayshortskip%
+  \belowdisplayskip\belowdisplayshortskip}
+{}{}
+
+% Do not restart footnotes counter
+\counterwithout{footnote}{chapter}
+
+% Custom norm for equations
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}

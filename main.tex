@@ -1,0 +1,36 @@
+%!TeX program = xelatex
+
+% Define document font, paper size and type %
+\documentclass[12pt,a4paper,numbers=noenddot]{scrreprt}
+
+% Include all auxiliary packages
+\input{tex/packages.tex}
+
+% Bibliography setup
+\usepackage[backend=biber, style=ieee, citestyle=authoryear, sorting=ynt]{biblatex}
+
+% Custom commands: always the last ones to import to properly override default
+\input{tex/commands.tex}
+
+% Start the document
+\begin{document}
+
+% Switch off page numbering %
+\pagenumbering{Roman}
+
+% Append cover and prologue to actual document %
+\include{tex/cover}
+\include{tex/preface}
+
+% Start the table of contents %
+\tableofcontents
+
+% ---------- BEGIN OF CONTENT FILES -------------
+
+% ----------- END OF CONTENT FILES -------------
+
+
+% Cite the bibliography
+\printbibliography
+
+\end{document}
