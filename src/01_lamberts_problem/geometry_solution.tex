@@ -1,0 +1,334 @@
+\section{Geometry of the solutions}
+
+Before introducing or proposing any mathematical method for solving equation
+\ref{eq:visviva_series}, we will assume that we managed somehow to obtain the
+right value for the semi-major axis of the orbit.
+
+With this value, it is possible to identify the type of orbit, according to the
+following table:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{$0 < a < \infty$} & \textbf{$a = \infty$} & \textbf{$a < -\infty$} \\ \hline
+    Elliptic                  & Parabolic             & Hyperbolic             \\ \hline
+  \end{tabular}
+  \caption{Type of orbit according to semi-major axis value.}
+\end{table}
+
+Knowing the value of $a$ it is possible to estimate the rest of the orbital
+elements so the observed orbit is fully determined. However, each type of orbit
+requires from its own solution procedure when determining the eccentricity,
+argument of perigee and the current true anomaly.
+
+Therefore, in the following subsections, the possible solutions and procedures
+for each type of orbit are exposed from a geometrical point of view.
+
+\subsection{The elliptic transfer geometry}
+
+An elliptic orbit has a semi-major axis who's value lies between $[0,\infty)$
+units of length. By recalling that:
+
+\begin{equation}
+  \overline{FP} + \overline{F'P} = 2a
+  \label{eq:ellipse_property}
+\end{equation}
+
+being $\overline{FP}$ and $\overline{F'P}$ the distance to the
+primary\footnote{The primary focus is the one in which the attractor is placed.}
+and vacant\footnote{Named like this because it does not hold the attractor.}
+focus, it is possible to find the location of this last one.
+
+In order to achieve previous task, we make use of equation
+\ref{eq:ellipse_property} and evaluate it for each known position vectors:
+
+\begin{equation}
+  r'_{1} = 2a - r_{1}\quad\quad
+  r'_{2} = 2a - r_{2}
+\end{equation}
+
+The values $r'_{1}$ and $r'_{2}$ indicate the distance at which the vacant focus
+$F'$ is located. Therefore, by tracing a circumference of radius $R_{1} = r'_{1}$
+centered at the tip of vector $\vec{r_{1}}$ and another with $R_{2} = r'_{2}$ at
+the tip of vector $\vec{r_{2}}$ it is possible to find graphically where the
+vacant focus is located.
+
+\subsubsection{Two vacant focus}
+When both circumferences cross at two points, meaning there are two possible
+vacant focus, as shown by figure \ref{fig:elliptic_geometry_1}. Having two focus
+means having two elliptic paths and a total of four orbits:
+
+\begin{itemize}
+  \item Red orbit and prograde motion.
+  \item Red orbit and retrograde motion.
+  \item Blue orbit and prograde motion.
+  \item Blue orbit and retrograde motion.
+\end{itemize}
+
+By imposing the sense of motion to be prograde or retrograde, the solution space
+is reduced to two possible orbits. To distinguish between the two, we introduce
+a new parameter named \textit{the orbit path}, which enables us to select
+between one or the other. See section XX for more information about the orbit
+path.
+
+In this scenario, it holds that:
+
+\begin{equation}
+  a > \frac{\norm{\vec{r_{1}}} + \norm{\vec{r_{2}}} + \norm{\vec{c}}}{4}
+\end{equation}
+
+Finally, it must be said that these solution only appear in the
+multi-revolution problem.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1]{geometry_elliptic1.png}
+  \caption{
+    In this scenario, there are a total of four solutions considering two
+    possible orbits (blue and red) and the transfer angle (lower or greater than
+    180 degrees), which is equivalent to prograde or retrograde motion. Fixing
+    the type of motion together with the orbit path parameter will retrieve the
+    current solution to the problem.
+  }
+  \label{fig:elliptic_geometry_1}
+\end{figure}
+
+\subsubsection{One vacant focus}
+In this case, both circumferences are tangent to each other, meaning there is
+only one common point and thus a single vacant focus. See figure
+\ref{fig:elliptic_geometry_2} for a graphical representation.
+
+In this case, only two solutions can be achieved:
+
+\begin{itemize}
+  \item Red orbit and prograde motion.
+  \item Red orbit and retrograde motion.
+\end{itemize}
+
+Similarly to previous case, imposing the sense of motion will retrieve the
+current solution to the problem. Notice now that the orbit path parameter is no
+longer required as only one orbit (red one) exists.
+
+
+For this scenario, the semi-major axis is found to be:
+\begin{equation}
+  a = \frac{\norm{\vec{r_{1}}} + \norm{\vec{r_{2}}} + \norm{\vec{c}}}{4}
+\end{equation}
+
+A single vacant focus is likely to appear for the direct arc transfer problem.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1]{geometry_elliptic2.png}
+  \caption{
+    In this scenario, there are only two solutions considering a single orbit
+    (red one) and the transfer angle (lower or greater than 180 degrees),
+    equivalent to prograde or retrograde motion. Fixing the type of motion will retrieve the current solution to the problem.
+  }
+  \label{fig:elliptic_geometry_2}
+\end{figure}
+
+
+\subsubsection{No vacant focus}
+In this last situation, there is not a common point between the two
+circumferences, meaning that the transfer orbit does not exist for that
+particular geometry.
+
+In fact, the semi-major axis turns out to be:
+\begin{equation}
+  a < \frac{\norm{\vec{r_{1}}} + \norm{\vec{r_{2}}} + \norm{\vec{c}}}{4}
+\end{equation}
+
+meaning that the problem is unsolvable.
+
+\subsubsection{Computing the rest of the elements in the elliptic case}
+Once the location of the vacant focus has been identified, it is possible to
+solve for the focal distance $c$ by applying equation \ref{eq:focal_distance}:
+
+\begin{equation}
+  c = \overline{\frac{\overline{FF'}}{2}}
+  \label{eq:focal_distance}
+\end{equation}
+
+from which the semi-minor axis $b$ can be obtained:
+
+\begin{equation}
+  b = \sqrt{a^2 - c^2}
+  \label{eq:focal_distance}
+\end{equation}
+
+Since now both axes, the semi-major and semi-minor are known, the eccentricity
+of the orbit can be computed using \ref{eq:ellipse_ecc}:
+
+\begin{equation}
+  e = \sqrt{1 - \frac{a}{b}} = \frac{\overline{FF'}}{2a}
+  \label{eq:ellipse_ecc}
+\end{equation}
+
+Notice all previous equations can be applied with $\overline{FF''}$ instead of
+$\overline{FF'}$.
+
+Finally, the last element, that is the argument of perigee, can be computed
+knowing the angle between the initial position vector and the line of nodes such
+that:
+
+\begin{equation}
+  w = \arccos{\left(\frac{\vec{n} \cdot \vec{r_{1}}}{\norm{\vec{n}}
+      \norm{\vec{r_{1}}}} \right) + \angle P_{1}FF' \pm \pi}
+  \label{eq:ellipse_w}
+\end{equation}
+
+where in equation \ref{eq:ellipse_w}, $P_{1}$ is the point given by the tip of
+vector $\vec{r_{1}}$.
+
+\subsection{The parabolic transfer geometry}
+
+Any point which belongs to a parabola holds the following relation:
+
+\begin{equation}
+  \overline{FP} = \overline{lP}
+  \label{eq:parabola_property}
+\end{equation}
+
+where in previous equation, $l$ is the \textit{directrix} of the parabola.
+Equation \ref{eq:parabola_property} shows that the distance from any point of
+the parabola is equal to the distance of that point to the directrix.
+
+Therefore, to locate the directrix of the transfer parabola, drawing two
+circumferences of radius $R_{1} = \norm{\vec{r_{1}}}$ and
+$R_{2}=\norm{\vec{r_{2}}}$ centered at the tip of vectors $\vec{r_{1}}$ and
+$\vec{r_{2}}$ respectively. The directrix is given by the tangent lines between
+these circumferences. The resultant graphic procedure is shown by figure
+\ref{fig:parabolic_geometry}:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1]{geometry_parabolic.png}
+  \caption{ For the parabolic scenario two possible solutions are available,
+    even if there exist two orbits. This is because parabolic orbits are
+    not closed and the path can only be followed in one sense. Therefore,
+    fixing retrograde or prograde motion fixes the solution to the red or
+    blue orbits.
+  }
+  \label{fig:parabolic_geometry}
+\end{figure}
+
+In this case, the exact value for the semi-major axis of the parabola is known,
+being $a = \pm \infty$ together with the eccentricity $e=1.00$. Therefore, the
+only left parameter is the argument of perigee, which can be computed
+
+\begin{equation}
+  w = \arccos{\left(\frac{\vec{n} \cdot \vec{r_{1}}}{\norm{\vec{n}}
+      \norm{\vec{r_{1}}}} \right) + \angle P_{1}FD'}
+  \label{eq:parabola_w}
+\end{equation}
+
+where in equation \ref{eq:parabola_w} the value $D$ refers to the shortest
+distance between the focus of the parabola $F$ and its directrix.
+
+\subsection{The hyperbolic transfer geometry}
+
+Similarly to the elliptic case, for the hyperbola the geometric condition that
+any point on the curve fulfills is given by equation
+\ref{eq:hyperbola_property}:
+
+\begin{equation}
+  \overline{FP} - \overline{F'P} = 2a
+  \label{eq:hyperbola_property}
+\end{equation}
+
+Therefore, the distance to the vacant focus can be computed as:
+
+\begin{equation}
+  r'_{1} = 2a + r_{1}\quad\quad
+  r'_{2} = 2a + r_{2}
+\end{equation}
+
+Again, previous values $r'_{1}$ and $r'_{2}$ are the radius of the
+circumferences which must be centered at the tip of vectors $\vec{r_{1}}$ and
+$\vec{r_{2}}$ to properly locate the vacant focus.
+
+
+\vspace{0.15cm}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1]{geometry_hyperbolic.png}
+  \caption{For the hyperbolic transfer two solutions are available for a total
+    of two orbits, blue and red ones. This is similar to the parabolic case, because the
+    orbit is not closed. Notice that only the paths of the hyperbolas which pass trough the
+    position vectors are the ones where the orbiting body could be found.
+  }
+  \label{fig:hyperbolic_geometry}
+\end{figure}
+
+For the hyperbolic orbit, both previous circumferences always meet at two
+different points, as seen in figure \ref{fig:hyperbolic_geometry}. This is
+because:
+
+\begin{equation}
+  r'_{1} + r'_{2} = 4a + \norm{\vec{r_{1}}} + \norm{\vec{r_{2}}} > c
+\end{equation}
+
+For solving the rest of the elements, and similarly to the elliptic transfer
+orbit, the following relations can be applied:
+
+\begin{equation}
+  e = \frac{\overline{FF'}}{2a}
+  \label{eq:ellipse_ecc}
+\end{equation}
+
+and:
+
+\begin{equation}
+  w = \arccos{\left(\frac{\vec{n} \cdot \vec{r_{1}}}{\norm{\vec{n}}
+      \norm{\vec{r_{1}}}} \right) + \angle P_{1}FF'}
+  \label{eq:hyperbola_w}
+\end{equation}
+
+
+\subsection{Singularities of the problem}
+The Lambert's problem presents singularities for a particular input of the
+observed position vectors. In particular, when both vectors are parallel,
+meaning that the transfer angle between them is either $0$ or $180$ degrees.
+
+In this case, equation \ref{eq:normal_vector} becomes null, meaning that the
+orbiting body does not experience angular momentum. If a body shows to be in
+movement but its angular momentum is found to be zero, hence that body presents
+a rectilinear motion from a mathematical point of view. Not only that, equations
+\ref{eq:inclination_orbit} is no longer defined, as $\norm{\vec{h_{0}}}=0$ is in
+the denominator of the expression. Also, the line of nodes cannot be determined,
+so $\Omega$ can not be properly identified.
+
+The only possibility to have a \textit{rectilinear orbit} is that the initial
+velocity of the orbiting body goes in the direction of the attracting force
+during the whole motion. From the point of view of real cases, this scenario
+appears when a body is released without initial velocity, so it directly towards
+its attractor.
+
+However, the majority of the bodies studied during the IOD problem do not show
+rectilinear motion. Previous singularities are caused by a non linearly
+independent input, making corner cases to appear. Therefore, if the observed
+body is known to have some angular momentum, the following conditions apply for
+invalid inputs of the problem:
+
+\begin{itemize}
+\item For a null transfer angle, that is both vectors are parallel and pointing
+      in the same direction, the point is either not moving at all assuming that
+      $\Delta t \neq 0$. This is not a valid type of motion for the two-body
+      dynamics.
+\item For a $180$ degrees transfer angle, an assumption needs to be done about
+	the fundamental orbit of the plane, since $i$ nor $\Omega$ are defined.
+	Some authors impose the $XY$ plane of the inertial reference frame to be
+	the one containing all the motion of this particular problem.
+\end{itemize}
+
+As a note to these set of corner cases, they are interesting from a mathematical
+point of view but in reality many observations can be performed on an orbiting
+body during its path along the celestial sphere from different ground stations
+all over the globe.
+
+Now that all possible transfer orbit scenarios have been introduced from the
+point of view of geometry, it is possible to present the solution to the problem
+from an analytical point of view.
+

@@ -1,0 +1,62 @@
+\section{Lambert's theorem and implicit solution}
+
+The Lambert's problem receives its name after Johann Heinrich Lambert formulated
+it in a letter to Leonhard Euler, see APPENDIX XX for more information about
+Lambert's problem origin and timeline.
+
+Lambert proof in his \citetitle{lambert1761} that the time of flight between two
+position vectors only depends on the sum of these radial distances, the linear
+distance between them and the semi-major axis of the orbit. This is known as
+\textit{the Lambert's theorem}.
+
+\subsection{The vis-viva equation in its differential form}
+
+To demonstrate Lambert's theorem, the original procedure devised by him is
+presented in the following lines. Starting from the vis-viva equation in
+\ref{eq:visviva}:
+
+\begin{equation}
+  v = \frac{dr}{dt} \sqrt{\frac{2\mu}{r} - \frac{\mu}{a}}
+  \label{eq:visviva}
+\end{equation}
+
+it is possible to integrate to find that:
+
+\begin{equation}
+  \Delta t = \frac{1}{\sqrt{\mu}} \int_{s-c}^{s} \frac{r dr}{\sqrt{2r -
+      r^{2}/a}}
+  \label{eq:visviva_integral}
+\end{equation}
+
+where in previous equation $s$ is the semi-perimeter and $c$ the chord, being
+given by:
+
+\begin{equation}
+  s = \frac{\norm{\vec{r_{1}}} + \norm{\vec{r_{2}}} +
+    \norm{\vec{c}}}{2}\quad\quad\quad\quad
+  \vec{c} = \vec{r_{2}} - \vec{r_{1}}
+\end{equation}
+
+\subsection{Series solution to the vis-viva differential equation}
+
+Lambert provided equation \ref{eq:visviva_integral} in the form of a
+series\footnote{This equation has been directly taken from \cite{battin1999}, in
+  particular from problem 7-1 of the book.}: \ref{eq:visviva_series}:
+
+\begin{flalign*}
+  \Delta t = \frac{1}{\sqrt{\mu}} \left(\frac{\sqrt{2}}{3}[s^{\frac{3}{2}}\mp (s-c)^{\frac{3}{2}}] \right. &  &
+\end{flalign*}
+
+\vspace{-1.25cm}
+\begin{equation}
+  \left. +\sum_{n=1}^{\infty}\frac{\sqrt{2}}{2n+3}\frac{(2n-1)!}{2^{3n-1}n!(n-1)!}[s^{n+\frac{3}{2}} \mp (s-c)^{n+\frac{3}{2}}]\frac{1}{a^{n}}\right)
+  \label{eq:visviva_series}
+\end{equation}
+
+However, notice that for solving the value of the semi-major axis a numerical
+method is required, as equation \ref{eq:visviva_series} is not in explicit form
+for $a$.
+
+Lambert told Euler that he would devise the explicit form of
+\ref{eq:visviva_series} (see \cite{albouy2019}) but Lambert's untimely death
+prevented this.

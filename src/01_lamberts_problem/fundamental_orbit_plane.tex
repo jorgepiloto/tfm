@@ -1,0 +1,194 @@
+\section{The orbital plane}
+
+Assuming that the time of flight is not null, and that the position vectors are
+not coincident neither forming an angle of $180$ degrees between them, the whole
+orbit movement will be contained within a plane. This plane is usually named the
+orbital plane. The red colored plane in figure
+\ref{fig:problem_geometry} represents it.
+
+For the case of the Lambert's problem, the orbital plane can be computed
+from the initial and final position vectors. These two vectors form a basis from
+which any other vector contained in the plane can be obtained from the relation
+shown in equation \ref{eq:linear_combination}:
+
+\begin{equation}
+  \vec{r} = a \vec{r_{1}} + b \vec{r_{2}}
+  \label{eq:linear_combination}
+\end{equation}
+
+where $a$ and $b$ are two known real values.
+
+As long as both vectors are linearly independent, the orbital plane is defined.
+This implies that the cross product $\vec{r_{1}} \times \vec{r_{2}}$ must be not
+null, otherwise singularities arise. This justifies previous assumption about
+not having two position vectors which might be parallel (i.e. forming $0$ or
+$180$ degrees).
+
+The orientation of the orbital plane in space with respect to (w.r.t.) is
+given by the right ascension of the ascending node (RAAN) $\Omega$ and the
+inclination $i$ elements. Therefore, it is interesting to analyze the Lambert's
+problem by making use of the COE set instead of the RV one.
+
+Because both the RAAN and the inclination are computed from a vector in the
+direction and sense of the specific angular momentum of the orbit, $\vec{h}$,
+the following subsection presents a simple procedure on how to solve for this
+particular vector.
+
+
+\subsection{Solving for the unitary specific angular momentum vector}
+
+It is not possible to compute the specific angular momentum of the orbit because
+a velocity at a particular point would be required. This condition would satisfy
+the RV set, meaning that the orbit is fully determined. However, a unitary
+vector in the direction and sense of the angular momentum can be computed making
+use of the two knwon position vectors and the sense of motion of the observed
+body.
+
+The sense of motion (prograde or retrograde)\footnote{Prograde and retrograde
+  orbits are defined according if their inclinations are lower or greater than
+  $90$ degrees respectively.} is an important parameter, since it fixes the sense
+of the angular momentum of the orbit. The reason is that, when computing a
+normal vector to the normal plane via equation \ref{eq:normal_vector}
+
+\begin{equation}
+  \vec{h_{0}} = \frac{\vec{r_{1}} \times \vec{r_{2}}}{\norm{\vec{r_{1}}}\norm{\vec{r_{2}}}}
+  \label{eq:normal_vector}
+\end{equation}
+
+the resultant normal vector has always the sense imposed by the so-called
+\textit{right hand rule} according to the shortest angle between $\vec{r_{1}}$
+and $\vec{r_{2}}$. In addition, notice that vector $\vec{h_{0}}$ goes in the
+direction of the $\vec{h}$ vector, but does not have neither its sense or
+magnitude.
+
+Therefore, the value of $\vec{h_{0}}$ needs to be corrected according if it does
+not agree with a prograde/retrograde type of motion observed. This implies
+checking for the sign of the third component of via $h_{0_{Z}} =
+  \vec{k} \cdot \vec{h_{0}}$ and apply:
+
+\vspace{0.15cm}
+\bgroup
+\def\arraystretch{1.5}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Sign of the vertical component} & \textbf{Prograde} & \textbf{Retrograde} \\ \hline
+    $h_{0_{Z}} > 0$                         & $\vec{h_{0}}$     & $-\vec{h_{0}}$      \\ \hline
+    $h_{0_{Z}} < 0$                         & $-\vec{h_{0}}$    & $\vec{h_{0}}$       \\ \hline
+  \end{tabular}
+  \caption{Sign correction for the normal specific angular momentum vector.}
+\end{table}
+\egroup
+
+where vector $\vec{k}$ in the dot product operation is a unitary one in the
+direction and sense of the positive $Z$ axis of the inertial reference frame
+selected to study the problem.
+
+With previous correction, the resultant vector $\vec{h_{0}}$ goes in the
+direction and sense of the specific angular momentum one but has unitary
+modulus.
+
+\subsection{Solving for the inclination of the orbit}
+
+Once $\vec{h_{0}}$ has been computed and its sign properly fixed, the
+inclination of the orbit can be computed by making use of expression
+\ref{eq:inclination_orbit}:
+
+\begin{equation}
+  i = \arccos{\left(\frac{h_{0_{Z}}}{\norm{\vec{h_{0}}}} \right)}
+  \label{eq:inclination_orbit}
+\end{equation}
+
+Because the sign correction was previously applied, the value of the inclination
+must agree with the prograde/retrograde type of motion. Furthermore, the output
+of the $\arccos$ function is bounded to the inclination domain (i.e. $0$ and
+$\pi$ radians).
+
+
+\subsection{Solving for the RAAN of the orbit}
+
+Finally, the right ascension of the ascending node is computed as usual. First,
+a vector in the direction of the line of nodes is computed taking advantage of
+the expression \ref{eq:line_of_nodes}:
+
+\begin{equation}
+  \vec{n} = \vec{k} \times \vec{h_{0}}
+  \label{eq:line_of_nodes}
+\end{equation}
+
+With previous vector, it is possible now to compute the RAAN by applying
+equation \ref{eq:raan}
+
+\begin{equation}
+  \Omega = \arccos{\left(\frac{\vec{i} \cdot \vec{n}}{\norm{\vec{i}}
+      \norm{\vec{n}}}\right)}
+  \label{eq:raan}
+\end{equation}
+
+where vector $\vec{i}$ in the dot product operation is a unitary one in the
+direction and sense of the positive $X$ axis of the inertial reference frame
+selected to study the problem.
+
+Because the RAAN is bounded between $[0,2\pi)$, a correction might be required,
+as the $\arccos$ function only returns values between $[0,\pi)$. This correction
+is triggered if the lateral component of the line of nodes, $\vec{n_{j}} < 0$,
+so the final value of $\Omega$ becomes:
+
+\begin{equation}
+  \Omega = 2\pi - \Omega \Rightarrow \vec{n_{j}} < 0
+  \label{eq:raan_correction}
+\end{equation}
+
+From the point of view of a computer routine, it is better to make use of the
+$\arctantwo$\footnote{This routine was originally introduced by the FORTRAN
+  language under the name of $\atantwo$.}, which returns the proper quadrant
+between the input coordinates, so the RAAN can be easily computed following
+relation \ref{eq:raan_computer}:
+
+\begin{equation}
+  \Omega = \arctantwo(n_{y}, n_{x})
+  \label{eq:raan_computer}
+\end{equation}
+
+where $n_{y}$ and $n_{x}$ are the lateral and longitudinal coordinates of the
+line of nodes vector.
+
+Once $\Omega$ has been solved together with $i$, the complete orientation in
+space of the orbital plane is known.
+
+\subsection{The problem as seen from the orbital plane}
+
+Because the orbital plane is completely known, only the following parameters are
+still required to solve for the orbit: $a$, $e$, $w$ and $\nu$. Notice that the
+true anomaly, that is $\nu$, only gives information about the current location
+of the body along its orbit but not about the shape of the orbit itself.
+Therefore, the problem is just devoted to find the values of $a$, $e$ and $w$.
+
+Since all the motion of the problem is contained in the orbital plane, it is
+feasible to study the Lambert's problem a reference who's $z=0$ plane is
+coincident with previous plane. Reader might have thought about using the
+\textit{perifocal coordinate system} (PQW) but the argument of perigee is still
+an unknown of the problem, so it is not possible to use the PQW frame. With
+previous assumption, we can simplify the geometry given by figure
+\ref{fig:problem_geometry} into the one shown by figure
+\ref{fig:lambert_problem_pqw}.
+
+\vspace{0.15cm}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1]{lambert_problem_pqw.png}
+  \caption{
+    The geometry of the Lambert's problem as seen from an inertial frame who's
+    $XY$ plane coincides with the orbital one..
+  }
+  \label{fig:lambert_problem_pqw}
+\end{figure}
+
+Notice that the attracting body in figure \ref{fig:lambert_problem_pqw} is
+located in the known focus $F$, following the two-body dynamics assumption. The
+other focus $F'$ is still unknown and needs to be solved to retrieve the full
+geometry of the orbit. This also introduces the unknown of the $w$, as the line
+where for the semi-major needs to be guessed.
+
+
