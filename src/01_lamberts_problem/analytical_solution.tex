@@ -1,0 +1,78 @@
+\section{The analytical solution to the problem}
+
+Because reader was introduced previously to the series solution proposed by
+Lambert in \ref{eq:visviva_series} together with the geometrical background of
+the problem, an analytical solutions has been collected to give a complete
+understanding of the problem.
+
+Although Lambert is considered the be first one to address the BVP and made the
+first contributions to its solution, the first to formally solve the Lambert's
+problem was Joseph-Louis Lagrange. Other authors such us Carl Friedrich Gauss
+also provided analytical solutions to the problem although they have not been
+included in this work as abundant literature on them are available.
+
+Therefore in the following lines, the approach devised by Lagrange is included
+only with the purpose of giving a complete vision of the Lambert's problem from
+the classical analysis.
+
+\subsection{Lagrange's solution}
+
+Lagrange's procedure starts with Kepler's equation for the elliptic
+case\footnote{Notice that this is not the ideal procedure as the type of orbit
+  is not known. A particular form of the Kepler's equation can be applied
+  only if the observer is sure about the type of motion of the orbiting
+  body.}
+
+\begin{equation}
+  \sqrt{\frac{\mu}{a^3}} \Delta t = E_{2} - E_{1} - e \cdot \left(\sin{(E_{2}) -\sin{E_{1}}}) \right)
+  \label{eq:kepler_lagrange}
+\end{equation}
+
+Other useful relations are:
+
+\begin{align}
+  \norm{\vec{r_{1}}}        & = a \cdot (1 - e \cdot \cos{(E_1)})                                \\
+  \norm{\vec{r_{2}}}        & = a \cdot (1 - e \cdot \cos{(E_2)})                                \\
+  \cos{(\nu_{1} - \nu_{0})} & = \frac{a}{\norm{\vec{r_{1}}}} \cdot \left(\cos{(E_1) - e} \right) \\
+  \cos{(\nu_{2} - \nu_{0})} & = \frac{a}{\norm{\vec{r_{2}}}} \cdot \left(\cos{(E_2) - e} \right)
+\end{align}
+
+where in previous equations, $E_{i}$ are the eccentric anomalies and $\nu_{i}$
+the true anomalies. The parameter $\nu_{0}$ is the reference one for measuring
+the true anomalies, that is, the semi-major axis line.
+
+Lagrange introduced the variables:
+
+\begin{equation}
+  \psi = \frac{E_2 - E_1}{2}\quad\quad
+  \cos{(\varphi)} = e \cdot \cos{\left(\frac{E_2 + E_1}{2} \right)}
+\end{equation}
+
+and related them via two new angles:
+
+\begin{equation}
+  \alpha = \varphi + \psi\quad\quad
+  \beta = \varphi - \psi
+\end{equation}
+
+With all these relations, equation \ref{eq:kepler_lagrange} becomes:
+
+\begin{equation}
+  \sqrt{\frac{\mu}{a^3}} \Delta t = \alpha - \beta - \left(\sin{(\alpha)} - \sin{(\beta)}\right)
+  \label{eq:kepler_lagrange_simple}
+\end{equation}
+
+where it can be proof that $\alpha$ and $\beta$ are direct functions of the
+semi-major axis of the orbit such that:
+
+\begin{equation}
+  \sin{\left(\frac{\alpha}{2} \right)} = \frac{s}{2a}\quad\quad
+  \sin{\left(\frac{\beta}{2} \right)} = \frac{s - c}{2a}\quad\quad
+  \label{eq:alpha_beta}
+\end{equation}
+
+By combining equations \ref{eq:kepler_lagrange_simple} and \ref{eq:alpha_beta}
+it is possible to obtain a single expression dependent only on $a$ and known
+parameters of the problem. This new equation can be solved by making use of a
+root solver to find the current value of the semi-major axis. Once it is known,
+the rest of the orbital elements can be properly computed.
