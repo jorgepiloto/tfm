@@ -8,12 +8,12 @@ understanding of the problem.
 Although Lambert is considered the be first one to address the BVP and made the
 first contributions to its solution, the first to formally solve the Lambert's
 problem was Joseph-Louis Lagrange. Other authors such us Carl Friedrich Gauss
-also provided analytical solutions to the problem although they have not been
-included in this work as abundant literature on them are available.
+also provided analytical solutions, which he used for the computation of the
+orbit of Ceres.
 
-Therefore in the following lines, the approach devised by Lagrange is included
-only with the purpose of giving a complete vision of the Lambert's problem from
-the classical analysis.
+Therefore in the following lines, the solutions devised by Lagrange and Gauss
+are included with the purpose of giving a complete vision of the Lambert's
+problem from the classical analysis.
 
 \subsection{Lagrange's solution}
 
@@ -28,20 +28,35 @@ case\footnote{Notice that this is not the ideal procedure as the type of orbit
   \label{eq:kepler_lagrange}
 \end{equation}
 
-Other useful relations are:
+where in previous equation $E$ refers to the eccentric anomaly and the
+subscripts $1$ or $2$ the evaluation point (initial or final position vector).In
+addition, applying the radial distance equation, it is possible to find:
 
 \begin{align}
-  \norm{\vec{r_{1}}}        & = a \cdot (1 - e \cdot \cos{(E_1)})                                \\
-  \norm{\vec{r_{2}}}        & = a \cdot (1 - e \cdot \cos{(E_2)})                                \\
-  \cos{(\nu_{1} - \nu_{0})} & = \frac{a}{\norm{\vec{r_{1}}}} \cdot \left(\cos{(E_1) - e} \right) \\
-  \cos{(\nu_{2} - \nu_{0})} & = \frac{a}{\norm{\vec{r_{2}}}} \cdot \left(\cos{(E_2) - e} \right)
+  \norm{\vec{r_{1}}} & = a \cdot (1 - e \cdot \cos{(E_1)}) \\
+  \norm{\vec{r_{2}}} & = a \cdot (1 - e \cdot \cos{(E_2)}) \\
+  \label{eq:radial_distances_lagrage}
 \end{align}
 
-where in previous equations, $E_{i}$ are the eccentric anomalies and $\nu_{i}$
-the true anomalies. The parameter $\nu_{0}$ is the reference one for measuring
-the true anomalies, that is, the semi-major axis line.
+If relating the true anomaly $\nu$ and the eccentric one $E$ for each one of the
+points, another two relations arise:
 
-Lagrange introduced the variables:
+\begin{align}
+  \cos{(\nu_{1} - w)} & = \frac{a}{\norm{\vec{r_{1}}}} \cdot \left(\cos{(E_1) - e} \right) \\
+  \cos{(\nu_{2} - w)} & = \frac{a}{\norm{\vec{r_{2}}}} \cdot \left(\cos{(E_2) - e} \right)
+  \label{eq:ecc_to_true_lagrange}
+\end{align}
+
+being $w$ the reference for true anomaly measurements, that is the argument of
+periapsis.
+
+The set of five expressions given by equations \ref{eq:kepler_lagrange},
+\ref{eq:radial_distances_lagrage} and $\ref{eq:ecc_to_true_lagrange}$ contains a
+total of five unknowns: $a$, $e$, $w$, $E_{1}$ and $E_{2}$. However, only
+the first three ones are required for the determination of the shape of the
+orbit.
+
+To simplify these expressions, Lagrange introduced two new expressions:
 
 \begin{equation}
   \psi = \frac{E_2 - E_1}{2}\quad\quad
@@ -66,13 +81,159 @@ where it can be proof that $\alpha$ and $\beta$ are direct functions of the
 semi-major axis of the orbit such that:
 
 \begin{equation}
-  \sin{\left(\frac{\alpha}{2} \right)} = \frac{s}{2a}\quad\quad
-  \sin{\left(\frac{\beta}{2} \right)} = \frac{s - c}{2a}\quad\quad
+  \sin{\left(\frac{\alpha}{2} \right)} = \sqrt{\frac{s}{2a}\quad\quad}
+  \sin{\left(\frac{\beta}{2} \right)} = \sqrt{\frac{s - c}{2a}\quad\quad}
   \label{eq:alpha_beta}
 \end{equation}
 
-By combining equations \ref{eq:kepler_lagrange_simple} and \ref{eq:alpha_beta}
-it is possible to obtain a single expression dependent only on $a$ and known
-parameters of the problem. This new equation can be solved by making use of a
-root solver to find the current value of the semi-major axis. Once it is known,
-the rest of the orbital elements can be properly computed.
+being $s$ and $c$ the semi-perimeter and chord respectively, as in equation
+\ref{eq:s_and_c_lambert}.
+
+Because of the ambiguity of the solution, the values of $\alpha$ and $\beta$
+need to be fixed depending on some conditions of the problem such that. For
+$\alpha$, the correction to be applied is:
+
+\begin{equation}
+  \alpha = 2 \arcsin{\sqrt{\frac{s}{2a}}}
+\end{equation}
+
+as long as $\alpha < 2\pi$. If previous condition does not hold, the angle is
+obtained such that $\alpha = 2\pi - \alpha$.
+
+For the case of $\beta$, its value is computed regarding the one for the
+transfer angle $\Delta \theta$:
+
+\begin{equation}
+  \beta = 2 \arcsin{\sqrt{\frac{s - c}{2a}}}
+\end{equation}
+
+as long as $\Delta \theta < \pi$. If not, then a sign correction is applied such
+that $\beta = -\beta$.
+
+Equation \ref{eq:kepler_lagrange_simple} can be obtained by using a root solver
+so the right value for $a$ is computed. Once the semi-major axis has been
+solved, it is possible to compute other orbit elements by using:
+
+\begin{equation}
+  e = \sqrt{\left( \frac{\norm{\vec{r_{1}}} +
+      \norm{\vec{r_{2}}}}{2a\sin{\psi}} \right)^{2} + \left(\cos{\varphi} \right)^2}
+\end{equation}
+
+\subsection{Gauss' solution}
+
+The method developed by Gauss to the determination of the Orbit of Ceres was
+published in his \citetitle{gauss1809}. It must be pointed out that the method
+presented in the following lines is singular for transfer angles of $180$
+degrees and the rate of converge is slow when its value is not small. However,
+the method became very popular in its days and is set up the basis for new ones.
+
+The relations presented in the next lines follow the notation employed by
+\citeauthor{bate1979} in their book \citetitle{bate1979}.
+
+Gauss' method is strongly related with the so-called \textit{ratio of sector to
+  triangle}. This is nothing but Kepler's second law\footnote{Kepler's second law
+  states that an orbiting body sweeps out equal areas in equal lengths of time.}
+The relation modeling this fact is as follows:
+
+\begin{equation}
+  dt = \frac{2}{h}dA
+\end{equation}
+
+which evaluated at $h=\sqrt{\mu p}$ (being $p$ the orbital parameter) gives the
+area of the sector:
+
+\begin{equation}
+  A_{s} = \frac{1}{2} \sqrt{\mu p} \Delta t
+  \label{eq:gauss_area_sector}
+\end{equation}
+
+On the other hand, the area of the triangle $A_{t}$ formed by the two position
+vectors and the chord can be obtained via geometrical relations, adopting the
+form:
+
+\begin{equation}
+  A_{t} = \frac{1}{2} \norm{\vec{r_{1}}}  \norm{\vec{r_{2}}} \sin{(\Delta \theta)}
+  \label{eq:gauss_area_triangle}
+\end{equation}
+
+Gauss related equations \ref{eq:gauss_area_sector} and
+\ref{eq:gauss_area_triangle}, so that:
+
+\begin{equation}
+  y = \frac{A_s}{A_t} = \frac{\sqrt{\mu p} \Delta t}{\norm{\vec{r_{1}}}  \norm{\vec{r_{2}}} \sin{(\Delta \theta)}}
+  \label{eq:gauss_y}
+\end{equation}
+
+Notice that the only unknown in previous equation is the orbit parameter $p$.
+
+The goal now is to relate previous variable $y$ with the value of $\Delta E$.
+Hopefully, the following expression solves for this issue:
+
+\begin{equation}
+  p = \frac{\norm{\vec{r_1}} \norm{\vec{r_2}} (1 - \cos{\Delta
+      \theta})}{\norm{\vec{r_1}} + \norm{\vec{r_2}} - 2
+    \sqrt{\norm{\vec{r_1}} + \norm{\vec{r_2}} \cos{\left(\frac{\Delta
+          \theta}{2}\right)} \cos{\left(\frac{\Delta E}{2} \right)}}}
+  \label{eq:p_as_of_E}
+\end{equation}
+
+Two new relations are introduced:
+
+\begin{equation}
+  s = \frac{\norm{\vec{r_1}} + \norm{\vec{r_2}}}{4\sqrt{\norm{\vec{r_1}}
+      \norm{\vec{r_2}}}\cos{\left(\frac{\Delta \nu}{2} \right)} } - \frac{1}{2}
+  \label{eq:gauss_s}
+\end{equation}
+
+and:
+
+\begin{equation}
+  w = \frac{\mu \Delta t^2}{\left(2\sqrt{\norm{\vec{r_1}}\norm{\vec{r_2}}} \cos\left(\frac{\Delta \nu}{2} \right )\right)^3}
+  \label{eq:gauss_w}
+\end{equation}
+
+Be careful not to confuse equation \ref{eq:gauss_s} with the relation for the
+semi-perimeter. Finally, by replacing the relations \ref{eq:p_as_of_E},
+\ref{eq:gauss_s} and \ref{eq:gauss_w} into \ref{eq:gauss_y} it is possible to
+obtain:
+
+\begin{equation}
+  y^2 = \frac{w}{s + \frac{1}{2}\left(1 - \cos{\left(\frac{\Delta E}{2} \right)} \right)}
+  \label{eq:gauss_first_eq}
+\end{equation}
+
+Equation \ref{eq:gauss_first_eq} is known as \textit{Gauss' first equation}. Two
+unknowns appear in this equation, being $y$ and $\Delta E$. Therefore, another
+equation is required in order to determine these two values.
+
+The process for getting this second equation is more complex and involves the
+$f$ and $g$ formulation. The whole procedure is properly explained in
+\cite{bate1979}, so only the theoretical background will be pointed out here
+together with the final expression.
+
+Gauss was able to combine in a very smart way equation \ref{eq:gauss_y} with the
+$f$ and $g$, so an expression depending only on $y$ and $\Delta E$ appeared:
+
+\begin{equation}
+  y = 1 + \left(\frac{\Delta E - \sin{(\Delta E)}}{\left(\sin{\left(\frac{\Delta E}{2} \right )} \right)^3} \right )\left(s + \frac{1 - \cos{\left(\frac{\Delta E}{2} \right )}}{2} \right )
+  \label{eq:gauss_second_eq}
+\end{equation}
+
+where \ref{eq:gauss_second_eq} is known as \textit{Gauss' second equation}.
+Because this equation was obtained using the \textit{ratio of sector to triangle
+  area} (equation \ref{eq:gauss_y}) the method developed by Gauss is also named
+like this.
+
+Notice that the two equations \ref{eq:gauss_first_eq} and
+\ref{eq:gauss_second_eq} only have as unknowns $y$ and $\Delta E$. Once this
+system of equations is known by applying a numerical method to a particular
+tolerance, the rest of the orbit parameter can be obtained using equation
+\ref{eq:p_as_of_E}. In addition, $f$ and $g$ functions can be solved so that the
+velocity vectors are found to be:
+
+\begin{equation}
+  \vec{v_1} = \frac{\vec{r_2} - f \vec{r_1}}{g}\quad\quad
+  \vec{v_2} = \dot{f} \vec{r_1} + \dot{g} \vec{v_1}
+\end{equation}
+
+
