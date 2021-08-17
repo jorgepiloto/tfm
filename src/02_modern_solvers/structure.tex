@@ -1,7 +1,7 @@
 \section{Main elements and workflow}
 
 Each Lambert's problem solver makes use of its own mathematical background to
-approach the solution to the problem. However, all algorithms share a common
+find the solution to the problem. However, all algorithms share a common
 workflow in which a particular set of elements can be identified. Among these
 elements it is possible to find the free-parameter, the numerical method, an
 initial-guess and the velocity vectors construction procedure.
@@ -9,12 +9,18 @@ initial-guess and the velocity vectors construction procedure.
 \vspace{0.5cm}
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{static/solver_elements.png}
+  \includegraphics[width=\linewidth]{static/solver_workflow.pdf}
   \caption{Main elements forming the basic structure of any modern Lambert's
   problem solver.}
    \label{fig:solver_elements}
 \end{figure}
 
+It must be pointed out that some methods developed along history, which will be
+presented in future pages, solve the Lambert's problem by making use of a series
+expansion. Therefore, the accuracy of the method is based on the number of
+terms considered instead of requiring a numerical method. However, apart from
+these type of solvers, the rest of them share the elements presented in figure
+\ref{fig:solver_elements}.
 
 In the following subsections, each one of previous cited elements is explained
 in detail.
@@ -22,35 +28,78 @@ in detail.
 \subsection{The free-parameter}
 
 The free-parameter is the independent variable, also named the iteration
-parameter. Any algorithm will reach a given equation in which this parameter is
-in implicit form, meaning that a numerical method is required to obtain its
-value.
+variable. This variable appears in an implicit way in a fundamental equation of
+the algorithm, meaning that a numerical method is required in order to solve for
+it. Once its value has been computed, each algorithm will follow a particular
+approach to solve for the rest of the orbital elements.
 
 Among history, several algorithms have been developed exploiting different
 free-parameters such us the semi-major axis $a$, the orbit's eccentricity $e$,
 the orbital parameter or semi-latus rectum $p$, the true anomaly $\nu$, the
-universal formulation and finally the Kustaanheimo-Stiefel formulation.
+universal formulation and finally the Kustaanheimo-Stiefel formulation and the
+flight path angle $\gamma$.
 
 \vspace{0.5cm}
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{static/free_parameter.png}
+  \includegraphics[width=\linewidth]{static/free_parameter.pdf}
   \caption{All possible free-parameters employed for solving the Lambert's problem.}
   \label{fig:free_parameter}
 \end{figure}
 
+\subsection{The initial guess}
+
+Before the iterative process can start, an initial guess is required. This is
+the starting value imposed to the free-parameter, so the closer it is to the
+solution, the lower the amount of iterations till the free-parameter converges
+to a desired accuracy.
+
+Classic algorithms, all of those previous to the modern ones, made use of an
+arbitrary initial guess without developing any additional procedure. This is no
+longer the case with modern ones in which a more complex sub-routine is provided
+in order to have a reliable initial guess to reduce the computation time and
+faster achieve the solution.
+
+The initial guess is dependent on the numerical method employed and thus, on the
+mathematical background too. A total of three common solutions have been
+identified in literature, being these the rational formulate, linear approach
+and bi-linear one, as depicted by diagram in figure \ref{fig:initial_guess}.
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{static/initial_guess.pdf}
+  \caption{Possible approaches to be used in the initial guess procedure.}
+  \label{fig:initial_guess}
+\end{figure}
+
+The rational formulate (also named arbitrary initial guess) is based on the time
+of flight curves against the free-parameter. By identifying different regions
+and their expected time of flight it is possible to compare those against the
+current one and estimate the solution.
+
+Regarding the linear approach and bi-linear guesses, these simplify the
+free-parameter transcendental equation so that it becomes an explicit one.
+Although very useful, not all the equations for the free-parameter might be
+benefit from this initial guess.
+
+It must be pointed that the level of complexity of initial guess procedure must
+not be detrimental from the point of view of the total computation time.
+Otherwise, it is absurd to waste such a valuable time instead of letting the
+root solver to perform the iteration workload.
 
 \subsection{The numerical method}
 
 The previously presented free-parameter is solved by means of a numerical method
 or root finder. Numerical methods for solving root equations are abundant in the
-literature, being some of the most common ones bisection, regula-falsi, secant,
-Newton's method, Halley's method and Householder's one.
+literature, being some of the most common ones bisection, regula falsi, secant,
+Newton's method, Halley's method and Householder's one\footnote{Notice that
+Newton's and Halley's methods are just Householder's one but of lower order.}.
 
 \vspace{0.5cm}
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{static/numerical_method.png}
+  \includegraphics[width=\linewidth]{static/root_solver.pdf}
   \caption{Different root finders found in literature to solve for the
   free-parameter equation.}
   \label{fig:numerical_method}
@@ -58,50 +107,31 @@ Newton's method, Halley's method and Householder's one.
 
 
 The last three of the listed methods are the most common ones employed by
-authors in modern solvers. However, bisection method is also employed when the
-solution is known to be in a stiff region when these methods diverge, as it
-always converges to the solution if the proper interval is given.
+authors in modern solvers. However, these methods required from the derivative
+of the free-parameter transcendental equation with respect to the free-parameter
+itself. Equations \ref{eq:newtons_method}, \ref{eq:halleys_method} and
+\ref{eq:householders_method} present these three methods where $x_n$ and
+$x_(n+1)$ inditcate the current and next free-parameter value, $f$ is the
+function to be evaluated and $f'$, $f''$ its first and second derivatives.
 
-The numerical method used is strongly related with the mathematical approach
-employed. Depending on the nature of the equation for the free-parameter, a
-numerical method will perform better or worst than others.
+\begin{align}
+	\text{Newton's method} \quad\quad &x_{n+1} = x_{n} - \frac{f(x_n)}{f'(x_n)} \label{eq:newtons_method}\\
+	\text{Halley's method} \quad\quad &x_{n+1} = x_{n} - \frac{2f(x_n)f'(x_n)}{2\left[f'(x_n)\right]^{2} - f(x_n)f''(x_n)} \label{eq:halleys_method}\\
+	\text{Householder's method} \quad\quad &x_{n+1} = x_{n} - \frac{f(x_n)}{f'(x_n)}\left(1 + \frac{f(x_n)f''(x_n)}{2\left[f'(x_n)\right]^{2}}\right) \label{eq:householders_method}
+\end{align}
 
-Finally, it might be possible that some algorithms apply a different root finder
-solver depending on the type of the orbit.
 
-\subsection{The initial guess}
+Previous methods are preferred due to its performance and accuracy. However, not
+all the transcendental equations have a simple derivative. In most of the cases
+this one becomes quite complex and authors end up using the secant method. Not
+only that, previous methods are singular for values of $x_n$ such that
+$f'(x_n)=0$.
 
-Any numerical methods always requires from an initial guess. This is the initial
-value imposed to the free-parameter to start the iteration and check if its
-equation fulfills.
-
-Classic algorithms, all of those previous to the modern ones, made use of an
-arbitrary initial guess without developing any additional procedure. This is no
-longer the case with modern ones in which a more complex sub-routine is
-developed in order to have a reliable initial guess to reduce the computation
-time and achieve faster the solution.
-
-The initial guess is dependent on the numerical method employed and thus, on the
-mathematical background too. As opposite to the free-parameter or the numerical
-method, there is no such a clear classification for this element. However, below
-these lines, some procedures found in literature are listed: arbitrary, time of
-flight for a parabolic orbit\footnote{Enables to quickly identify the shape of
-the orbit by comparing the current observed one with the parabolic one.
-If higher or lower, either elliptic or hyperbolic is the resultant type of
-orbit.}, linear approximation and bi-linear one.
-
-\vspace{0.5cm}
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\linewidth]{static/initial_guess.png}
-  \caption{Possible approaches to be used in the initial guess procedure.}
-  \label{fig:initial_guess}
-\end{figure}
-
-It must be pointed that the level of complexity of initial guess procedure
-should must not be detrimental to the total computation time. Otherwise, it is
-absurd to waste such a valuable time instead of letting the root solver to
-perform the iteration workload.
+When previous situation applies, some authors impose a change in the root solver
+so that bisection or regula-falsi methods are used. These two methods, once the
+solution has been bounded, guarantee the convergence to the right value of the
+free-parameter. However, they rate of converge is slower if compared against
+Newton's, Halley's or Householder's method.
 
 \subsection{The velocity vectors construction}
 
@@ -119,7 +149,7 @@ RV conversion.
 \vspace{0.5cm}
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.75]{static/velocity_vectors.png}
+  \includegraphics[scale=0.75]{static/velocity_vectors.pdf}
   \caption{Possible ways of constructing the initial and final velocity vectors.}
   \label{fig:velocity_vectors}
 \end{figure}
