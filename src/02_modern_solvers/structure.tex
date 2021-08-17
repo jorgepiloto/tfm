@@ -65,7 +65,7 @@ and bi-linear one, as depicted by diagram in figure \ref{fig:initial_guess}.
 \vspace{0.5cm}
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\linewidth]{static/initial_guess.pdf}
+  \includegraphics[scale=0.80]{static/initial_guess.pdf}
   \caption{Possible approaches to be used in the initial guess procedure.}
   \label{fig:initial_guess}
 \end{figure}
@@ -147,14 +147,15 @@ COE to RV conversion.
 \vspace{0.5cm}
 \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.75]{static/velocity_vectors.pdf}
+  \includegraphics[scale=0.80]{static/velocity_vectors.pdf}
   \caption{Possible ways of constructing the initial and final velocity vectors.}
   \label{fig:velocity_vectors}
 \end{figure}
 
 The radial and tangential components can computed from equation
 \ref{eq:radia_tangential_v}, where $h_0$ is obtained via previously presented
-\ref{eq:normal_vector}.
+\ref{eq:normal_vector} and the values of $v_{r_1}$, $v_{r_2}$, $v_{t_1}$ and
+$v_{t_1}$ computed using a particular solver.
 
 \begin{equation}
 	\vec{v_{1}} = v_{r_1} \frac{\vec{r_1}}{\norm{\vec{r_1}}} + v_{t_1} \frac{\vec{h_0} \times \vec{r_1}}{\norm{\vec{h_0} \times \vec{r_1}}}\quad\quad\quad
