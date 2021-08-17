@@ -22,9 +22,6 @@ terms considered instead of requiring a numerical method. However, apart from
 these type of solvers, the rest of them share the elements presented in figure
 \ref{fig:solver_elements}.
 
-In the following subsections, each one of previous cited elements is explained
-in detail.
-
 \subsection{The free-parameter}
 
 The free-parameter is the independent variable, also named the iteration
@@ -138,13 +135,14 @@ Newton's, Halley's or Householder's method.
 The last sub-routine employed by any Lambert's solver is the computation of the
 velocity vectors. One might thought that the computation of COE elements is also
 valid but, since we are given as initial input two position vectors, it is
-reasonable that the user expects the velocity ones as output so the RV is
+reasonable that the user expects the velocity vectors as output so the RV set is
 completely defined.
 
 There are different approaches followed by modern solvers to compute the value
 of these vectors once the free-parameter has been solved such us using the
-radial and tangential components, $f$ and $g$ formulation or applying a COE to
-RV conversion.
+radial and tangential components, $f$ and $g$ formulation\footnote{This is also
+known as Gauss' $f$ and $g$ formulae.} introduced in \cite{bate1971} or applying a
+COE to RV conversion.
 
 \vspace{0.5cm}
 \begin{figure}[h]
@@ -154,3 +152,36 @@ RV conversion.
   \label{fig:velocity_vectors}
 \end{figure}
 
+The radial and tangential components can computed from equation
+\ref{eq:radia_tangential_v}, where $h_0$ is obtained via previously presented
+\ref{eq:normal_vector}.
+
+\begin{equation}
+	\vec{v_{1}} = v_{r_1} \frac{\vec{r_1}}{\norm{\vec{r_1}}} + v_{t_1} \frac{\vec{h_0} \times \vec{r_1}}{\norm{\vec{h_0} \times \vec{r_1}}}\quad\quad\quad
+	\vec{v_{2}} = v_{r_2} \frac{\vec{r_2}}{\norm{\vec{r_2}}} + v_{t_2} \frac{\vec{h_0} \times \vec{r_2}}{\norm{\vec{h_0} \times \vec{r_2}}}
+\label{eq:radia_tangential_v}
+\end{equation}
+
+Another common way of computing the velocity vectors at the initial and final
+points is to use the $f$ and $g$ formulation, see \ref{eq:f_and_g_v}:
+
+\begin{equation}
+	\vec{v_1} = (\vec{r_2} - f \vec{r_1}) / g \quad\quad\quad
+	\vec{v_2} = (\dot{g} \vec{r_2} - \vec{r_1}) / g
+	\label{eq:f_and_g_v}
+\end{equation}
+
+where the values for the $f$, $g$, $\dot{f}$ and $\dot{g}$ can be obtained using
+the following relations:
+
+\begin{align}
+  f &= 1 - \frac{a}{\norm{\vec{r_1}}} \left(1 - \cos{(\Delta E)} \right)\\
+  g &= \Delta t - \sqrt{\frac{a^3}{\mu}} \left(\Delta E - \sin{(\Delta E)}\right)\\
+  \dot{f} &= \frac{-\sqrt{\mu a}}{\norm{\vec{r_1}} \norm{\vec{r_2}}}\\
+  \dot{g} &= 1 - \frac{a}{\norm{\vec{r_2}}} \left(1 - \cos{(\Delta E)} \right)
+\end{align}
+
+Finally, some solvers just computed the COE set, so a COE to RV conversion needs
+to be performed. The mathematical background for this conversion is provided in
+various works such us \cite{bate1971}, \cite{vallado2013} or
+\cite{curtis2020}.
