@@ -87,7 +87,7 @@ overall performance.
   \label{fig:a_solvers}
 \end{figure}
 
-\subsection{True anomaly}
+\subsection{True anomaly based solvers}
 
 Regarding solvers which iterate over the true anomaly of the transfer orbit,
 only a single one has been found among the whole Lambert's problem literature:
@@ -104,7 +104,124 @@ the one devised by \cite{gunkel1960}. This algorithm also appears in the book by
   \label{fig:a_solvers}
 \end{figure}
 
-\subsection{Semi-latus rectum based}
-\subsection{Universal formulation based}
-\subsection{Kustaanheimo-Stiefel based}
+
+\subsection{Semi-latus rectum based solvers}
+
+The semi-latus rectum $p$ of an orbit is usually called the orbital parameter and it
+is related with the semi-major axis of the orbit and its eccentricity via $p =
+a(1 - e^2)$. Therefore, the semi-latus rectum has been used by some authors as
+the free-parameter.
+
+We might establish \cite{gauss1809} the first one to use this parameter.
+Although the original algorithm proposed by the genius does not iterate over
+this variable, it is the first orbit element to be obtained after the numerical
+process. Gauss relates the triangle to area sector to obtain a pair of equations
+from which the Lambert's problem can be solved. In fact, he used the method to
+the discovery of Ceres' orbit one year after it was spotted for the first time.
+However, this method is only valid for angles lower than $90$ degrees
+approximately and it is singular for transfer angles of $180$ degrees.
+
+Some years later, \cite{battin1984} improved the convergence of Gauss' algorithm
+by expanding it to all types of orbit in a universal variable approach.
+\citeauthor{sangra2020} includes this algorithm in the universal branch of
+solutions but we decided to included it here just to point out its inheritance
+from the one devised by Gauss. The algorithm by Battin moves the singularity
+from the $180$ to $360$, which is a more reasonable corner case. In addition, it
+improves by far the accuracy of Gauss solver. Finally, Battin's algorithm was
+improved to also solve for the multi-revolution scenario once the work of
+\cite{shen2003} was published.
+
+A new branch based on the $p$ parameter was started by \cite{bate1971}. Among
+the set of algorithms published in Bate's book, the one iterating over the
+semi-latus is simple to implement. However, this author did not imposed a
+particular numerical method to solve for the transcendental equation. The only
+method found in literature inheriting from Bate's one is the solver devised by
+\cite{alhulayil2017} in which the authors make use of a 4th Taylor series
+expansion. Although they do not cite Bate's solver, the variables used by them
+are clearly the ones from Bate's book.
+
+
+The last branch was started by \cite{herrick1959}. This differs from Bate's
+solver as it involves the eccentricity during the computation of the
+free-parameter.
+
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1.00]{static/p_solvers.pdf}
+  \caption{Inheritance diagram for semi-latus rectum based solvers. A total of
+  three branches have been devised along history for addressing the problem
+  making use of this free-parameter.}
+  \label{fig:a_solvers}
+\end{figure}
+
+
+\subsection{Universal formulation based solvers}
+
+The usage universal formulation as the free-parameter holds the greatest amount
+of solvers and the deepest inheritance diagram. In fact, this approach to solve
+the problem is considered to be the origin of modern Lambert's solvers with the
+publication of \cite{lancaster1970} in which an elegant figure relating the
+free-parameter and the non-dimensional time of flight appeared for the first
+time. This algorithm was able to cover all types of transfer orbits (elliptic,
+parabolic and hyperbolic) and also capable of solving the multi-revolution
+problem.
+
+Lancaster set the basis for other authors to improve the method and
+\cite{gooding1990} pick up the baton by introducing one of the most popular
+algorithms. In his work, Gooding provided Fortran77 routines so other authors
+could easily reproduce his work. However, he imposed a total of three iterations
+after checking that no more were required to obtain great accuracy in the
+results.
+
+Even when this branch was not expected to be improved, \cite{izzo2015} proposed
+his famous solver by introducing one last change of variable and upgrading the
+numerical method employed to a Householder's one, as opposite to Gooding who
+employed Halley's method.
+
+The second branch within solvers using universal formulation was started by
+\cite{bate1971}. Again, in his book, this author introduced a new solver.
+No root solver was imposed although bisection and Newton's method were cited.
+However, some years later \cite{vallado2013} improved the convergence of the
+method by imposing a bisection method which, as opposite to Newton's method,
+converges always to the expected value.
+
+Finally, a great progress was made by \cite{arora2013} by introducing an smart
+cosine transformation. This new algorithm was capable of solving the
+multi-revolution problem and employed an strong rational formulae initial guess.
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1.00]{static/universal_solvers.pdf}
+  \caption{Inheritance diagram for universal formulation solvers based solvers.
+  The two branches initiated by Bate and Lancaster are visible.} 
+  \label{fig:a_solvers}
+\end{figure}
+
+
+\subsection{Regularizing transformation based solvers}
+
+Solvers based on regularized transformations are not abundant in literature. The
+main goal of these solvers is to avoid the singularities in the Lambert's
+problem by moving it from $\Re^{N} \rightarrow \Re^{N+1}$. At least three types of
+regularizing transformations are known:
+
+\begin{itemize}
+  \item Levi-Civita.
+  \item Kustaanheimo-Stiefel.
+  \item Radial-Inversion.
+\end{itemize}
+
+The mathematical background for the regularizing transformation is out of the
+scope of this work but reader is encouraged to refer to Chapter 3 of
+\cite{celletti2002} book's.
+
+The first known solver to take advantage of the KS transformation is
+\cite{simo1973}
+
+
+
+
 \subsection{Flight path angle based}
