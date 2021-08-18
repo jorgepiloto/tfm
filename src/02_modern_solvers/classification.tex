@@ -84,7 +84,7 @@ overall performance.
   \caption{Inheritance diagram for eccentricity based solvers. Notice that the
   branch started by Avanzini is the most modern one and the mother of modern
   solvers based on this orbit parameter.}
-  \label{fig:a_solvers}
+  \label{fig:ecc_solvers}
 \end{figure}
 
 \subsection{True anomaly based solvers}
@@ -101,7 +101,7 @@ the one devised by \cite{gunkel1960}. This algorithm also appears in the book by
   \caption{Inheritance diagram for true anomaly based solvers. Only one solver
   is found to belong to this set of solvers as iterating over $\nu$ is not the
   most popular way of addressing the problem.}
-  \label{fig:a_solvers}
+  \label{fig:nu_solvers}
 \end{figure}
 
 
@@ -153,7 +153,7 @@ free-parameter.
   \caption{Inheritance diagram for semi-latus rectum based solvers. A total of
   three branches have been devised along history for addressing the problem
   making use of this free-parameter.}
-  \label{fig:a_solvers}
+  \label{fig:p_Solvers}
 \end{figure}
 
 
@@ -197,7 +197,7 @@ multi-revolution problem and employed an strong rational formulae initial guess.
   \includegraphics[scale=1.00]{static/universal_solvers.pdf}
   \caption{Inheritance diagram for universal formulation solvers based solvers.
   The two branches initiated by Bate and Lancaster are visible.} 
-  \label{fig:a_solvers}
+  \label{fig:universal_solvers}
 \end{figure}
 
 
@@ -218,10 +218,63 @@ The mathematical background for the regularizing transformation is out of the
 scope of this work but reader is encouraged to refer to Chapter 3 of
 \cite{celletti2002} book's.
 
-The first known solver to take advantage of the KS transformation is
-\cite{simo1973}
+The first known solver to take advantage of one of the transformations is
+\cite{simo1973}. The algorithm by this author makes use of the Levi-Civita,
+covering degenerate conics too. This algorithm was enhanced by \cite{torre2018}
+by introducing the multi-revolution scenario and enhancing the initial guess routine.
 
+Another branch found in literature using the regularizing transformation was
+started by \cite{kriz1976}. As opposite to previous solvers, this algorithm
+makes use of the Kustaanheimo-Stiefel transformation. That same year,
+\cite{jezewski1976} published another working on the same principle as the one
+suggested by Kriz.
 
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=1.00]{static/regularizing_solvers.pdf}
+  \caption{Inheritance diagram for regularized transformation solvers. Only the
+  transformations via Levi-Civita and Kustaanheimo-Stiefel are the ones serving
+  as base for these type of solvers.} 
+  \label{fig:regularizing_solvers}
+\end{figure}
 
 
 \subsection{Flight path angle based}
+
+The flight path angle $\gamma = \arccos{\left(\frac{r_p v_p}{r v} \right)}$,
+where the sub-index $p$ denotes the perpendicular direction to the current radial
+distance, is the last of the variables used as free-parameter. We already
+discussed about the applications of Lambert's problem within the rendezvous and
+intercepting maneuvers. Algorithms using the flight path angle were usually
+associated with ballistic missiles, benefiting from previous commented
+applications.
+
+\cite{wheelon1959} was the first to publish a solver using the flight path
+angle. He published his article not referring to the Lambert's problem but to
+the determination of the trajectory of ballistic missiles. Therefore, this is a
+case were the IOD problem is solved via the BVP.
+
+Nevertheless, some years later \cite{nelson1992} published his article about the
+solution of Lambert's problem explicitly. By iterating over the flyout angle,
+Nelson's solver computes the initial velocity vector so the full orbit is
+determined.
+
+Another contribution to this set of solvers was made by \cite{arlulkar2011}.
+This algorithm inherits from both previous ones. He also provided the
+multi-revolution scenario. 
+
+Finally, the last algorithm of this set was devised by \cite{ahn2013}. Although
+using the flight path angle as free-parameter, the main feature of this solver
+is the usage of analytic gradients as the way of computing the solution.
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.9]{static/gamma_solvers.pdf}
+  \caption{Inheritance diagram for flight path angle based solvers. Only a
+  single branch is known within this set of solvers.} 
+  \label{fig:regularizing_solvers}
+\end{figure}
+
+
