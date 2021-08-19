@@ -6,7 +6,7 @@ possible to classify them according to the free-parameter employed, the
 numerical method used, the initial guess procedure or the velocity vectors
 construction. Among these four, the classification based on the free-parameter
 is the most useful one, as it also allows to track the evolution of a particular
-solver. 
+solver.
 
 In addition to the classification presented in the following lines, an
 inheritance diagram has been produced so reader can have a better understanding
@@ -47,7 +47,7 @@ the velocity construction method.
   \centering
   \includegraphics[scale=1.00]{static/a_solvers.pdf}
   \caption{Inheritance diagram for semi-major axis based solvers. Two branches
-  exist: the one devised by Lagrange and the series-based one by Thorne.}
+    exist: the one devised by Lagrange and the series-based one by Thorne.}
   \label{fig:a_solvers}
 \end{figure}
 
@@ -59,11 +59,11 @@ relatively new if compared to other solvers. The first algorithm of this type in
 history seems to be the one developed by \cite{escobal1965}. However,
 \cite{Battin 1999} introduced in his book an important property of the
 eccentricity vector within the context of Lambert's problem: its projection
-along the chord-wise direction is kept constant. 
+along the chord-wise direction is kept constant.
 
 Previous statement can be proof from the orbit equation, where $\vec{e} \cdot
-\vec{r} = p - r$. If evaluated at the two known position vectors, then $\vec{e}
-\cdot (\vec{r_2} - \vec{r_1}) = \norm{\vec{r_1}} - \norm{\vec{r_2}}$. Because
+  \vec{r} = p - r$. If evaluated at the two known position vectors, then $\vec{e}
+  \cdot (\vec{r_2} - \vec{r_1}) = \norm{\vec{r_1}} - \norm{\vec{r_2}}$. Because
 $\vec{c} = \vec{r_2} - \vec{r_1}$, and the norm of the vectors does not change
 over time, the projection $\vec{e} \cdot \vec{c} = e_{c}$ is seen to be
 constant. Some authors also refer to $e_{c}$ as $e_F$.
@@ -71,7 +71,7 @@ constant. Some authors also refer to $e_{c}$ as $e_F$.
 The first author to devise a method based on previous property was
 \cite{avanzini2008}, introducing a simple algorithm which iterates over the
 transverse component of the eccentricity vector $e_T$, such that $e =
-\sqrt{e_c^2 + e_T^2}$. However, this algorithm was improved by \cite{he2010} who
+  \sqrt{e_c^2 + e_T^2}$. However, this algorithm was improved by \cite{he2010} who
 expanded to the multi-revolution case and provided the derivative of Kepler's
 equation with respect to the free-parameter. Finally, new improvements were made
 by \cite{wen2014} reducing the computational cost and therefore, increasing the
@@ -82,8 +82,8 @@ overall performance.
   \centering
   \includegraphics[scale=1.00]{static/ecc_solvers.pdf}
   \caption{Inheritance diagram for eccentricity based solvers. Notice that the
-  branch started by Avanzini is the most modern one and the mother of modern
-  solvers based on this orbit parameter.}
+    branch started by Avanzini is the most modern one and the mother of modern
+    solvers based on this orbit parameter.}
   \label{fig:ecc_solvers}
 \end{figure}
 
@@ -99,8 +99,8 @@ the one devised by \cite{gunkel1960}. This algorithm also appears in the book by
   \centering
   \includegraphics[scale=1.00]{static/nu_solvers.pdf}
   \caption{Inheritance diagram for true anomaly based solvers. Only one solver
-  is found to belong to this set of solvers as iterating over $\nu$ is not the
-  most popular way of addressing the problem.}
+    is found to belong to this set of solvers as iterating over $\nu$ is not the
+    most popular way of addressing the problem.}
   \label{fig:nu_solvers}
 \end{figure}
 
@@ -109,7 +109,7 @@ the one devised by \cite{gunkel1960}. This algorithm also appears in the book by
 
 The semi-latus rectum $p$ of an orbit is usually called the orbital parameter and it
 is related with the semi-major axis of the orbit and its eccentricity via $p =
-a(1 - e^2)$. Therefore, the semi-latus rectum has been used by some authors as
+  a(1 - e^2)$. Therefore, the semi-latus rectum has been used by some authors as
 the free-parameter.
 
 We might establish \cite{gauss1809} the first one to use this parameter.
@@ -151,8 +151,8 @@ free-parameter.
   \centering
   \includegraphics[scale=1.00]{static/p_solvers.pdf}
   \caption{Inheritance diagram for semi-latus rectum based solvers. A total of
-  three branches have been devised along history for addressing the problem
-  making use of this free-parameter.}
+    three branches have been devised along history for addressing the problem
+    making use of this free-parameter.}
   \label{fig:p_Solvers}
 \end{figure}
 
@@ -196,7 +196,7 @@ multi-revolution problem and employed an strong rational formulae initial guess.
   \centering
   \includegraphics[scale=1.00]{static/universal_solvers.pdf}
   \caption{Inheritance diagram for universal formulation solvers based solvers.
-  The two branches initiated by Bate and Lancaster are visible.} 
+    The two branches initiated by Bate and Lancaster are visible.}
   \label{fig:universal_solvers}
 \end{figure}
 
@@ -234,13 +234,13 @@ suggested by Kriz.
   \centering
   \includegraphics[scale=1.00]{static/regularizing_solvers.pdf}
   \caption{Inheritance diagram for regularized transformation solvers. Only the
-  transformations via Levi-Civita and Kustaanheimo-Stiefel are the ones serving
-  as base for these type of solvers.} 
+    transformations via Levi-Civita and Kustaanheimo-Stiefel are the ones serving
+    as base for these type of solvers.}
   \label{fig:regularizing_solvers}
 \end{figure}
 
 
-\subsection{Flight path angle based}
+\subsection{Flight path angle based solvers}
 
 The flight path angle $\gamma = \arccos{\left(\frac{r_p v_p}{r v} \right)}$,
 where the sub-index $p$ denotes the perpendicular direction to the current radial
@@ -262,7 +262,7 @@ determined.
 
 Another contribution to this set of solvers was made by \cite{arlulkar2011}.
 This algorithm inherits from both previous ones. He also provided the
-multi-revolution scenario. 
+multi-revolution scenario.
 
 Finally, the last algorithm of this set was devised by \cite{ahn2013}. Although
 using the flight path angle as free-parameter, the main feature of this solver
@@ -273,7 +273,7 @@ is the usage of analytic gradients as the way of computing the solution.
   \centering
   \includegraphics[scale=0.9]{static/gamma_solvers.pdf}
   \caption{Inheritance diagram for flight path angle based solvers. Only a
-  single branch is known within this set of solvers.} 
+    single branch is known within this set of solvers.}
   \label{fig:regularizing_solvers}
 \end{figure}
 

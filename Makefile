@@ -7,7 +7,7 @@ BINDIR = bin
 FIGDIR = fig
 TEXDIR = tex
 SRCDIR = src
-CHDIRS = $(SRCDIR)/00_introduction $(SRCDIR)/01_lamberts_problem
+CHDIRS = $(SRCDIR)/00_introduction $(SRCDIR)/01_lamberts_problem $(SRCDIR)/02_modern_solvers
 STRUCTURE := $(PROJECTDIR) $(CHDIRS) $(TEXDIR)
 
 # Main project file

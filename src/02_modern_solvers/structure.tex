@@ -11,8 +11,8 @@ initial-guess and the velocity vectors construction procedure.
   \centering
   \includegraphics[width=\linewidth]{static/solver_workflow.pdf}
   \caption{Main elements forming the basic structure of any modern Lambert's
-  problem solver.}
-   \label{fig:solver_elements}
+    problem solver.}
+  \label{fig:solver_elements}
 \end{figure}
 
 It must be pointed out that some methods developed along history, which will be
@@ -91,14 +91,14 @@ The previously presented free-parameter is solved by means of a numerical method
 or root finder. Numerical methods for solving root equations are abundant in the
 literature, being some of the most common ones bisection, regula falsi, secant,
 Newton's method, Halley's method and Householder's one\footnote{Notice that
-Newton's and Halley's methods are just Householder's one but of lower order.}.
+  Newton's and Halley's methods are just Householder's one but of lower order.}.
 
 \vspace{0.5cm}
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{static/root_solver.pdf}
   \caption{Different root finders found in literature to solve for the
-  free-parameter equation.}
+    free-parameter equation.}
   \label{fig:numerical_method}
 \end{figure}
 
@@ -112,9 +112,9 @@ $x_(n+1)$ inditcate the current and next free-parameter value, $f$ is the
 function to be evaluated and $f'$, $f''$ its first and second derivatives.
 
 \begin{align}
-	\text{Newton's method} \quad\quad &x_{n+1} = x_{n} - \frac{f(x_n)}{f'(x_n)} \label{eq:newtons_method}\\
-	\text{Halley's method} \quad\quad &x_{n+1} = x_{n} - \frac{2f(x_n)f'(x_n)}{2\left[f'(x_n)\right]^{2} - f(x_n)f''(x_n)} \label{eq:halleys_method}\\
-	\text{Householder's method} \quad\quad &x_{n+1} = x_{n} - \frac{f(x_n)}{f'(x_n)}\left(1 + \frac{f(x_n)f''(x_n)}{2\left[f'(x_n)\right]^{2}}\right) \label{eq:householders_method}
+  \text{Newton's method} \quad\quad      & x_{n+1} = x_{n} - \frac{f(x_n)}{f'(x_n)} \label{eq:newtons_method}                                                                       \\
+  \text{Halley's method} \quad\quad      & x_{n+1} = x_{n} - \frac{2f(x_n)f'(x_n)}{2\left[f'(x_n)\right]^{2} - f(x_n)f''(x_n)} \label{eq:halleys_method}                            \\
+  \text{Householder's method} \quad\quad & x_{n+1} = x_{n} - \frac{f(x_n)}{f'(x_n)}\left(1 + \frac{f(x_n)f''(x_n)}{2\left[f'(x_n)\right]^{2}}\right) \label{eq:householders_method}
 \end{align}
 
 
@@ -141,7 +141,7 @@ completely defined.
 There are different approaches followed by modern solvers to compute the value
 of these vectors once the free-parameter has been solved such us using the
 radial and tangential components, $f$ and $g$ formulation\footnote{This is also
-known as Gauss' $f$ and $g$ formulae.} introduced in \cite{bate1971} or applying a
+  known as Gauss' $f$ and $g$ formulae.} introduced in \cite{bate1971} or applying a
 COE to RV conversion.
 
 \vspace{0.5cm}
@@ -158,28 +158,28 @@ The radial and tangential components can computed from equation
 $v_{t_1}$ computed using a particular solver.
 
 \begin{equation}
-	\vec{v_{1}} = v_{r_1} \frac{\vec{r_1}}{\norm{\vec{r_1}}} + v_{t_1} \frac{\vec{h_0} \times \vec{r_1}}{\norm{\vec{h_0} \times \vec{r_1}}}\quad\quad\quad
-	\vec{v_{2}} = v_{r_2} \frac{\vec{r_2}}{\norm{\vec{r_2}}} + v_{t_2} \frac{\vec{h_0} \times \vec{r_2}}{\norm{\vec{h_0} \times \vec{r_2}}}
-\label{eq:radia_tangential_v}
+  \vec{v_{1}} = v_{r_1} \frac{\vec{r_1}}{\norm{\vec{r_1}}} + v_{t_1} \frac{\vec{h_0} \times \vec{r_1}}{\norm{\vec{h_0} \times \vec{r_1}}}\quad\quad\quad
+  \vec{v_{2}} = v_{r_2} \frac{\vec{r_2}}{\norm{\vec{r_2}}} + v_{t_2} \frac{\vec{h_0} \times \vec{r_2}}{\norm{\vec{h_0} \times \vec{r_2}}}
+  \label{eq:radia_tangential_v}
 \end{equation}
 
 Another common way of computing the velocity vectors at the initial and final
 points is to use the $f$ and $g$ formulation, see \ref{eq:f_and_g_v}:
 
 \begin{equation}
-	\vec{v_1} = (\vec{r_2} - f \vec{r_1}) / g \quad\quad\quad
-	\vec{v_2} = (\dot{g} \vec{r_2} - \vec{r_1}) / g
-	\label{eq:f_and_g_v}
+  \vec{v_1} = (\vec{r_2} - f \vec{r_1}) / g \quad\quad\quad
+  \vec{v_2} = (\dot{g} \vec{r_2} - \vec{r_1}) / g
+  \label{eq:f_and_g_v}
 \end{equation}
 
 where the values for the $f$, $g$, $\dot{f}$ and $\dot{g}$ can be obtained using
 the following relations:
 
 \begin{align}
-  f &= 1 - \frac{a}{\norm{\vec{r_1}}} \left(1 - \cos{(\Delta E)} \right)\\
-  g &= \Delta t - \sqrt{\frac{a^3}{\mu}} \left(\Delta E - \sin{(\Delta E)}\right)\\
-  \dot{f} &= \frac{-\sqrt{\mu a}}{\norm{\vec{r_1}} \norm{\vec{r_2}}}\\
-  \dot{g} &= 1 - \frac{a}{\norm{\vec{r_2}}} \left(1 - \cos{(\Delta E)} \right)
+  f       & = 1 - \frac{a}{\norm{\vec{r_1}}} \left(1 - \cos{(\Delta E)} \right)          \\
+  g       & = \Delta t - \sqrt{\frac{a^3}{\mu}} \left(\Delta E - \sin{(\Delta E)}\right) \\
+  \dot{f} & = \frac{-\sqrt{\mu a}}{\norm{\vec{r_1}} \norm{\vec{r_2}}}                    \\
+  \dot{g} & = 1 - \frac{a}{\norm{\vec{r_2}}} \left(1 - \cos{(\Delta E)} \right)
 \end{align}
 
 Finally, some solvers just computed the COE set, so a COE to RV conversion needs
