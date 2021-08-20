@@ -24,10 +24,12 @@ null, otherwise singularities arise. This justifies previous assumption about
 not having two position vectors which might be parallel (i.e. forming $0$ or
 $180$ degrees).
 
-The orientation of the orbital plane in space with respect to (w.r.t.) is
-given by the right ascension of the ascending node (RAAN) $\Omega$ and the
-inclination $i$ elements. Therefore, it is interesting to analyze the Lambert's
-problem by making use of the COE set instead of the RV one.
+The orientation of the orbital plane in space with respect to (w.r.t.) is given
+by the right ascension of the ascending node (RAAN) $\Omega$ and the inclination
+$i$. Therefore, it is interesting to analyze the Lambert's problem by making use
+of the COE set instead of the RV one. However, once the COE elements are known,
+a conversion to the RV ones is required, as the initial elements given in the
+statement of the problem are the position ones.
 
 Because both the RAAN and the inclination are computed from a vector in the
 direction and sense of the specific angular momentum of the orbit, $\vec{h}$,
@@ -156,6 +158,38 @@ line of nodes vector.
 
 Once $\Omega$ has been solved together with $i$, the complete orientation in
 space of the orbital plane is known.
+
+\subsection{Solving for the transfer angle}
+
+The computation of the transfer angle requires the knowledge of the sense of
+motion (prograde or retrograde) of the orbiting body. By taking advantage of the
+definition of the dot product, it is possible to solve the angle between the
+initial and final position vector such us:
+
+\begin{equation}
+  \Delta \theta_0 = \arccos{\left(\frac{\vec{r_1} \cdot \vec{r_2}}{\norm{\vec{r_1}} \norm{\vec{r_2}}}\right)}
+  \label{eq:transfer_angle}
+\end{equation}
+
+However, notice that equation \ref{eq:transfer_angle} will always output an
+in the range of $[0, \pi]$ radians. A correction, similar to the one applied to
+the normal vector needs to be performed according to the sense of motion:
+
+
+\begin{equation}
+  \Delta \theta =
+  \begin{cases}
+	  \Delta \theta_0 & \text{if prograde and $h_{0_{z}} > 0$} \\
+	  2 \pi - \Delta \theta_0 & \text{if prograde and $h_{0_{z}} < 0$} \\
+	  2 \pi - \Delta \theta_0 & \text{if retrograde and $h_{0_{z}} > 0$} \\
+	  \Delta \theta_0 & \text{if retrograde and $h_{0_{z}} < 0$} \\
+  \end{cases}
+\end{equation}
+
+
+A graphical representation of the geometry of the transfer angle is discussed by
+\cite{der2011}, who devotes a whole section for this important but poorly
+covered topic in Lambert's literature.
 
 \subsection{The problem as seen from the orbital plane}
 
