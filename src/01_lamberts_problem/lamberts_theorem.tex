@@ -35,7 +35,7 @@ given by:
 \begin{equation}
   s = \frac{\norm{\vec{r_{1}}} + \norm{\vec{r_{2}}} +
     \norm{\vec{c}}}{2}\quad\quad\quad\quad
-  \vec{c} = \vec{r_{2}} - \vec{r_{1}}
+    c = \norm{\vec{c}} = \norm{\vec{r_{2}} - \vec{r_{1}}}
   \label{eq:s_and_c_lambert}
 \end{equation}
 
@@ -57,7 +57,11 @@ series\footnote{This equation has been directly taken from \cite{battin1999}, in
 
 However, notice that for solving the value of the semi-major axis a numerical
 method is required, as equation \ref{eq:visviva_series} is not in explicit form
-for $a$.
+for $a$. It is interesting to see that the first term of the series (the one not
+depending on $a$) is the solution found by Euler some years before Lambert
+published his book. This term corresponds to the solution to the pure parabolic
+transfer, for which the semi-major axis has a value of $a = \infty$, making the
+rest of the series terms to become null.
 
 Lambert told Euler that he would devise the explicit form of
 \ref{eq:visviva_series} (see \cite{albouy2019}) but Lambert's untimely death
