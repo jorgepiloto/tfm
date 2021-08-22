@@ -1,0 +1,189 @@
+\section{Selected solvers}
+
+In order to carry out the performance comparison, a set of solvers is required.
+Implementing all the algorithms cited during the \ref{sec:classification}
+section would be not only a huge task but also a non optimum one. The reason is
+that some of the cited solvers already include a brief comparison against other
+similar or popular solver.
+
+After a deep review and study of Lambert's problem bibliography, the following
+solvers were selected: \cite{gauss1809}, \cite{battin1984}, \cite{gooding1990},
+\cite{avanzini2008}, \cite{arora2013}, \cite{vallado2013} and \cite{izzo2015}.
+From now on, the first author of each solver together with its publication date
+will be used to reference the algorithm.
+
+In the sub-sections below these lines, a deep analysis on each one of these
+solvers is made and the justification of its selection is presented to the
+reader. The \textit{curves for the time of flight} are included too. These
+provide the relation between the free-parameter and the non-dimensional time of
+flight.
+
+\subsection{Gauss 1809}
+
+The algorithm devised by Gauss in 1809 became very popular in its days. Gauss
+developed an algorithm based on three observed angles to compute the orbit of
+Ceres, see \cite{bevdatvs2021} and provided one for solving Lambert's problem.
+
+His algorithm exploited the ratio between the sector triangle areas. By its
+time, it was considered to be a great improvement within initial orbit
+determination subject. However, the algorithm is also known for its low accuracy
+when the transfer angle exceeds around 90 degrees although performs well for
+lower transfer angles and times.
+
+In this subsection, only the fundamental equations required for solving this
+method will be presented. However, if reader wants to review the original work
+made by Gauss, then refer to his famous book \citetitle{gauss1809}. A modern
+revision of the problem was made by \cite{teets1999} using the original notation
+when possible. Let us present in the following lines, the basic expressions for
+the method devised by Gauss. However, here the background presented by
+\cite{bate1971} is used.
+
+The independent variable employed by Gauss is named $x$, while the dependent one
+is $y$. These two variables are related via the so-called \textit{two equations
+of Gauss}, being those:
+
+\begin{equation}
+x = \frac{w}{y^2} - s\quad\quad\quad
+y = 1 + X(s + x)
+\label{eq:gauss_equations}
+\end{equation}
+
+where in previous equation, the auxiliary variables are the semi-perimeter $s$
+and a variable $w$ related with the non-dimensional transfer time:
+
+\begin{equation}
+s = \frac{\norm{\vec{r_1}} + \norm{\vec{r_2}}}{2 \sqrt{\norm{\vec{r_1}}\norm{\vec{r_2}} \cos{\left(\frac{\Delta \theta}{2} \right)}}} - \frac{1}{2}\quad\quad\quad
+w = \frac{\mu \Delta t^2}{\left(2\sqrt{\norm{\vec{r_1}} \norm{\vec{r_2}}} \cos{\left(\frac{\Delta \theta}{2} \right)}\right)^3}
+\end{equation}
+
+Finally, $X$ is given by the expression developed in \cite{moulton1970}:
+
+\begin{equation}
+X = \frac{4}{3}\left(1 + \frac{6}{5}x + \frac{6 \cdot 8}{5 \cdot 7}x^2 + \frac{6 \cdot 8 \cdot 10}{5 \cdot 7 \cdot 9}x^3 + ...\right)
+\end{equation}
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{static/tof_curves/tof_gauss.png}
+  \caption{Gauss 1809 time of flight curves for various transfer angles. These
+  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+    \label{fig:tof_gauss}
+\end{figure}
+
+For solving the value of $x$, an initial guess about $y$ needs to be made, such
+that $y_0=1.00$ for example. Then, the value of $x(y_0)$ is solved via equation
+\ref{eq:gauss_equations} so a new value of $X(x)$ can be computed. Finally, a new
+value of $y(x)$ is found. This value is compared with the initial one $y_0$ used
+for the iteration. If $\norm{y - y_0} < \text{atol}$, then the method has
+converged and the value for the free-parameter has been found. In figure
+\ref{fig:tof_gauss}, the relation between the $x$ and $y$ parameter is shown
+graphically for various transfer angles. The singular ones, such us any multiple
+of $2\pi$ and $\pi$ have been omitted.
+
+Finally, \cite{bate1971} suggests to use the semi-latus rectum for computing the
+$f$ and $g$ functions, so the velocity vectors at the initial and final
+positions can be obtained.
+
+The decision to include this solver within the performance comparison was based
+on two facts: the main one is its classic nature, so the solutions provided by
+modern solvers can be better seen, the later is that \cite{sec:batin_solver}
+improved this solver.
+
+
+\subsection{Battin 1984}
+\label{sec:batin_solver}
+
+Batin is one of the author's who has devoted a lot of time reviewing and
+studying the Lambert's problem. Chapters 6 and 7 from his book \citetitle{battin1999}
+cover the whole geometry of the problem while provide a new algorithm following
+the approach initiated by Gauss. Even if appearing in the book, this algorithm
+is the result of a PhD thesis developed by Vaughan, under the supervision of
+Battin, see \cite{vaughan1983}. The algorithm was published by both just a year
+later in \cite{battin1984} and it is usually known as the Battin-Vaughan solver.
+
+This new algorithm moves the singularity for transfer angles of $180$ degrees to
+the less usual case of $360$ degrees. Although it no longer makes use of ratio
+of sector to triangle areas, the notation used in the equations and the solution
+procedures is quite similar to the solver devised by Gauss. No only that, this
+solver is capable of fully working with all possible geometries and it is known
+to have a better accuracy and robustness than Gauss one.
+
+The so-called Battin's first and second equation, again following the ideas
+introduced by Gauss, are given by expressions in \ref{eq:battin_equations}:
+
+\begin{equation}
+  x = \sqrt{\left(\frac{1 - l}{2} \right)^{2} + \frac{m}{y^2}} - \frac{1+l}{y^2}\quad\quad\quad
+  y^3 - y^2 - h_1(x)y^2 - h_2(x) = 0
+  \label{eq:battin_equations}
+\end{equation}
+
+where the auxiliary variables are given by \ref{eq:aux_battin}:
+
+\begin{equation}
+	\lambda = \pm \frac{\sqrt{s(s-c)})}{s}\quad\quad
+	l = \left(\frac{1 - \lambda}{1 + \lambda}\right)^2\quad\quad\quad
+	m = \frac{8\mu \Delta t^2}{s^3(1 + \lambda)^6}
+	\label{eq:aux_battin}
+\end{equation}
+
+and the $h$ functions can be evaluated using expression \ref{eq:h_coeff}:
+
+\begin{equation}
+	h_1 = \frac{(l+x)^2(1 + 3x + \xi)}{(1+2x+l)(4x + \xi(3+x))}\quad
+	h_2 = \frac{m(x-l+\xi)}{(1+2x+l)(4x + \xi(3+x))}
+	\label{eq:h_coeff}
+\end{equation}
+
+being $\xi$ computed from a continued fraction defined in the original Battin's
+article but simplified to:
+
+\begin{equation}
+  \xi(x) =
+  \begin{cases}
+	  \frac{4x(1 - \text{ATANR}(x))}{(3 +x)\text{ATANR}(x) - 3} &
+	  \text{$x\neq0$}\\
+	  5 & \text{$x = 0$}
+  \end{cases}
+\end{equation}
+
+where the function $\text{ATANR}$ is an hypergeometric function defined as:
+
+\begin{equation}
+  \text{ATANR} = F(\frac{1}{2}, 1, \frac{3}{2}, -x) =
+  \begin{cases}
+	  \frac{\arctanh{\sqrt{-x}}}{\sqrt{-x}} & \text{$-1 < x < 0$}\\
+	  1 & \text{$x = 0$} \\
+	  \frac{\arctan{\sqrt{x}}}{\sqrt{x}} & \text{$x > 0$}
+  \end{cases}
+\end{equation}
+
+following \cite{allen2015} article. This approach is cited here as
+Implementing continued fractions in a computer might be a bit tricky, leading to
+non-optimized code. Modern computers do not struggle with the computations of
+trigonometric functions as in the old days.
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{static/tof_curves/tof_battin.png}
+  \caption{Battin 1984 time of flight curves for various transfer angles. These
+  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+  \label{fig:tof_battin}
+\end{figure}
+
+
+Battin also improved previous equations at the end of his report to improve even
+more the convergence of the method, so reader is encouraged to review them. The
+implementation of the solver corresponds to these cited approach.
+
+The procedure when solving the free-parameter $x$ is the same one as for the
+Gauss solver. Curves for the time of flight are given figure
+\ref{fig:tof_battin}.
+
+
+\subsection{Gooding 1990}
+\subsection{Avanzini 2008}
+\subsection{Arora 2013}
+\subsection{Vallado 2013}
+\subsection{Izzo 2015}
