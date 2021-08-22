@@ -66,7 +66,7 @@ X = \frac{4}{3}\left(1 + \frac{6}{5}x + \frac{6 \cdot 8}{5 \cdot 7}x^2 + \frac{6
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{static/tof_curves/tof_gauss.png}
-  \caption{Gauss 1809 time of flight curves for various transfer angles. These
+  \caption{Gauss 1809 time of flight curves for various transfer angles. This
   figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
     \label{fig:tof_gauss}
 \end{figure}
@@ -87,7 +87,7 @@ positions can be obtained.
 
 The decision to include this solver within the performance comparison was based
 on two facts: the main one is its classic nature, so the solutions provided by
-modern solvers can be better seen, the later is that \cite{sec:batin_solver}
+modern solvers can be better seen, the later is that \cite{sec:battin_solver}
 improved this solver.
 
 
@@ -159,7 +159,7 @@ where the function $\text{ATANR}$ is an hypergeometric function defined as:
 \end{equation}
 
 following \cite{allen2015} article. This approach is cited here as
-Implementing continued fractions in a computer might be a bit tricky, leading to
+implementing continued fractions in a computer might be a bit tricky, leading to
 non-optimized code. Modern computers do not struggle with the computations of
 trigonometric functions as in the old days.
 
@@ -167,7 +167,7 @@ trigonometric functions as in the old days.
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{static/tof_curves/tof_battin.png}
-  \caption{Battin 1984 time of flight curves for various transfer angles. These
+  \caption{Battin 1984 time of flight curves for various transfer angles. This
   figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
   \label{fig:tof_battin}
 \end{figure}
@@ -175,14 +175,63 @@ trigonometric functions as in the old days.
 
 Battin also improved previous equations at the end of his report to improve even
 more the convergence of the method, so reader is encouraged to review them. The
-implementation of the solver corresponds to these cited approach.
+implementation of the solver corresponds to these cited approach. The procedure
+when solving the free-parameter $x$ is the same one as for the Gauss solver.
+Curves for the time of flight are given figure \ref{fig:tof_battin}.
 
-The procedure when solving the free-parameter $x$ is the same one as for the
-Gauss solver. Curves for the time of flight are given figure
-\ref{fig:tof_battin}.
+This solver was selected considering its enhancements over the Gauss one. Not
+only that, it is one of the most moderns of the semi-latus rectum based solvers,
+see subsection \ref{sec:p_solvers}.
 
 
 \subsection{Gooding 1990}
+
+The algorithm by \cite{gooding1990} was considered to have a high performance,
+as claimed in performance reports of its days such us \cite{klumpp1999}. This is
+the main reason behind its selection for the performance comparison.
+
+Gooding's solver is based on the universal formulation branch, presented in
+\ref{sec:universal_solvers}. This formulation enables to solve for elliptic,
+parabolic or hyperbolic orbits without splitting the workflow into an excessive
+amount of sections. Gooding's inherit from \cite{lancaster1970} solver and
+dramatically improves its convergence and accuracy up to thirteen decimal
+places.
+
+The equation relating the canonical time of flight, named $T$ in Gooding's
+article, and the free-parameter $x$ is complex. The equations collected by
+\cite{sangra2015} have been very useful and presented in \ref{eq:gooding_T}:
+
+\begin{equation}
+  \Delta t = 
+  \begin{cases}
+    4/3(1 - q^3) & \text{Parabolic solution}\\
+    \sigma_x(f(x)) - q^3\sigma_x(q^2f(x)) & \text{Near-parabolic}\\
+    \frac{2}{E(x)}\left(x - \lambda z(x) - \frac{d(x)}{y(x)}\right) & \text{Lancaster and Blanchard}
+  \end{cases}
+  \label{eq:gooding_T}
+\end{equation}
+
+Gooding's solver makes use of a bi-linear initial guess, which makes the initial
+iteration value for the free-parameter to be closer to the final solution.
+Together with the usage of a Halley's method, the convergence of the method is
+quite fast. The construction of the velocity vectors is made using the radial
+and tangential components. The curves for the time of flight, in figure
+\ref{fig:tof_gooding}, are exactly the same ones as \cite{lancaster1970}, since
+Gooding only devised and improved algorithm and did not introduce any additional
+steps.
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{static/tof_curves/tof_gooding.png}
+  \caption{Gooding 1990 time of flight curves for various transfer angles. This
+  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.
+  Only the direct transfer region is shown for the purposes of this work.}
+  \label{fig:tof_gooding}
+\end{figure}
+
+
+
 \subsection{Avanzini 2008}
 \subsection{Arora 2013}
 \subsection{Vallado 2013}
