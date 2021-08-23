@@ -16,7 +16,7 @@ In the sub-sections below these lines, a deep analysis on each one of these
 solvers is made and the justification of its selection is presented to the
 reader. The \textit{curves for the time of flight} are included too. These
 provide the relation between the free-parameter and the non-dimensional time of
-flight.
+flight or the dependent variable.
 
 \subsection{Gauss 1809}
 
@@ -360,9 +360,112 @@ figure \ref{fig:tof_arora} only show the direct transfer region.
   \label{fig:tof_arora}
 \end{figure}
 
+The numerical method used by Arora is Halley's one and the subroutine for the
+computation of the initial and final velocity vectors is made using the $f$ and
+$g$ functions.
 
 
 \subsection{Vallado 2013}
+
+One of the most popular books about modern astrodynamics is the
+\citetitle{vallado2013} by which also provides different pseudo-code for
+implementing a variety of useful computer algorithms related with orbital
+mechanics. One of these algorithms was an improved version of the
+\cite{bate1971} universal one, for which Vallado imposed a bisection method. By
+doing so, the method is ensured to converge no matter the type of orbit.
+
+Vallado introduces the $\psi$ variable as the free-parameter. This variable is
+related to the universal Kepler's equation via equation \ref{eq:tof_vallado}:
+
+\begin{equation}
+  t = \frac{\chi^3 c_3 + A \sqrt{y}}{\sqrt{\mu}}
+  \label{eq:tof_vallado}
+\end{equation}
+
+where the variables $\chi$ and $y$ are given by:
+
+\begin{equation}
+  \chi = \sqrt{\frac{y}{c_2}}\quad\quad
+  y = \norm{\vec{r_1}} + \norm{\vec{r_2}} + \frac{A(\psi + c_3 - 1)}{\sqrt{c_2}}
+\end{equation}
+
+and the transfer angle parameter $A$ is computed as:
+
+\begin{equation}
+  A = 
+  \begin{cases}
+    \sqrt{\norm{\vec{r_1}} \norm{\vec{r_2}} (1 + \cos{(\Delta \theta)})} & \text{if $\Delta \theta < \pi$}\\
+    -\sqrt{\norm{\vec{r_1}} \norm{\vec{r_2}} (1 + \cos{(\Delta \theta)})} & \text{if $\Delta \theta > \pi$}\\
+  \end{cases}
+\end{equation}
+
+In previous equations, the values for the $c_2$ and $c_3$ variables can be
+computed using the corresponding Stumpff coefficients evaluated at a particular
+value of $\psi$.
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{static/tof_curves/tof_vallado.png}
+  \caption{Vallado 2013 time of flight curves for various transfer angles. This
+  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+  \label{fig:tof_vallado}
+\end{figure}
+
+Similarly to other solvers, the goal is to iterate on the free-parameter till
+the time computed using the universal Kepler's equation is equal to the expected
+one imposed by the statement of the problem within some tolerance. Because this
+method makes use of bisection, the solution is guaranteed to converge always.
+However, a huge number of iterations is required for the solver to achieve
+accurate results.
+
+This method is belongs to the same branch as the one for \cite{arora2013}, see
+the diagram from subsection \ref{sec:universal_solvers}. Therefore, Vallado's
+solver was selected due to its simplicity against Arora's one so a performance
+can be between them. 
+
 \subsection{Izzo 2015}
 
-\subsection{Tabla resume solvers}
+The last of the solvers for this work is the one devised by \cite{Izzo 2015}.
+This solver quickly became popular because it enhanced \cite{lancaster1970} and
+\cite{gooding1990} ones by introducing one last change of variable. Not only
+that, the Halley's method was upgraded to a Householder's one while the initial
+guess made use of a linear approximation instead of a bi-linear one.
+
+Izzo's solver belongs to the \ref{sec:universal_solvers} and names the
+free-parameter $\xi$. This variable is related to Gooding's one $x$ via the
+transformation given in \ref{eq:izzo_gooding}:
+
+\begin{equation}
+  \xi = 
+  \begin{cases}
+    \log{(1 + x)} & \text{if $M=0$}\\
+    \log{\left(\frac{1+x}{1-x} \right)} & \text{if $M>0$}
+  \end{cases}
+  \label{eq:izzo_gooding}
+\end{equation}
+
+Regarding the non-dimensional time of flight, this variable is also modified
+making use of expression \ref{eq:izzo_tof}:
+
+\begin{equation}
+  \tau = \log{(T)}
+  \label{eq:izzo_tof}
+\end{equation}
+
+Izzo had to deal with the computation of the high-order derivatives of $\tau$
+with respect to $\xi$. These are not provided here but can be checked in the
+original report.
+
+All previous modifications, ended up showing the relation between the
+free-parameter and non-dimensional transfer angle which is presented in figure
+\ref{fig:tof_izzo}.
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{static/tof_curves/tof_izzo.png}
+  \caption{Izzo 2015 time of flight curves for various transfer angles. This
+  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+  \label{fig:tof_izzo}
+\end{figure}
