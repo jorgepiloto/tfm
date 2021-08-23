@@ -1,0 +1,32 @@
+\section{Comparative table of elements}
+
+After introducing all solvers in a more detailed way, it is convenient to
+collect all the information an present it to reader in a more compact way. This
+is the goal of table provided at the end of this section, in which the different
+elements and steps used by each solver have been collected.
+
+Although the free-parameters are various, it is possible to see some common
+elements between the selected modern solvers. For example, those ones using a
+numerical method make use of high order one to ensure quick convergence or a
+bounded one, so the solution is always achieved. Not only that, for the velocity
+vectors construction, the preferred approach seems to be through the usage of
+$f$ and $g$ functions. Regarding the initial guess, rational formulae is the
+most popular among the solvers presented in this work. Other initial guess
+procedures like linear or bi-linear can also be found.
+
+\begin{table}[H]
+\footnotesize
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Method}} & \multicolumn{4}{c|}{\textbf{Step}}                                         \\ \cline{2-5}
+ & \textbf{Free-parameter} & \textbf{Initial guess} & \textbf{Numerical method} & \textbf{$\vec{v_1}$ and $\vec{v_2}$} \\ \hline
+Gauss 1809                       & $x$    & Rational formulae              & System of equations  & $f$ and $g$ \\ \hline
+Battin 1984                      & $x$    & Rational formulae  & System of equations  & $f$ and $g$ \\ \hline
+Gooding 1990                     & $x$    & Bi-linear          & Halley's method      & $v_{r_i}$ and $v_{t_i}$ \\ \hline
+Avanzini 2008                    & $e_T$  & Interval           & Regula-falsi         & COE to RV             \\ \hline
+Arora 2013                       & $k$    & Rational formulate & Halley's method      & $f$ and $g$ \\ \hline
+Vallado 2013                     & $\psi$ & Interval           & Bisection            & $f$ and $g$ \\ \hline
+Izzo 2015                        & $\xi$  & Linear             & Householder's method & $v_{r_i}$ and $v_{t_i}$ \\ \hline
+\end{tabular}
+\end{table}
