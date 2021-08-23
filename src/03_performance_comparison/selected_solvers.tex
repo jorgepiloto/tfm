@@ -313,8 +313,56 @@ and a new iteration begins till the method converges.
 This solver was included due to its simplicity together with the fact of being
 the first one of its class.
 
-
-
 \subsection{Arora 2013}
+
+Some years ago, \cite{arora2013} published a new Lambert's solvers based on a
+cosine transformation. The new algorithm was strongly influenced by
+\cite{bate1971} one and compared in performance against \cite{gooding1990} one
+in Arora's publication. This solver belongs to the \ref{sec:universal_solvers}
+set.
+
+Arora introduced the $k$ free-paramter, which is related to the eccentric and
+hyperbolic anomalies. The canonical time of flight can be computed as:
+
+\begin{equation}
+	\text{TOF} = S\sqrt{1 - k\tau}(\tau + (1 - k\tau)W)
+\end{equation}
+
+where the auxiliary parameters $\tau$, $S$ and $W$ are obtained via:
+
+\begin{equation}
+  S = \sqrt{\frac{(\norm{\vec{r_1}} + \norm{\vec{r_2}})^3}{\mu}}\quad\quad
+  W = \frac{q}{\sqrt{m ^3}} - \frac{k}{m}\quad\quad
+  m = 2 - k^2
+\end{equation}
+
+Avanzini improved the convergence of the method by converting some expressions
+into series expansion- However, the core of this solver lies in the strong and
+robust initial guess procedure devised by the author. Although based on a
+rational-formulae (arbitrary initial guess), the solver rapidly converges in a
+couple of iterations to the final solution.
+
+The solution procedure is similar to Avanzini's solver, in the sense that
+Kepler's equation is evaluated for various values of $k$ till it matches the
+current time of flight.
+
+The algorithm was also devised for working within the multi-revolution scenario
+but as introduced early, the analysis of this region is out of the scope of this
+work. Therefore, the curves for the time of flight for this solver presented in
+figure \ref{fig:tof_arora} only show the direct transfer region.
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{static/tof_curves/tof_arora.png}
+  \caption{Arora 2013 time of flight curves for various transfer angles. This
+  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+  \label{fig:tof_arora}
+\end{figure}
+
+
+
 \subsection{Vallado 2013}
 \subsection{Izzo 2015}
+
+\subsection{Tabla resume solvers}
