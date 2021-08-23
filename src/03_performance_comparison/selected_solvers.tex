@@ -199,7 +199,7 @@ places.
 
 The equation relating the canonical time of flight, named $T$ in Gooding's
 article, and the free-parameter $x$ is complex. The equations collected by
-\cite{sangra2015} have been very useful and presented in \ref{eq:gooding_T}:
+\cite{torre2015} have been very useful and presented in \ref{eq:gooding_T}:
 
 \begin{equation}
   \Delta t = 
@@ -231,8 +231,90 @@ steps.
 \end{figure}
 
 
-
 \subsection{Avanzini 2008}
+
+Among the different Lambert's problem solvers, the one devised by
+\cite{avanzini2008} truly unleashes the geometry of the problem. This solver is
+the very first of its branch within the set of eccentricity based ones, see
+subsection \ref{sec:ecc_solvers}. By exploiting the conservation of the
+eccentricity vector projection onto the chord one, it is able to solve for the
+problem no matter the geometry of the orbit.
+
+Avanzini's starts defining the fundamental eccentricity of the orbit $e_F$ (the
+component along the chord direction) and the transverse one $e_T$. This is the
+one which will be used as free-parameter. The relations given by
+\ref{eq:ecc_avanzini} apply:
+
+\begin{equation}
+	e_F = \frac{\norm{\vec{r_1}} - \norm{\vec{r_2}}}{\norm{\vec{c}}}\quad\quad
+	\norm{\vec{e}} = \sqrt{e_F^2 + e_T^2}
+	\label{eq:ecc_avanzini}
+\end{equation}
+
+The free-parameter is defined as:
+
+\begin{equation}
+  x =
+  \begin{cases}
+    \frac{e_P e_H}{e_P + e_H}\log{\left(\frac{e_P(e_T + e_H)}{e_H(e_P - e_T)}\right)} & \text{if $\Delta \theta < \pi$}\\
+    -e_P \log{\left(1 - \frac{e_T}{e_P} \right)} & \text{if $\Delta \theta > \pi$}
+  \end{cases}
+\end{equation}
+
+where $e_P$, and $e_H$ can be computed using expressions \ref{eq:ecc_aux}:
+
+\begin{equation}
+  e_P = \sqrt{1 - e_F^2}\quad\quad\quad
+  e_H = \sqrt{(e_\text{max}^2 - e_F^2)}\quad\quad
+  e_\text{max} = \frac{-1}{\cos{\Delta \theta / 2}}
+  \label{eq:ecc_aux}
+\end{equation}
+
+with all previous relations, it is possible to estimate the value of the
+transverse eccentricity from the free-paramter $x$ by making use of equation
+\ref{eq:ecc_T_avanzini}
+
+\begin{equation}
+  e_T =
+  \begin{cases}
+    e_P e_H \frac{X - 1}{e_p + e_H X} \text{if $\Delta \theta < \pi$}\\
+    e_P \left(1 - \exp{\left(\frac{-x}{e_P} \right)} \right)
+  \end{cases}
+  \label{eq:ecc_T_avanzini}
+\end{equation}
+
+being $X$ defined as:
+
+\begin{equation}
+	X = \exp{\left(\left(\frac{1}{e_H} + \frac{1}{e_P} \right)x\right)}
+\end{equation}
+
+The starting value to be used for $x$ was imposed by Avanzini to be $x_0 = 0$.
+The root solver declared by this author was the secant method, see subsection
+\ref{sec:numerical_method}.
+
+\vspace{0.5cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{static/tof_curves/tof_avanzini.png}
+  \caption{Avanzini 2008 time of flight curves for various transfer angles. This
+  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+  \label{fig:tof_avanzini}
+\end{figure}
+
+Once the value of $x_0$ is known, the one for $e_T$ can be computed and then
+the eccentricity of the orbit $e$, as the fundamental component is already
+known. Therefore, to check if the value of $x_0$ is the right one, the current
+time of flight and the one coming from the evaluation of Kepler's equation are
+compared within some tolerance. As happens with other solvers, if the distance
+between the two values is excessive, a correction is made to the free-parameter
+and a new iteration begins till the method converges.
+
+This solver was included due to its simplicity together with the fact of being
+the first one of its class.
+
+
+
 \subsection{Arora 2013}
 \subsection{Vallado 2013}
 \subsection{Izzo 2015}
