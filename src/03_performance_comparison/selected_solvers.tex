@@ -40,26 +40,26 @@ the method devised by Gauss. However, here the background presented by
 
 The independent variable employed by Gauss is named $x$, while the dependent one
 is $y$. These two variables are related via the so-called \textit{two equations
-of Gauss}, being those:
+  of Gauss}, being those:
 
 \begin{equation}
-x = \frac{w}{y^2} - s\quad\quad\quad
-y = 1 + X(s + x)
-\label{eq:gauss_equations}
+  x = \frac{w}{y^2} - s\quad\quad\quad
+  y = 1 + X(s + x)
+  \label{eq:gauss_equations}
 \end{equation}
 
 where in previous equation, the auxiliary variables are the semi-perimeter $s$
 and a variable $w$ related with the non-dimensional transfer time:
 
 \begin{equation}
-s = \frac{\norm{\vec{r_1}} + \norm{\vec{r_2}}}{2 \sqrt{\norm{\vec{r_1}}\norm{\vec{r_2}} \cos{\left(\frac{\Delta \theta}{2} \right)}}} - \frac{1}{2}\quad\quad\quad
-w = \frac{\mu \Delta t^2}{\left(2\sqrt{\norm{\vec{r_1}} \norm{\vec{r_2}}} \cos{\left(\frac{\Delta \theta}{2} \right)}\right)^3}
+  s = \frac{\norm{\vec{r_1}} + \norm{\vec{r_2}}}{2 \sqrt{\norm{\vec{r_1}}\norm{\vec{r_2}} \cos{\left(\frac{\Delta \theta}{2} \right)}}} - \frac{1}{2}\quad\quad\quad
+  w = \frac{\mu \Delta t^2}{\left(2\sqrt{\norm{\vec{r_1}} \norm{\vec{r_2}}} \cos{\left(\frac{\Delta \theta}{2} \right)}\right)^3}
 \end{equation}
 
 Finally, $X$ is given by the expression developed in \cite{moulton1970}:
 
 \begin{equation}
-X = \frac{4}{3}\left(1 + \frac{6}{5}x + \frac{6 \cdot 8}{5 \cdot 7}x^2 + \frac{6 \cdot 8 \cdot 10}{5 \cdot 7 \cdot 9}x^3 + ...\right)
+  X = \frac{4}{3}\left(1 + \frac{6}{5}x + \frac{6 \cdot 8}{5 \cdot 7}x^2 + \frac{6 \cdot 8 \cdot 10}{5 \cdot 7 \cdot 9}x^3 + ...\right)
 \end{equation}
 
 \vspace{0.5cm}
@@ -67,8 +67,8 @@ X = \frac{4}{3}\left(1 + \frac{6}{5}x + \frac{6 \cdot 8}{5 \cdot 7}x^2 + \frac{6
   \centering
   \includegraphics[width=\linewidth]{static/tof_curves/tof_gauss.png}
   \caption{Gauss 1809 time of flight curves for various transfer angles. This
-  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
-    \label{fig:tof_gauss}
+    figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+  \label{fig:tof_gauss}
 \end{figure}
 
 For solving the value of $x$, an initial guess about $y$ needs to be made, such
@@ -121,18 +121,18 @@ introduced by Gauss, are given by expressions in \ref{eq:battin_equations}:
 where the auxiliary variables are given by \ref{eq:aux_battin}:
 
 \begin{equation}
-	\lambda = \pm \frac{\sqrt{s(s-c)})}{s}\quad\quad
-	l = \left(\frac{1 - \lambda}{1 + \lambda}\right)^2\quad\quad\quad
-	m = \frac{8\mu \Delta t^2}{s^3(1 + \lambda)^6}
-	\label{eq:aux_battin}
+  \lambda = \pm \frac{\sqrt{s(s-c)})}{s}\quad\quad
+  l = \left(\frac{1 - \lambda}{1 + \lambda}\right)^2\quad\quad\quad
+  m = \frac{8\mu \Delta t^2}{s^3(1 + \lambda)^6}
+  \label{eq:aux_battin}
 \end{equation}
 
 and the $h$ functions can be evaluated using expression \ref{eq:h_coeff}:
 
 \begin{equation}
-	h_1 = \frac{(l+x)^2(1 + 3x + \xi)}{(1+2x+l)(4x + \xi(3+x))}\quad
-	h_2 = \frac{m(x-l+\xi)}{(1+2x+l)(4x + \xi(3+x))}
-	\label{eq:h_coeff}
+  h_1 = \frac{(l+x)^2(1 + 3x + \xi)}{(1+2x+l)(4x + \xi(3+x))}\quad
+  h_2 = \frac{m(x-l+\xi)}{(1+2x+l)(4x + \xi(3+x))}
+  \label{eq:h_coeff}
 \end{equation}
 
 being $\xi$ computed from a continued fraction defined in the original Battin's
@@ -141,9 +141,9 @@ article but simplified to:
 \begin{equation}
   \xi(x) =
   \begin{cases}
-	  \frac{4x(1 - \text{ATANR}(x))}{(3 +x)\text{ATANR}(x) - 3} &
-	  \text{$x\neq0$}\\
-	  5 & \text{$x = 0$}
+    \frac{4x(1 - \text{ATANR}(x))}{(3 +x)\text{ATANR}(x) - 3} &
+    \text{$x\neq0$}                                                            \\
+    5                                                         & \text{$x = 0$}
   \end{cases}
 \end{equation}
 
@@ -152,9 +152,9 @@ where the function $\text{ATANR}$ is an hypergeometric function defined as:
 \begin{equation}
   \text{ATANR} = F(\frac{1}{2}, 1, \frac{3}{2}, -x) =
   \begin{cases}
-	  \frac{\arctanh{\sqrt{-x}}}{\sqrt{-x}} & \text{$-1 < x < 0$}\\
-	  1 & \text{$x = 0$} \\
-	  \frac{\arctan{\sqrt{x}}}{\sqrt{x}} & \text{$x > 0$}
+    \frac{\arctanh{\sqrt{-x}}}{\sqrt{-x}} & \text{$-1 < x < 0$} \\
+    1                                     & \text{$x = 0$}      \\
+    \frac{\arctan{\sqrt{x}}}{\sqrt{x}}    & \text{$x > 0$}
   \end{cases}
 \end{equation}
 
@@ -168,7 +168,7 @@ trigonometric functions as in the old days.
   \centering
   \includegraphics[width=\linewidth]{static/tof_curves/tof_battin.png}
   \caption{Battin 1984 time of flight curves for various transfer angles. This
-  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+    figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
   \label{fig:tof_battin}
 \end{figure}
 
@@ -202,10 +202,10 @@ article, and the free-parameter $x$ is complex. The equations collected by
 \cite{torre2015} have been very useful and presented in \ref{eq:gooding_T}:
 
 \begin{equation}
-  \Delta t = 
+  \Delta t =
   \begin{cases}
-    4/3(1 - q^3) & \text{Parabolic solution}\\
-    \sigma_x(f(x)) - q^3\sigma_x(q^2f(x)) & \text{Near-parabolic}\\
+    4/3(1 - q^3)                                                    & \text{Parabolic solution}      \\
+    \sigma_x(f(x)) - q^3\sigma_x(q^2f(x))                           & \text{Near-parabolic}          \\
     \frac{2}{E(x)}\left(x - \lambda z(x) - \frac{d(x)}{y(x)}\right) & \text{Lancaster and Blanchard}
   \end{cases}
   \label{eq:gooding_T}
@@ -225,8 +225,8 @@ steps.
   \centering
   \includegraphics[width=\linewidth]{static/tof_curves/tof_gooding.png}
   \caption{Gooding 1990 time of flight curves for various transfer angles. This
-  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.
-  Only the direct transfer region is shown for the purposes of this work.}
+    figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.
+    Only the direct transfer region is shown for the purposes of this work.}
   \label{fig:tof_gooding}
 \end{figure}
 
@@ -246,9 +246,9 @@ one which will be used as free-parameter. The relations given by
 \ref{eq:ecc_avanzini} apply:
 
 \begin{equation}
-	e_F = \frac{\norm{\vec{r_1}} - \norm{\vec{r_2}}}{\norm{\vec{c}}}\quad\quad
-	\norm{\vec{e}} = \sqrt{e_F^2 + e_T^2}
-	\label{eq:ecc_avanzini}
+  e_F = \frac{\norm{\vec{r_1}} - \norm{\vec{r_2}}}{\norm{\vec{c}}}\quad\quad
+  \norm{\vec{e}} = \sqrt{e_F^2 + e_T^2}
+  \label{eq:ecc_avanzini}
 \end{equation}
 
 The free-parameter is defined as:
@@ -256,8 +256,8 @@ The free-parameter is defined as:
 \begin{equation}
   x =
   \begin{cases}
-    \frac{e_P e_H}{e_P + e_H}\log{\left(\frac{e_P(e_T + e_H)}{e_H(e_P - e_T)}\right)} & \text{if $\Delta \theta < \pi$}\\
-    -e_P \log{\left(1 - \frac{e_T}{e_P} \right)} & \text{if $\Delta \theta > \pi$}
+    \frac{e_P e_H}{e_P + e_H}\log{\left(\frac{e_P(e_T + e_H)}{e_H(e_P - e_T)}\right)} & \text{if $\Delta \theta < \pi$} \\
+    -e_P \log{\left(1 - \frac{e_T}{e_P} \right)}                                      & \text{if $\Delta \theta > \pi$}
   \end{cases}
 \end{equation}
 
@@ -277,7 +277,7 @@ transverse eccentricity from the free-paramter $x$ by making use of equation
 \begin{equation}
   e_T =
   \begin{cases}
-    e_P e_H \frac{X - 1}{e_p + e_H X} \text{if $\Delta \theta < \pi$}\\
+    e_P e_H \frac{X - 1}{e_p + e_H X} \text{if $\Delta \theta < \pi$} \\
     e_P \left(1 - \exp{\left(\frac{-x}{e_P} \right)} \right)
   \end{cases}
   \label{eq:ecc_T_avanzini}
@@ -286,7 +286,7 @@ transverse eccentricity from the free-paramter $x$ by making use of equation
 being $X$ defined as:
 
 \begin{equation}
-	X = \exp{\left(\left(\frac{1}{e_H} + \frac{1}{e_P} \right)x\right)}
+  X = \exp{\left(\left(\frac{1}{e_H} + \frac{1}{e_P} \right)x\right)}
 \end{equation}
 
 The starting value to be used for $x$ was imposed by Avanzini to be $x_0 = 0$.
@@ -298,7 +298,7 @@ The root solver declared by this author was the secant method, see subsection
   \centering
   \includegraphics[width=\linewidth]{static/tof_curves/tof_avanzini.png}
   \caption{Avanzini 2008 time of flight curves for various transfer angles. This
-  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+    figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
   \label{fig:tof_avanzini}
 \end{figure}
 
@@ -325,7 +325,7 @@ Arora introduced the $k$ free-paramter, which is related to the eccentric and
 hyperbolic anomalies. The canonical time of flight can be computed as:
 
 \begin{equation}
-	\text{TOF} = S\sqrt{1 - k\tau}(\tau + (1 - k\tau)W)
+  \text{TOF} = S\sqrt{1 - k\tau}(\tau + (1 - k\tau)W)
 \end{equation}
 
 where the auxiliary parameters $\tau$, $S$ and $W$ are obtained via:
@@ -356,7 +356,7 @@ figure \ref{fig:tof_arora} only show the direct transfer region.
   \centering
   \includegraphics[width=\linewidth]{static/tof_curves/tof_arora.png}
   \caption{Arora 2013 time of flight curves for various transfer angles. This
-  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+    figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
   \label{fig:tof_arora}
 \end{figure}
 
@@ -392,10 +392,10 @@ where the variables $\chi$ and $y$ are given by:
 and the transfer angle parameter $A$ is computed as:
 
 \begin{equation}
-  A = 
+  A =
   \begin{cases}
-    \sqrt{\norm{\vec{r_1}} \norm{\vec{r_2}} (1 + \cos{(\Delta \theta)})} & \text{if $\Delta \theta < \pi$}\\
-    -\sqrt{\norm{\vec{r_1}} \norm{\vec{r_2}} (1 + \cos{(\Delta \theta)})} & \text{if $\Delta \theta > \pi$}\\
+    \sqrt{\norm{\vec{r_1}} \norm{\vec{r_2}} (1 + \cos{(\Delta \theta)})}  & \text{if $\Delta \theta < \pi$} \\
+    -\sqrt{\norm{\vec{r_1}} \norm{\vec{r_2}} (1 + \cos{(\Delta \theta)})} & \text{if $\Delta \theta > \pi$} \\
   \end{cases}
 \end{equation}
 
@@ -408,7 +408,7 @@ value of $\psi$.
   \centering
   \includegraphics[width=\linewidth]{static/tof_curves/tof_vallado.png}
   \caption{Vallado 2013 time of flight curves for various transfer angles. This
-  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+    figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
   \label{fig:tof_vallado}
 \end{figure}
 
@@ -422,7 +422,7 @@ accurate results.
 This method is belongs to the same branch as the one for \cite{arora2013}, see
 the diagram from subsection \ref{sec:universal_solvers}. Therefore, Vallado's
 solver was selected due to its simplicity against Arora's one so a performance
-can be between them. 
+can be between them.
 
 \subsection{Izzo 2015}
 
@@ -437,9 +437,9 @@ free-parameter $\xi$. This variable is related to Gooding's one $x$ via the
 transformation given in \ref{eq:izzo_gooding}:
 
 \begin{equation}
-  \xi = 
+  \xi =
   \begin{cases}
-    \log{(1 + x)} & \text{if $M=0$}\\
+    \log{(1 + x)}                       & \text{if $M=0$} \\
     \log{\left(\frac{1+x}{1-x} \right)} & \text{if $M>0$}
   \end{cases}
   \label{eq:izzo_gooding}
@@ -466,6 +466,6 @@ free-parameter and non-dimensional transfer angle which is presented in figure
   \centering
   \includegraphics[width=\linewidth]{static/tof_curves/tof_izzo.png}
   \caption{Izzo 2015 time of flight curves for various transfer angles. This
-  figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
+    figure was obtained for $\rho=r_2/r_1=2$ with unitary $\mu$ and $\Delta t$.}
   \label{fig:tof_izzo}
 \end{figure}

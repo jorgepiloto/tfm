@@ -34,9 +34,9 @@ computed using the first term of the series presented in \ref{eq:visviva_series}
 or in a more compact way:
 
 \begin{equation}
-	\Delta t_p = \frac{1}{\sqrt{\mu}} \left(
-	\frac{1}{6}\left(\norm{\vec{r_1}} + \norm{\vec{r_2}} + \norm{\vec{c}}
-\right)  \pm \left(\norm{\vec{r_1}} + \norm{\vec{r_2}} - \norm{\vec{c}} \right) \right)
+  \Delta t_p = \frac{1}{\sqrt{\mu}} \left(
+  \frac{1}{6}\left(\norm{\vec{r_1}} + \norm{\vec{r_2}} + \norm{\vec{c}}
+    \right)  \pm \left(\norm{\vec{r_1}} + \norm{\vec{r_2}} - \norm{\vec{c}} \right) \right)
 \end{equation}
 
 where the $\pm$ indicates if the transfer angle is lower or greater than $\pi$
@@ -55,10 +55,10 @@ Once the nature of the transfer orbit is known, the value of $F$ can be
 replaced by the corresponding Kepler's equation:
 
 \begin{equation}
-  F = 
+  F =
   \begin{cases}
-  \sqrt{\mu} \Delta t_e = a^{\frac{3}{2}}\left((\alpha - \sin{(\alpha)}) + (\beta - \sin{(\beta)}) \right) \\
-  \sqrt{\mu} \Delta t_h = (-a)^{\frac{3}{2}}\left((\sinh{(\alpha)} - \alpha) + (\sinh{(\beta)} - \beta) \right) \\
+    \sqrt{\mu} \Delta t_e = a^{\frac{3}{2}}\left((\alpha - \sin{(\alpha)}) + (\beta - \sin{(\beta)}) \right)      \\
+    \sqrt{\mu} \Delta t_h = (-a)^{\frac{3}{2}}\left((\sinh{(\alpha)} - \alpha) + (\sinh{(\beta)} - \beta) \right) \\
   \end{cases}
   \label{eq:tof_F_lagrange}
 \end{equation}
@@ -87,7 +87,7 @@ angle:
 \begin{equation}
   \alpha =
   \begin{cases}
-	  0 \leqslant \alpha_0 \leqslant 2\pi & \text{for elliptic/hyperbolic orbits always} \\
+    0 \leqslant \alpha_0 \leqslant 2\pi & \text{for elliptic/hyperbolic orbits always} \\
   \end{cases}
 \end{equation}
 
@@ -96,10 +96,10 @@ and:
 \begin{equation}
   \beta =
   \begin{cases}
-	  0 \leqslant \beta_0 \leqslant \pi & \text{for elliptic orbits if $\Delta \theta \leqslant \pi$} \\
-	  -\pi \leqslant \beta_0 \leqslant 0 & \text{for elliptic orbits if $\Delta \theta > \pi$} \\
-	  0 \leqslant \beta_0 & \text{for hyperbolic orbits if $\Delta \theta \leqslant \pi$} \\
-	  \beta_0 \leqslant 0 & \text{for hyperbolic orbits if $\Delta \theta > \pi$}
+    0 \leqslant \beta_0 \leqslant \pi  & \text{for elliptic orbits if $\Delta \theta \leqslant \pi$}   \\
+    -\pi \leqslant \beta_0 \leqslant 0 & \text{for elliptic orbits if $\Delta \theta > \pi$}           \\
+    0 \leqslant \beta_0                & \text{for hyperbolic orbits if $\Delta \theta \leqslant \pi$} \\
+    \beta_0 \leqslant 0                & \text{for hyperbolic orbits if $\Delta \theta > \pi$}
   \end{cases}
 \end{equation}
 
@@ -111,8 +111,8 @@ proper equation for the transfer geometry, the function for $F$ is compared with
 the current value of Kepler's equation for the real time of flight such that:
 
 \begin{equation}
-	\sqrt{\mu} \Delta t - F = 0
-	\label{eq:sol_lagrange}
+  \sqrt{\mu} \Delta t - F = 0
+  \label{eq:sol_lagrange}
 \end{equation}
 
 Equation \ref{eq:sol_lagrange} might not be equal to zero but close to this
@@ -120,10 +120,10 @@ value. Therefore, once it below a desired accuracy, the proper value of $a$ has
 been solved and the values $p$, the semi-latus rectum, can be computed using:
 
 \begin{equation}
- p = 
+  p =
   \begin{cases}
-  \frac{4a(s - \norm{\vec{r_1}})(s - \norm{\vec{r_2}})}{\norm{\vec{c}}^2} \left(\arcsin{\left(\frac{\alpha + \beta}{2} \right)}\right)^{2} & \text{for elliptic orbits}\\ 
-  \frac{-4a(s - \norm{\vec{r_1}})(s - \norm{\vec{r_2}})}{\norm{\vec{c}}^2} \left(\arcsinh{\left(\frac{\alpha + \beta}{2} \right)}\right)^{2} & \text{for hyperbolic  orbits}\\
+    \frac{4a(s - \norm{\vec{r_1}})(s - \norm{\vec{r_2}})}{\norm{\vec{c}}^2} \left(\arcsin{\left(\frac{\alpha + \beta}{2} \right)}\right)^{2}   & \text{for elliptic orbits}    \\
+    \frac{-4a(s - \norm{\vec{r_1}})(s - \norm{\vec{r_2}})}{\norm{\vec{c}}^2} \left(\arcsinh{\left(\frac{\alpha + \beta}{2} \right)}\right)^{2} & \text{for hyperbolic  orbits} \\
   \end{cases}
 \end{equation}
 
