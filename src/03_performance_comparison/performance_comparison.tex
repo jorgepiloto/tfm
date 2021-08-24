@@ -42,9 +42,9 @@ The three metrics used in this report are:
         reveals more information about the time consumed by the numerical
         method.
   \item \textbf{Total computation time}: which computes the total time required
-        during the iteration workload. Measuring the whole computation time of
-        a solver would have an impact in the results due to the implementation
-        of the algorithm.
+	by the algorithm when computing the solution to the problem. When
+	comparing this value to the time employed for the iteration workload, it
+	is possible to identify bottlenecks and weak implementation points.
 \end{itemize}
 
 \subsection{Number of iterations}
@@ -194,12 +194,12 @@ experiences and increase in the time per iteration for values of $\tau=\pi/2$.
   \begin{minipage}{0.48\textwidth}
     \centering
     \includegraphics[width=1.05\linewidth]{static/tpi/tpi_gauss_1809.png}
-    \caption{Gauss' time per iter.}\label{fig:tpi_gauss}
+    \caption{Gauss' time per iteration.}\label{fig:tpi_gauss}
   \end{minipage}\hfill
   \begin{minipage}{0.48\textwidth}
     \centering
     \includegraphics[width=1.05\linewidth]{static/tpi/tpi_battin_1984.png}
-    \caption{Battin's time per iter.}\label{fig:tpi_battin}
+    \caption{Battin's time per iteration.}\label{fig:tpi_battin}
   \end{minipage}
 \end{figure}
 
@@ -207,12 +207,12 @@ experiences and increase in the time per iteration for values of $\tau=\pi/2$.
   \begin{minipage}{0.48\textwidth}
     \centering
     \includegraphics[width=1.05\linewidth]{static/tpi/tpi_gooding_1990.png}
-    \caption{Gooding' time per iter.}\label{fig:tpi_gooding}
+    \caption{Gooding' time per iteration.}\label{fig:tpi_gooding}
   \end{minipage}\hfill
   \begin{minipage}{0.48\textwidth}
     \centering
     \includegraphics[width=1.05\linewidth]{static/tpi/tpi_avanzini_2008.png}
-    \caption{Avanzini's time per iter.}\label{fig:tpi_avanzini}
+    \caption{Avanzini's time per iteration.}\label{fig:tpi_avanzini}
   \end{minipage}
 \end{figure}
 
@@ -220,12 +220,12 @@ experiences and increase in the time per iteration for values of $\tau=\pi/2$.
   \begin{minipage}{0.48\textwidth}
     \centering
     \includegraphics[width=1.05\linewidth]{static/tpi/tpi_arora_2013.png}
-    \caption{Arora' time per iter.}\label{fig:tpi_arora}
+    \caption{Arora' time per iteration.}\label{fig:tpi_arora}
   \end{minipage}\hfill
   \begin{minipage}{0.48\textwidth}
     \centering
     \includegraphics[width=1.05\linewidth]{static/tpi/tpi_vallado_2013.png}
-    \caption{Vallado's time per iter.}\label{fig:tpi_vallado}
+    \caption{Vallado's time per iteration.}\label{fig:tpi_vallado}
   \end{minipage}
 \end{figure}
 
@@ -233,7 +233,7 @@ experiences and increase in the time per iteration for values of $\tau=\pi/2$.
   \begin{minipage}{0.48\textwidth}
     \centering
     \includegraphics[width=1.05\linewidth]{static/tpi/tpi_izzo_2015.png}
-    \caption{Izzo's time per iter.}\label{fig:tpi_izzo}
+    \caption{Izzo's time per iteration.}\label{fig:tpi_izzo}
   \end{minipage}\hfill
   \begin{minipage}{0.48\textwidth}
     \centering
@@ -243,8 +243,103 @@ experiences and increase in the time per iteration for values of $\tau=\pi/2$.
 % --- END: TIME PER ITERATION FIGURES ---
 
 
-
-
-
-
 \subsection{Total computation time}
+
+Finally, the total computation time employed by the algorithm for computing the
+whole problem is presented. Because the amount of iterations required and the
+time per iterations are known, it is possible to compute the percentage of the
+time spent during the iteration workload. The idea is that the main workload of
+a solver should be located within the iteration process itself and not in the
+initial guess computation, the construction of the velocity vectors or function
+calls. Again, it must be pointed out that background processes running on local
+machine can affect the computation time. 
+
+Gauss' solver exhibits a high total computation time, see figure
+\ref{fig:ttc_gauss} even if its time per iteration is low. This means that the
+algorithm requires lots of iterations to reach an accurate solution. The
+improved version devised by Battin performs much better, as depicted in figure
+\ref{fig:ttc_battin}. However, these two algorithms are far from being fast when
+computing the solution.
+
+Gooding's solver performs much better in total time than Gauss or Battin
+algorithms. The figure in \ref{fig:ttc_gooding} is proportional to previous
+results for the number of iterations and time per each one of those. In
+addition, a bottlenecks is identified for transfer times near $\tau=\pi/2$.
+
+On the other hand, Avanzini's solver has a huge time cost as seen in figure
+\ref{fig:ttc_avanzini}. When comparing this result with previous figures in
+\ref{fig:iter_avanzini} and \ref{fig:tpi_avanzini}, an implementation issue
+might be the reason behind this. Because the Kepler's equation becomes complex
+when written as function of the transverse eccentricity, a simplification making
+use of function calls was made. The excessive calls to these function are
+probably the reason behind this total computation time results. The usage of a
+high-order method might be also a good strategy for reducing the computation time.
+
+Arora's solver presents a very low computation time when compared to the rest of
+the solvers. Not only that, a uniform value is found for every combination of
+the transfer angle and the canonical time of flight, being not possible to
+identify any bottlenecks on figure \ref{fig:ttc_arora}.
+
+Vallado's algorithm, due to bisection method again, is seen to be detrimental
+for this algorithm, see the results in figure \ref{fig:ttc_vallado}. However, as
+pointed by its author, it converges to the majority of the cases. A possible way
+to improve this algorithm would be the introduction of a better initial guess or
+mixed numerical solver.
+
+Finally, Izzo's algorithm is the one requiring the lowest amount of time to
+converge to the solution. The corner case for this solver was previously
+identified during the number of iterations but no effect is seen in figure
+\ref{fig:ttc_izzo}.
+
+% --- START: NUMBER OF TOTAL TIME COMPUTATION FIGURES ---
+\begin{figure}[H]
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.05\linewidth]{static/ttc/ttc_gauss_1809.png}
+    \caption{Gauss' total computation time.}\label{fig:ttc_gauss}
+  \end{minipage}\hfill
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.05\linewidth]{static/ttc/ttc_battin_1984.png}
+    \caption{Battin's total computation time.}\label{fig:ttc_battin}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.05\linewidth]{static/ttc/ttc_gooding_1990.png}
+    \caption{Gooding' total computation time.}\label{fig:ttc_gooding}
+  \end{minipage}\hfill
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.05\linewidth]{static/ttc/ttc_avanzini_2008.png}
+    \caption{Avanzini's total computation time.}\label{fig:ttc_avanzini}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.05\linewidth]{static/ttc/ttc_arora_2013.png}
+    \caption{Arora' total computation time.}\label{fig:ttc_arora}
+  \end{minipage}\hfill
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.05\linewidth]{static/ttc/ttc_vallado_2013.png}
+    \caption{Vallado's total computation time.}\label{fig:ttc_vallado}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.05\linewidth]{static/ttc/ttc_izzo_2015.png}
+    \caption{Izzo's total computation time.}\label{fig:ttc_izzo}
+  \end{minipage}\hfill
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=1.05\linewidth]{static/void_figure.png}
+  \end{minipage}
+\end{figure}
+% --- END: TOTAL TIME COMPUTATION ITERATION FIGURES ---
