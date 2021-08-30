@@ -1,0 +1,32 @@
+\section{Future work}
+
+The results presented in this work might be enhanced and expanded in a future by
+considering the addition of more Lambert's problem solvers and metrics. These
+would allow to carry out more complex performance analysis. Some ideas are
+listed down:
+
+\begin{itemize}
+	\item \textbf{Error color palette.} Define a set of colors associated to
+		particular errors such us exceeding maximum number of iterations
+		or wrong algorithm input.  Those would allow to properly
+		identify which problem was found in the black regions of the
+		non-dimensional time versus the transfer angle contour plots.
+
+	\item \textbf{Multi-revolution analysis.} Expand the analysis to the
+		multi-revolution scenario, as this work only considered the
+		direct-arc transfer problem.
+
+	\item \textbf{Implement more solvers.} Implement more Lambert's problem
+		solvers under the same library and programming language so the
+		performance comparison is fair.  The \citetitle{lamberthub_v01}
+		provides all the required tools for carrying out this task.
+
+	\item \textbf{Memory usage analysis.} A comparison using the metric of
+		memory usage might be also interesting to establish the minimum
+		requirements for a CPU to make use a solver.
+
+	\item \textbf{Parallelization analysis.} This analysis would be devoted
+		to the investigation of how suitable is for a solver to be
+		implemented using high performance computing techniques based on
+		GPU parallelization.
+\end{itemize}
