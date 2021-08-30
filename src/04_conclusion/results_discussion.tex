@@ -86,3 +86,11 @@ following criteria has been established by order of priority:
 which leads to the following performance ranking: \cite{izzo2015},
 \cite{arora2013}, \cite{gooding1990}, \cite{battin1984}, \cite{avanzini2008},
 \cite{vallado2013}, \cite{gauss1809}.
+
+A key concept arose from the performance comparison. A strong initial guess
+is critical for reducing the number of iterations but if too complex, the total
+computation time will increase. The idea is to have a simple initial guess
+routine so the whole iteration workload can be performed by the root solver.
+From the results presented in this work, high-order root solvers are preferred,
+although those ones based on Bolzano's theorem might be used for critical
+regions in the time of flight curves.
