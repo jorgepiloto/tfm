@@ -69,8 +69,7 @@ means having two elliptic paths and a total of four orbits:
 By imposing the sense of motion to be prograde or retrograde, the solution space
 is reduced to two possible orbits. To distinguish between the two, we introduce
 a new parameter named \textit{the orbit path}, which enables us to select
-between one or the other. See section XX for more information about the orbit
-path.
+between one or the other. This parameter was introduced by \cite{sun1977}.
 
 In this scenario, it holds that:
 
@@ -147,7 +146,7 @@ Once the location of the vacant focus has been identified, it is possible to
 solve for the focal distance $c$ by applying equation \ref{eq:focal_distance}:
 
 \begin{equation}
-  c = \overline{\frac{\overline{FF'}}{2}}
+  c = \frac{\overline{FF'}}{2}
   \label{eq:focal_distance}
 \end{equation}
 
@@ -292,19 +291,22 @@ The Lambert's problem presents singularities for a particular input of the
 observed position vectors. In particular, when both vectors are parallel,
 meaning that the transfer angle between them is either $0$ or $180$ degrees.
 
-In this case, equation \ref{eq:normal_vector} becomes null, meaning that the
-orbiting body does not experience angular momentum. If a body shows to be in
-movement but its angular momentum is found to be zero, hence that body presents
-a rectilinear motion from a mathematical point of view. Not only that, equations
+In this case, equation \ref{eq:normal_vector} becomes null and the direction of
+the angular momentum cannot be determined. Not only that, equations
 \ref{eq:inclination_orbit} is no longer defined, as $\norm{\vec{h_{0}}}=0$ is in
-the denominator of the expression. Also, the line of nodes cannot be determined,
-so $\Omega$ can not be properly identified.
+the denominator of the expression. Also, the line of nodes is not defined, so
+$\Omega$ can not be computed. However, this does not mean that all these
+parameters are null or undefined, is juts that with the available information
+cannot be properly computed. For example, geostationary satellites (as seen from
+an Earth centered and fixed reference frame) do not experience apparent motion,
 
-The only possibility to have a \textit{rectilinear orbit} is that the initial
-velocity of the orbiting body goes in the direction of the attracting force
-during the whole motion. From the point of view of real cases, this scenario
-appears when a body is released without initial velocity, so it directly towards
-its attractor.
+
+Rectilinear orbits also suffer from singularities, as they move along a straight
+line for which all the position vectors are proportional. For these type of
+orbits, initial velocity of the orbiting body goes in the direction of the
+attracting force during the whole motion. From the point of view of real-world
+cases, this scenario appears when a body is released without initial velocity,
+so it directly falls onto its attractor.
 
 However, the majority of the bodies studied during the IOD problem do not show
 rectilinear motion. Previous singularities are caused by a non linearly
