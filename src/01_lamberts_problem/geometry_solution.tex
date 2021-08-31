@@ -287,48 +287,41 @@ and:
 
 
 \subsection{Singularities of the problem}
-The Lambert's problem presents singularities for a particular input of the
-observed position vectors. In particular, when both vectors are parallel,
-meaning that the transfer angle between them is either $0$ or $180$ degrees.
+
+The Lambert's problem presents some singularities for particular. That is the
+case for non-independent position vectors, meaning that the transfer angle
+between them is either $0$ or $180$ degrees.
 
 In this case, equation \ref{eq:normal_vector} becomes null and the direction of
-the angular momentum cannot be determined. Not only that, equations
-\ref{eq:inclination_orbit} is no longer defined, as $\norm{\vec{h_{0}}}=0$ is in
-the denominator of the expression. Also, the line of nodes is not defined, so
-$\Omega$ can not be computed. However, this does not mean that all these
-parameters are null or undefined, is juts that with the available information
-cannot be properly computed. For example, geostationary satellites (as seen from
-an Earth centered and fixed reference frame) do not experience apparent motion,
+the normal vector to orbit plane cannot be properly determined. Not only that,
+equation \ref{eq:inclination_orbit} also suffers from a singularity, as
+$\norm{\vec{h_{0}}}=0$ is in the denominator of the expression. Also, the line
+of nodes and $\Omega$ can not be computed with the available data.
 
-
-Rectilinear orbits also suffer from singularities, as they move along a straight
-line for which all the position vectors are proportional. For these type of
-orbits, initial velocity of the orbiting body goes in the direction of the
+Rectilinear orbits also produce singularities, as they move along a straight
+path for which all the position vectors are proportional. For these type of
+orbits, velocity of the orbiting body goes in the direction of the
 attracting force during the whole motion. From the point of view of real-world
 cases, this scenario appears when a body is released without initial velocity,
-so it directly falls onto its attractor.
+so it falls onto its attractor.
 
-However, the majority of the bodies studied during the IOD problem do not show
-rectilinear motion. Previous singularities are caused by a non linearly
-independent input, making corner cases to appear. Therefore, if the observed
-body is known to have some angular momentum, the following conditions apply for
-invalid inputs of the problem:
+All previous singularities are caused by a common reason: a non linearly
+independent input which makes corner cases to appear. To avoid those
 
 \begin{itemize}
-  \item For a null transfer angle, that is both vectors are parallel and pointing
-        in the same direction, the point is either not moving at all assuming that
-        $\Delta t \neq 0$. This is not a valid type of motion for the two-body
-        dynamics.
+  \item For two equal vectors and $\Delta t \neq 0$, the point is not moving at
+	  all considering these vectors are expressed with respect to an
+	  inertial frame\footnote{For geostationary orbits, position vectors
+	  remain the same as seen from a frame centered and rotating
+          with the attractor. However, the orbiting body is seen to move
+	  from a inertial frame.} centered in the attractor. This is not a valid
+	  type of motion for the two-body dynamics.
+
   \item For a $180$ degrees transfer angle, an assumption needs to be done about
         the fundamental orbit of the plane, since $i$ nor $\Omega$ are defined.
         Some authors impose the $XY$ plane of the inertial reference frame to be
         the one containing all the motion of this particular problem.
 \end{itemize}
-
-As a note to these set of corner cases, they are interesting from a mathematical
-point of view but in reality many observations can be performed on an orbiting
-body during its path along the celestial sphere from different ground stations
-all over the globe.
 
 Now that all possible transfer orbit scenarios have been introduced from the
 point of view of geometry, it is possible to present the solution to the problem
