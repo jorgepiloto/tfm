@@ -1,4 +1,6 @@
 # Ignore extra files from LaTeX compilation
+*.lof
+*.lot
 *.aux
 *.log
 *.out
