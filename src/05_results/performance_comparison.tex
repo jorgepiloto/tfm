@@ -5,7 +5,21 @@ This section is the core of this work. In here, all the metrics developed and
 used for the carrying out the performance comparison are explained in detail
 together with the justification on why they were selected.
 
-All the simulations were performed considering a non-dimensional radius of
+Previous performance studies made by \cite{klumpp1999}, \cite{torre2015} and in
+\cite{martinez2021} were used as the main source of information for this section
+and their analysis was improved.
+
+All algorithms have been implemented under the Python programming language and a
+library named \citetitle{lamberthub_v01}\footnote{The software can be accessed in
+\href{https://github.com/jorgepiloto/lamberthub}{https://github.com/jorgepiloto/lamberthub}.
+Latest documentation of the project is hosted in
+\href{https://lamberthub.readthedocs.io/en/latest/}{https://lamberthub.readthedocs.io/en/latest/}}
+created under a public license, so any author can access it. This software
+package ships with all the necessary tools to evaluate the performance of a
+solver too and it has been heavily tested again literature cases not only for
+the direct transfer problem but also for the multiple revolutions one.
+
+The simulations were performed considering a non-dimensional radius of
 $\rho=\norm{\vec{r_2}}/\norm{\vec{r_1}}=2$ and unitary gravitational parameter
 $\mu=1$ [L3, T2], where L3 and T2 stand for units of cubic length and squared
 time respectively. The problem was solved for a variety of transfer angles
