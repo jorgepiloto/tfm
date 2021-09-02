@@ -35,25 +35,27 @@ Izzo 2015                        & 2.33  & 47.51 $\mu$s/iter  & 444.62 $\mu$s  &
 \label{table:resume_performance}
 \end{table}
 
-The iteration workload indicates how much time an algorithm devotes to the
-finding of the free-parameter up to a given accuracy. This value truly unleashes
-the performance of a solver when compared its total computation time. 
+The iteration workload indicates how much of the total computation time is
+consumed by a solver when performing the iterative process. One might think that
+a high iteration workload is desired, which indicates that the root solver
+performs the majority of the work. However, this may also mean that the
+initial guess is poor, so an excessive amount of iterations are being performed.
 
-For the case of \cite{gauss1809} shows the greatest iteration workload meaning that
-its focuses on the computation of the independent variable. However, this
-algorithm is known not to converge for the majority of the cases and shows an
-excessive amount of total computation time.
+For the case of \cite{gauss1809}, this algorithm shows the greatest iteration
+workload meaning that its focuses on the computation of the independent
+variable. However, this algorithm is known not to converge for the majority of
+the cases and shows an excessive amount of total computation time.
 
 Regarding \cite{battin1984}, around half of the time is devoted to the
 computation of the free-parameter. The solver also has a lower computation time
 if compared to Gauss one. Therefore, the method devised by Battin and Vaughan
 truly improves the one by Gauss.
 
-For the case of \cite{gooding1990}, a similar total computation time as in
-Battin's solver is obtained. However, the iteration workload is seen to be the
-lowest one, showing up that the majority of the time is being consumed by the
-initial guess. Nevertheless, Gooding's solver converges with great accuracy to
-the final solution.
+\cite{gooding1990} solver has a similar total computation time as Battin's
+algorithm. However, the iteration workload is seen to be the lowest one, showing
+up that the majority of the time is being consumed by the initial guess.
+Nevertheless, Gooding's solver converges with great accuracy to the final
+solution.
 
 On the other hand, the relation between iteration workload and computation time
 for \cite{avanzini2008} is poor. This algorithm lacks of an extensive initial
@@ -62,12 +64,12 @@ direct function of the free-parameter. These function calls are shown to produce
 a bottleneck in the performance of this solver. The use of a high-order
 numerical method would probably reduce the amount of required iterations.
 
-\cite{arora2013} shows the lowest computation time and the iteration workload
-shows a low value due to the short amount of iterations required by the solver.
-Arora's solver employed an exhaustive initial guess, devoting the majority of
-the time to this procedure. Neverhteless, the solver is seen to have a high
-performance, knowing that it converges for all cases and includes the
-multi-revolution scenario. 
+\cite{arora2013} shows the lowest computation time per iteration and the
+iteration workload shows a low value due to the short amount of iterations
+required by the solver.  Arora's solver employed an exhaustive initial guess,
+devoting the majority of the time to this procedure. Neverhteless, the solver is
+seen to have a high performance, knowing that it converges for all cases and
+includes the multi-revolution scenario. 
 
 \cite{izzo2015} has the lowest computation time while showing a
 relatively high iteration workload. The arbitrary initial guess based on a
