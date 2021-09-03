@@ -6,7 +6,7 @@
 Lambert's problem solvers have lots of applications because they retrieve the
 solution to the \textit{boundary value problem} (BVP) of the restricted two-body
 dynamics problem.  This solution is nothing but the conic trajectory which the
-body will follow as time evolves. Previous fact makes Lambert's problem to be
+body will follow as time evolves. The previous fact makes Lambert's problem to be
 usually included within the initial \textit{orbit determination topic} (IOD).
 
 However, the most common applications for the Lambert's problem are targeting,
@@ -17,7 +17,7 @@ which must be followed is the one obtained by solving the Lambert's problem.
 In fact, Lambert's solvers routines were implemented in the \textit{Apollo
   Guidance Computer} (AGC\footnote{The original source code for the AGC has been
   published under a Public Domain license in
-  https://github.com/chrislgarry/Apollo-11}) for the calculation of transfer
+  \href{https://github.com/chrislgarry/Apollo-11}{https://github.com/chrislgarry/Apollo-11}}) for the calculation of transfer
 trajectories and reentry ones. In the \citetitle{apollo1972}, it is claimed that
 the algorithms (AGC programs P-31 to P-37) took between 15 to 30 minutes to
 compute a solution, which showed the necessity of having better performance
@@ -28,7 +28,7 @@ solvers for future missions.
 \begin{figure}[h]
   \centering
   \includegraphics[scale=1]{apollo_trajectory.png}
-  \caption{After the \textit{Lunar Module} (LM) was launched into a
+  \caption[Apollo-11 taking advantage of Lambert's based maneuver]{After the \textit{Lunar Module} (LM) was launched into a
     \textit{Constant Delta Height} (CDH) orbit, a set of targetting
     maneuvers were required to perform a rendezvous with the \textit{Command
       and Service Module} (CSM). The AGC made use of its own Lambert's
@@ -47,19 +47,19 @@ Lambert's problem for a given set of launching and arrival dates leads to a
 collection of particular orbits, each one corresponding to a transfer arc.
 Those conic trajectories show a different characteristic velocity, directly
 related with the amount of required energy.  Contour maps representing this set
-of solutions are known as porkchops and it is possible to observe that minimum
-transfer points exist within these figures.  These locations in the contour
+of solutions are known as porkchop plots and it is possible to observe that minimum
+transfer points exist within these figures. The locations in the contour
 figure are usually selected for space missions launch and arrival dates.
 
 % Figure showing optimal transfer for Mars perseverance
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{static/porkchop.png}
-  \caption{Porkchop for Earth-Mars transfer arrival energy for years 2020-2021.
+  \caption[Porkchop plot for Earth-Mars for years 2020-2021]{Porkchop plot for Earth-Mars transfer arrival energy for years 2020-2021.
     Each point in the figure is obtained by solving the Lambert's problem in order
     to compute departure $C_{3}$ (characteristic energy). Notice the optimal
-    transfer dates are being used by latest missions about this planet: Perseverance,
-    Tianwen-1 and Hope Mars.}
+    transfer dates are being used by latest missions about this planet:
+    \cite{perseverance2020}, \cite{tianwen1} and \cite{hope2021}.}
   \label{fig:porkchop_perseverance}
 \end{figure}
 

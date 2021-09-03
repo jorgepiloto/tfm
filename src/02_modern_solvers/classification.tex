@@ -39,15 +39,13 @@ However, another branch within the semi-major axis solvers was started by
 \cite{thorne1995} when this author devised a series solution for the Lambert's
 problem. This algorithm was improved by the same author some years later (see
 \cite{thorne2004}). A convergence analysis of the series was made again by him
-in \cite{thorne2015}. Notice that, even if this algorithm does not require from
-a numerical solver nor initial guess, it still makes use of a free-parameter and
-the velocity construction method.
+in \cite{thorne2015}.
 
 \vspace{0.5cm}
 \begin{figure}[h]
   \centering
   \includegraphics[scale=1.00]{static/a_solvers.pdf}
-  \caption{Inheritance diagram for semi-major axis based solvers. Two branches
+  \caption[Semi-major axis based solvers]{Inheritance diagram for semi-major axis based solvers. Two branches
     exist: the one devised by Lagrange and the series-based one by Thorne.}
   \label{fig:a_solvers}
 \end{figure}
@@ -83,7 +81,7 @@ overall performance.
 \begin{figure}[h]
   \centering
   \includegraphics[scale=1.00]{static/ecc_solvers.pdf}
-  \caption{Inheritance diagram for eccentricity based solvers. Notice that the
+  \caption[Eccentricity based solvers]{Inheritance diagram for eccentricity based solvers. Notice that the
     branch started by Avanzini is the most modern one and the mother of modern
     solvers based on this orbit parameter.}
   \label{fig:ecc_solvers}
@@ -100,7 +98,7 @@ the one devised by \cite{gunkel1960}. This algorithm also appears in the book by
 \begin{figure}[h]
   \centering
   \includegraphics[scale=1.00]{static/nu_solvers.pdf}
-  \caption{Inheritance diagram for true anomaly based solvers. Only one solver
+  \caption[True anomaly based solvers]{Inheritance diagram for true anomaly based solvers. Only one solver
     is found to belong to this set of solvers as iterating over $\nu$ is not the
     most popular way of addressing the problem.}
   \label{fig:nu_solvers}
@@ -153,7 +151,7 @@ free-parameter.
 \begin{figure}[h]
   \centering
   \includegraphics[scale=1.00]{static/p_solvers.pdf}
-  \caption{Inheritance diagram for semi-latus rectum based solvers. A total of
+  \caption[Semi-latus rectum based solvers]{Inheritance diagram for semi-latus rectum based solvers. A total of
     three branches have been devised along history for addressing the problem
     making use of this free-parameter.}
   \label{fig:p_Solvers}
@@ -199,7 +197,7 @@ multi-revolution problem and employed an strong rational formulae initial guess.
 \begin{figure}[h]
   \centering
   \includegraphics[scale=1.00]{static/universal_solvers.pdf}
-  \caption{Inheritance diagram for universal formulation solvers based solvers.
+  \caption[Universal formulae based solvers]{Inheritance diagram for universal formulation solvers based solvers.
     The two branches initiated by Bate and Lancaster are visible.}
   \label{fig:universal_solvers}
 \end{figure}
@@ -209,8 +207,8 @@ multi-revolution problem and employed an strong rational formulae initial guess.
 
 Solvers based on regularized transformations are not abundant in literature. The
 main goal of these solvers is to avoid the singularities in the Lambert's
-problem by moving it from $\Re^{N} \rightarrow \Re^{N+1}$. At least three types of
-regularizing transformations are known:
+problem by moving it from $\Re^{N} \rightarrow \Re^{N+1}$. At least three types
+of regularizing transformations have been used in the Lambert's problem:
 
 \begin{itemize}
   \item Levi-Civita.
@@ -230,14 +228,14 @@ by introducing the multi-revolution scenario and enhancing the initial guess rou
 Another branch found in literature using the regularizing transformation was
 started by \cite{kriz1976}. As opposite to previous solvers, this algorithm
 makes use of the Kustaanheimo-Stiefel transformation. That same year,
-\cite{jezewski1976} published another working on the same principle as the one
-suggested by Kriz.
+\cite{jezewski1976} published another solver exploiting the same principle as
+the one suggested by Kriz.
 
 \vspace{0.5cm}
 \begin{figure}[h]
   \centering
   \includegraphics[scale=1.00]{static/regularizing_solvers.pdf}
-  \caption{Inheritance diagram for regularized transformation solvers. Only the
+  \caption[Regularized transformation based solvers]{Inheritance diagram for regularized transformation solvers. Only the
     transformations via Levi-Civita and Kustaanheimo-Stiefel are the ones serving
     as base for these type of solvers.}
   \label{fig:regularizing_solvers}
@@ -276,7 +274,7 @@ is the usage of analytic gradients as the way of computing the solution.
 \begin{figure}[h]
   \centering
   \includegraphics[scale=0.9]{static/gamma_solvers.pdf}
-  \caption{Inheritance diagram for flight path angle based solvers. Only a
+  \caption[Flight path based solvers]{Inheritance diagram for flight path angle based solvers. Only a
     single branch is known within this set of solvers.}
   \label{fig:regularizing_solvers}
 \end{figure}

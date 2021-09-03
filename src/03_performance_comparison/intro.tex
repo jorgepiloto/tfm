@@ -1,29 +1,13 @@
-\chapter{Selected solvers and performance comparison}
+\chapter{Introduction to selected solvers}
 \label{performance_chapter}
 
-The main goal of this chapter is to present the different algorithms selected
-for the performance comparison together with the tools developed and the
-analysis itself. At first, each algorithm is presented with its
-fundamental equations, inheritance and improvements over other solvers
-when available. Figures showing the non-dimensional time of flight curves as
-function of the free-parameter are provided too so reader can have a better
-understanding on the relation between the two magnitudes.
-
-Previous studies made by \cite{klumpp1999}, \cite{torre2015} and in
-\cite{martinez2021} were used as the main source of information for this section
-and their analysis improved.
-
-All algorithms have been implemented under the Python programming language and a
-library named \citetitle{lamberthub_v01}\footnote{The software can be accessed
-  in
-  \href{https://github.com/jorgepiloto/lamberthub}{https://github.com/jorgepiloto/lamberthub}.
-  Latest documentation of the project is hosted in
-  \href{https://lamberthub.readthedocs.io/en/latest/}{https://lamberthub.readthedocs.io/en/latest/}}
-created under a public license, so any author can access it. This software
-package ships with all the necessary tools to evaluate the performance of a
-solver too and it has been heavily tested again literature cases not only for
-the direct transfer problem but also for the multiple revolutions one.
+The selected solver are presented in a detailed way in this chapter. The
+fundamental equations relating the non-dimensional time of flight with the
+free-parameter are provided for each one together. By plotting those for various
+transfer angles, it is possible to build the so-called \textit{time of flight
+curves} also included for each solver. Finally, a resume table at the end of the
+chapter collects the main elements used by every of the selected solvers so the
+comparison among them is easier for the reader.
 
 \input{src/03_performance_comparison/selected_solvers.tex}
 \input{src/03_performance_comparison/elements_table.tex}
-\input{src/03_performance_comparison/performance_comparison.tex}
