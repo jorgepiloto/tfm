@@ -18,12 +18,14 @@ initial-guess and the velocity vectors construction procedure.
 It must be pointed out that some methods developed along history, which will be
 presented in future pages, solve the Lambert's problem by making use of a series
 expansion. These methods express the semi-major axis $a$ as a sum of infinite
-terms. Hence, the accuracy of the solver is based on the number of
-terms considered. Notice that a root solver is not required neither an initial
-guess.
+terms. One might think these do not follow previously cited structure but the
+truth is that the series expansion was performed around an arbitrary point,
+which is similar to the initial guess procedure. The accuracy of the method
+depends on the number of terms considered, so this can be understood as the
+numerical method used by the solver.
 
-Nevertheless, apart from these type of solvers, the rest of the algorithms found
-in literature share the elements presented in figure \ref{fig:solver_elements}.
+Hence, all algorithms found in literature share the elements presented in figure
+\ref{fig:solver_elements}.
 
 \subsection{The free-parameter}
 
