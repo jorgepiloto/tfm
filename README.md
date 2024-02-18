@@ -1,10 +1,7 @@
-<div align="center">
-  <h1>Lambert's problem algorithms</h1>
-  <strong>A CRITICAL REVIEW</strong>
-</div>
+# Interstellar Interceptors. Mission design for rendezvous with objects in hyperbolic orbits.
 
-What is this project about?
----------------------------
+
+## What is this project about?
 
 This repository holds all the different files required to compile my original
 work named *Lambert's problem algorithms: a critical review*, were a deep
@@ -12,8 +9,7 @@ comparison between modern routines for solving this classic astrodynamics
 problem is presented to the reader.
 
 
-About project structure
------------------------
+## About project structure
 
 The project is divided into different directories, each one devoted to store a
 particular type of information:
@@ -50,8 +46,7 @@ Finally the `Makefile` is where all auxiliary rules for automation are
 described.
 
 
-Required dependencies for building the project
-----------------------------------------------
+## Required dependencies for building the project
 
 Several programs are required to compile the project. The versions listed here
 are the ones originally used to build all files. It might be possible that with
@@ -121,8 +116,7 @@ GNU Make 4.3
 Built x86_64-pc-linux-gnu
 ```
 
-How to build the report
------------------------
+## How to build the report
 
 After installing all the different dependencies, you can start by building a
 clean Python environment by running:
