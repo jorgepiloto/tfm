@@ -1,13 +1,19 @@
 # Interstellar Interceptors. Mission design for rendezvous with objects in hyperbolic orbits.
 
+## About
 
-## What is this project about?
+This repository contains all the files required to generate my master's thesis
+in astronomy and astrophysics. The report is titled **Interstellar Interceptors.
+Mission design for rendezvous with objects in hyperbolic orbits.**
 
-This repository holds all the different files required to compile my original
-work named *Lambert's problem algorithms: a critical review*, were a deep
-comparison between modern routines for solving this classic astrodynamics
-problem is presented to the reader.
+## Requirements
 
+The following requirements apply for building this project:
+
+
+- Make: https://www.gnu.org/software/make/
+- LaTeX: https://www.latex-project.org/
+- XeLaTeX: https://tug.org/xetex/
 
 ## About project structure
 
@@ -114,27 +120,4 @@ Python: 3.8.5
 ```
 GNU Make 4.3
 Built x86_64-pc-linux-gnu
-```
-
-## How to build the report
-
-After installing all the different dependencies, you can start by building a
-clean Python environment by running:
-
-```
-python -m venv .venv
-```
-
-which can be activated via `source .venv/bin/activate`. After that, install all
-the required libraries listed in the `bin/requirements.txt` using:
-
-```
-pip install -r bin/requirements.txt
-```
-
-Finally, you simply need to execute the following rule to obtain the rendered
-PDF:
-
-```
-make pdf
 ```
