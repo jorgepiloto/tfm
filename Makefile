@@ -7,7 +7,7 @@ BINDIR = bin
 FIGDIR = fig
 TEXDIR = tex
 SRCDIR = src
-CHDIRS = $(SRCDIR)/00_introduction $(SRCDIR)/01_lamberts_problem $(SRCDIR)/02_modern_solvers $(SRCDIR)/03_performance_comparison
+CHDIRS = $(SRCDIR)/00_introduction
 STRUCTURE := $(PROJECTDIR) $(CHDIRS) $(TEXDIR)
 
 # Main project file
@@ -31,7 +31,7 @@ BCFFILES := $(addsuffix /*.bcf,$(STRUCTURE))
 BLGFILES := $(addsuffix /*.blg,$(STRUCTURE))
 BLXFILES := $(addsuffix /*blx.bib,$(STRUCTURE))
 RUNFILES := $(addsuffix /*run.xml,$(STRUCTURE))
-JUNKFILES := $(AUXFILES) $(OUTFILES) $(LOGFILES) $(TOCFILES) $(GZFILES) $(BBLFILES) $(BCFFILES) $(BLGFILES) $(BLXFILES) $(RUNFILES)
+JUNKFILES := $(AUXFILES) $(OUTFILES) $(LOFFILES) $(LOTFILES) $(LOGFILES) $(TOCFILES) $(GZFILES) $(BBLFILES) $(BCFFILES) $(BLGFILES) $(BLXFILES) $(RUNFILES)
 
 # Latex engine and compiling options
 LATEXENGINE = xelatex
