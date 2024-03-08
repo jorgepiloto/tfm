@@ -1,0 +1,82 @@
+\section{Definition, origin and attributes}
+
+Interstellar objects (ISOs) are asteroids, comets or planets that are not
+gravitationally bound to a star, despite having spurious encounters with these
+last objects in their path trough the interstellar medium (ISM).
+
+Their origin can vary from being ejected from their parent star, to being
+accreted by a planet and later ejected, to being formed in the interstellar
+a medium.
+
+As the solar system moves within the Local Interstellar Cloud (LIC), also
+referred to as the Local Fluff, interstellar materials penetrates the
+heliosphere\footnote{The heliosphere is the region of space dominated by the
+Sun's influence. It extends beyond the orbit of Pluto and presents a drop shape
+with its tail in the opposite direction of motion of the solar system through
+the LIC.} at a rate of $26\text{km/s}$ \cite{hajdukova2020}. These interstellar
+materials present a variety of sizes ranging from a few micrometers up to a few
+hundreds of meters. Depending on their size and composition, they are subjected
+to different forces, such as radiation pressure, solar wind, and the
+gravitational pull of the Sun and planets.
+
+\cite{sterken2012} defines the parameter $\beta$ as the ratio between radiation
+force and gravity force:
+
+\begin{equation}
+    \beta = \frac{|\bm{F_{\text{rad}}}|}{|\bm{F_{\text{G}}}|} = \frac{A_p Q_{pr} S_0}{cG M_{0} m_p}
+    \label{eq:deflection_parameter}
+\end{equation}
+
+Equation \ref{eq:deflection_parameter} shows that $\beta$ is a function of the
+geometric albedo of the particle $A_p$, the radiation pressure coefficient $Q_{pr}$,
+the solar constant $S_0$, the speed of light $c$, the gravitational constant $G$,
+the solar mass $M_0$, and the particle mass $m_p$.
+
+Three different regimes can be identified according to the value of $\beta$:
+
+\begin{itemize}
+    \item $\beta \gg 1$: Radiation pressure dominates over gravity. In this case,
+          the particle follows a hyperbolic orbit away from the Sun.
+    \item $\beta \sim 1$: Radiation pressure and gravity are comparable. In this
+          case, the particle follows a rectilinear orbit towards the sun. Note
+          that this is an ideal scenario and small perturbations in both
+          forces can lead to a non-linear trajectory.
+    \item $\beta \ll 1$: Gravity dominates over radiation pressure. In this
+          scenario, gravity dominates and the particle falls towards the Sun in an
+          hyperbolic orbit.
+\end{itemize}
+
+% TODO: attach figure to show deflection of particles
+
+The heliosphere acts as a shield that protects the solar system from the ISM. It
+can deflect small particles. However, larger ISOs can bypass the heliosphere
+and enter the solar system.
+
+Discretizing whether a body is an ISO is a challenging task. This is
+particularly true for small objects, which are harder to detect and track,
+leading to larger measurement errors. 
+
+The following attributes can indicate the interstellar nature of an object:
+
+\begin{itemize}
+    \item \textbf{Hyperbolic orbit}: ISOs present hyperbolic orbits since they
+          are not gravitationally bound to the Sun. This translates into
+          eccentricities greater than the unity.
+    \item \textbf{High relative velocity}: ISOs present high relative velocities
+          with the planets and other solar system bodies. This is a consequence
+          of their interstellar origin.
+    \item \textbf{High inclination}: The plane of the solar system is well
+          defined by the planets and other bodies. Thus, a body with a high
+          inclination and an hyperbolic orbit is likely to be have an
+          interstellar origin.
+\end{itemize}
+
+Note that these attributes are not exclusive to ISOs. For example, a body with a
+high inclination and a hyperbolic orbit could be a comet from the Oort
+cloud\footnote{ Oort cloud is a trans-Neptunian region that extends from 2000 to
+50000 AU. It is the source of long-period comets and believed to contain a total
+mass of 5 Earth masses made up to $10^{12}$ - $10^{14}$ objects. }. However,
+studies \cite{francis2005} show that it is more likely that comets originated in the Oort cloud are
+ejected into the ISM. Estimations indicate that the ratio between expelled and
+retained comets ranges between $\eta = \frac{\text{Comets
+expelled}}{\text{Comets retained}} = 3 \text{ - } 100$.
