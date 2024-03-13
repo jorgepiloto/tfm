@@ -1,4 +1,3 @@
-\newpage
 \section{Naming}
 
 The naming of interstellar objects is imposed by the International Astronomical
@@ -7,12 +6,12 @@ which must follow the format\footnote{Exceptions exist. Identifiers may include
 the name of the discoverers or even popular names due to legacy reasons.}:
 
 \begin{center}
-    [Prefix]/[Year] [Half-month ID][No. Discovery]
+    [Prefix]/[Year][Half-month][Number]
 \end{center}
 
-\textbf{Prefix} is the prefix of the object, which is determined by the object's
-nature according to table \ref{tab:iau_prefixes}. Once the interstellar nature has
-been confirmed, the prefix sticks to I.
+\textbf{Prefix} is a letter indicating the nature of the object according to
+table \ref{tab:iau_prefixes}. Once the interstellar nature has been confirmed,
+the prefix sticks to I.
 
 \begin{table}[H]
     \centering
@@ -31,8 +30,9 @@ been confirmed, the prefix sticks to I.
     \label{tab:iau_prefixes}
 \end{table}
 
-\textbf{Year} matches the year of discovery while \textbf{half-month ID} is the
-half-month of discovery, according to table \ref{tab:iau_half_month_id}.
+\textbf{Year} matches the number of the year of discovery while
+\textbf{half-month} is a letter indicating the period of the year when the
+discovery was made according to table \ref{tab:iau_half_month_id}.
 
 \begin{table}[H]
     \centering
@@ -54,9 +54,10 @@ half-month of discovery, according to table \ref{tab:iau_half_month_id}.
         X & Dec. 1-15 & Y & Dec. 16-31 \\
         \hline
     \end{tabular}
-    \caption{IAU half-month ID.}
+    \caption[IAU half-month identifier.]{IAU half-month identifier.}
     \label{tab:iau_half_month_id}
 \end{table}
 
-Finally, the \textbf{No. discovery} is the number representing the order of
-discovery within the half-month of discovery.
+Finally, the \textbf{Number} is the digit representing the order of discovery
+within the half-month of discovery. This number starts at $1$ for the first
+discovered object of the half-month.
