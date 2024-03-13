@@ -1,12 +1,88 @@
-\section{Definition, origin and attributes}
+\section{Definition, origin, abundance, and other attributes}
 
-Interstellar objects (ISOs) are asteroids, comets or planets that are not
-gravitationally bound to a star, despite having spurious encounters with these
-last objects in their path trough the interstellar medium (ISM).
+This section provides a brief overview of interstellar objects. For a deeper
+review on interstellar objects, the reader is referred to \cite{jewitt2023},
+whose 
 
-Their origin can vary from being ejected from their parent star, to being
-accreted by a planet and later ejected, to being formed in the interstellar
-a medium.
+% Definition
+Interstellar objects (ISOs) are asteroids, comets planets moving through
+interstellar medium (ISM) without being gravitationally bound to a star.
+Eventually, ISOs can pass through a planetary system, such as the solar system.
+Some of them may be even captured.
+
+ISOs are also referred to as interstellar interlopers \cite{jewitt2023}, as they
+can be seen as intruders travelling through a different system from their
+original one.
+
+% Origin
+There are different mechanisms that can lead to the ejection of ISOs from their
+original system. The most common are:
+
+\begin{itemize}
+    \item \textbf{Stellar encounters}: ISOs can be ejected from their original
+          system due to gravitational interactions with other stars. This
+          mechanism is particularly relevant in dense stellar environments, such
+          as globular clusters, see \cite{portegies2018}.
+            
+    \item \textbf{Planetary encounters}: Planetary encounters can also lead to
+        the ejection of ISOs. This mechanism is particularly relevant in
+        planetary systems with large planets, such as Jupiter and Saturn, see
+        \cite{kaib2011}.
+          
+    \item \textbf{Stellar explosions}: Supernovae and other stellar explosions
+        can also lead to the ejection of ISOs. These events can provide the
+        necessary energy to eject ISOs from their original system, see
+        \cite{portegies2018}.
+\end{itemize}
+
+% Abundance
+The abundance of ISOs in the galaxy is still an open question due to the lack of
+enough data to make a reliable estimation. This lack of data has lead
+researchers to generate synthetic populations of ISOs to estimate density
+limits. Table \ref{tab:iso_density_limits} shows the density limits estimated
+by different studies:
+
+% Table with the following values
+% Gaidos 2017: 1.0e+14 1 / pc3 = 1.1e-02 1 / AU3
+% Jewitt 2017: 8.0e+14 1 / pc3 = 9.1e-02 1 / AU3
+% Portegies 2018: 1.0e+14 1 / pc3 = 1.1e-02 1 / AU3
+% Feng 2018: 4.8e+13 1 / pc3 = 5.5e-03 1 / AU3
+% Fraser 2018: 8.0e+14 1 / pc3 = 9.1e-02 1 / AU3
+% Do 2018: 2.0e+15 1 / pc3 = 2.3e-01 1 / AU3
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Study} & \textbf{Density limit ($1/\text{pc}^3$)} & \textbf{Density limit ($1/\text{AU}^3$)} \\
+        \hline
+        \cite{gaidos2017} & $1.0 \times 10^{14}$ & $1.1 \times 10^{-02}$ \\
+        \cite{jewitt2017} & $8.0 \times 10^{14}$ & $9.1 \times 10^{-02}$ \\
+        \cite{portegies2018} & $1.0 \times 10^{14}$ & $1.1 \times 10^{-02}$ \\
+        \cite{feng2018} & $4.8 \times 10^{13}$ & $5.5 \times 10^{-03}$ \\
+        \cite{fraser2018} & $8.0 \times 10^{14}$ & $9.1 \times 10^{-02}$ \\
+        \cite{do2018} & $2.0 \times 10^{15}$ & $2.3 \times 10^{-01}$ \\
+        \hline
+    \end{tabular}
+    \caption{Density limits estimated by different studies. Note that future
+    discoveries and improvements in detection techniques can lead to different
+    estimations. Adapted from \cite{moro2023}.}
+    \label{tab:iso_density_limits}
+\end{table}
+
+
+
+
+
+
+% ARTILCES
+% file:///home/jorge/Downloads/Moro-Mart%C3%ADn_2009_ApJ_704_733.pdf
+% file:///home/jorge/Downloads/Interstellar_Planetesimals_Potential_Seeds_for_Pla.pdf
+% Synthetic population: https://arxiv.org/pdf/2301.09375.pdf
+
+
+
+
 
 As the solar system moves within the Local Interstellar Cloud (LIC), also
 referred to as the Local Fluff, interstellar materials penetrates the
@@ -80,3 +156,7 @@ studies \cite{francis2005} show that it is more likely that comets originated in
 ejected into the ISM. Estimations indicate that the ratio between expelled and
 retained comets ranges between $\eta = \frac{\text{Comets
 expelled}}{\text{Comets retained}} = 3 \text{ - } 100$.
+
+% TODO: **interstellar impostors** oorts cloud objects that resemble to interstellar objects
+% TODO: review https://academic.oup.com/mnras/article/492/1/268/5621505?login=false
+% https://www.sciencedirect.com/science/article/pii/S0019103523004232
