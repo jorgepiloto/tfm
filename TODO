@@ -1,9 +1,15 @@
+REVISAR CITAS
+ - [1-3]: citar autores
+ - > 3 -> et al.
+ - Sin coincidencia: no anyadir letra al anyo
+
 - Chapter 1:
   - Improve scientific motivation
   - Confirmation of the https://en.wikipedia.org/wiki/Nebular_hypothesis
 
 - Chapter 2: Review of interstellar objects
   - 2.1 Definition by IAU
+    - Abundance graphs
   - 2.2 Nomenclature by IAU
   - 2.3 Discovered objects: Oumuamua and Borisov
     - Hipotesis the oumuamua: shape, acceleration
