@@ -1,0 +1,4 @@
+astropy
+httpx
+numpy
+matplotlib
