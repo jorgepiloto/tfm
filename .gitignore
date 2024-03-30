@@ -146,3 +146,6 @@ dmypy.json
 
 # Ignore output pdf
 *.pdf
+
+# External dependencies
+ext/
