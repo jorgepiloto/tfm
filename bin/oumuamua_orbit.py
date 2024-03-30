@@ -15,7 +15,6 @@ oumuamua = Orbit.from_ephem(Sun, oumuamua_ephem, epoch=discovery)
 
 plotter = plot_solar_system(epoch=discovery, outer=False, length_scale_units=u.AU)
 plotter.plot(oumuamua, label="1I/'Oumuamua", color="black")
-plotter.backend.ax.set_title("1I/'Oumuamua trajectory through the Solar System")
 plotter.backend.ax.set_xlim(-2, 2)
 plotter.backend.ax.set_ylim(-2, 2)
 plt.savefig("fig/static/oumuamua/orbit.png", bbox_inches="tight")

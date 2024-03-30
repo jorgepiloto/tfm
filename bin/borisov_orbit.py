@@ -15,7 +15,6 @@ borisov = Orbit.from_ephem(Sun, borisov_ephem, epoch=discovery)
 
 plotter = plot_solar_system(epoch=discovery, outer=False, length_scale_units=u.AU)
 plotter.plot(borisov, label="2I/Borisov", color="black")
-plotter.backend.ax.set_title("2I/Borisov trajectory through the Solar System")
 plotter.backend.ax.set_xlim(-3, 3)
 plotter.backend.ax.set_ylim(-3, 3)
 plt.savefig("fig/static/borisov/orbit.png", bbox_inches="tight")
