@@ -56,7 +56,7 @@ all: clean pdf
 pdf: compile clean
 
 # Build auxiliary and PDF files
-compile: binaries drawings
+compile: drawings
 	@echo "Building PDF file..."
 	@$(LATEXENGINE) $(LATEXOPTS) $(MAINFILE)
 	@$(BIBENGINE) $(BIBOPTS) $(MAINFILE)
