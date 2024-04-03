@@ -16,7 +16,7 @@ def main():
     launch_span = time_range("2018-01-01", end="2028-01-01", num_values=N)
     arrival_span = time_range("2032-01-01", end="2035-01-01", num_values=N)
 
-    borisov_ephem = Ephem.from_horizons("C/2019 Q4", launch_span)
+    borisov_ephem = Ephem.from_horizons("'Oumuamua", launch_span)
     borisov = Orbit.from_ephem(Sun, borisov_ephem, Time("2018-01-01"))
 
     _, ax = plt.subplots(figsize=(16, 8))
@@ -30,9 +30,9 @@ def main():
         plot_tof_lines=True,
         plot_dv_lines=False,
         plot_av_lines=False,
-        title="Earth - 2I/Borisov transfers for years 2018 - 2028\nLaunch energy $C_3$"
+        title="Earth - 1I/'Oumuamua transfers for years 2018 - 2028\nLaunch energy $C_3$"
     )
-    plt.savefig("fig/static/borisov/direct-transfer-porkchop.png", bbox_inches="tight")
+    plt.savefig("fig/static/oumuamua/direct-transfer-porkchop.png", bbox_inches="tight")
     plt.show()
 
 if __name__ == "__main__":
