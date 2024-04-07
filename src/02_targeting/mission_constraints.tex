@@ -1,23 +1,17 @@
 \section{Mission constraints}
 
 Despite simplifications, the mission design process is still a complex problem.
-There exists a wide range of mission constraints that can be imposed on the analysis
-to refine the results and make them more realistic. These include:
-
-\begin{itemize}
-    \item Fuel mass
-    \item Characteristic energy
-    \item Excess velocity at arrival
-    \item Time of flight
-    \item Tracking constraints
-    \item Communication constraints
-\end{itemize}
+There exists a wide range of mission constraints that can be imposed on the
+analysis to refine the results and make them more realistic. These include fuel
+mass, characteristic energy, excess velocity at arrival, time of flight,
+tracking constraints, and communication constraints. For a complete overview of
+mission contraints, the reader is referred to \cite{smad2011}.
 
 \subsection{Fuel mass}
 
 The fuel mass is a critical constraint in mission design. For every impulse
 performed by the spacecraft, a certain amount of fuel is consumed. This loss in
-mass is modeled according to the Tsiolkovsky rocket equation:
+mass is modeled according to the Tsiolkovsky rocket equation \ref{eq:tsiolkovsky}:
 
 \begin{equation}
         \Delta v = v_e \ln \left( \frac{m_0}{m_f} \right) = I_{sp} g_0 \ln \left( \frac{m_0}{m_f} \right)
@@ -73,4 +67,35 @@ Thus, two scenarios are possible:
 \end{itemize}
 
 Wether the spacecraft overshoots the target or rendezvous with the interloper,
-the excess velocity at arrival is a critical parameter. 
+the excess velocity at arrival is a critical parameter.
+
+\subsection{Time of flight}
+
+The time of flight is another important constraint in mission design. It refers
+to the elapsed time between the launch and the rendezvous with the interloper.
+Usually, short times of flight are preferred. They reduce the exposure to space
+radiaiton, which can affect the spacecraft and its electronics. However, short
+time of flights require greater fuel mass and thus greater propulsion to achieve
+greater speeds for covering the astronomical distances between the launch and
+arrival positions.
+
+\subsection{Tracking constraints}
+
+The spacecraft must be able to track the interloper and its own position
+relative to the stars background. By doing so, the spacecraft can assert if it
+is on the right orbit and if it is following the interloper correctly.
+
+However, tracking a small object in space is a challenging task. For example,
+'Oumuamua did not presented any cometary activity, having an absolute magnitude
+of $$M = 22$$ (JPL SBDB) which made it difficult to
+observe and track it. On the other hand, Borisov exhibited a coma, making it
+more visible by having a magnitude of $$M = 16$$, see \cite{jewitt2020}.
+
+These constrains are not analyzed in this work, but they are important for the
+success of the mission.
+
+\subsection{Communication constraints}
+
+Communication limits the reaction time of the spacecraft. Interlopers are
+traveling at high speeds, and the spacecraft must be able to communicate along
+astronomical distances.

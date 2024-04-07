@@ -13,13 +13,6 @@ problem and figure \ref{fig:lambert-geometry} depicts its geometry.
     \label{eq:lambert-bvp}
 \end{equation}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{lambert-problem/geometry.png}
-    \caption{Lambert's problem geometry. The targeting orbit is represented by the red curve.}
-    \label{fig:lambert-geometry}
-\end{figure}
-
 If the initial position vector $\vec{r}_1$ is the launch position at time
 $t_1$ and vector $\vec{r}_2$ is the arrival position at time $t_2$,
 then it is possible to find the targeting orbit required to transfer a
@@ -38,6 +31,13 @@ Once the velocity vectors are obtained, their modulus can be used to compute for
 the required $\Delta v$. This is the increment in the velocity that needs to be
 achieved by the propulsion system in order to insert the spacecraft into the
 desired targeting orbit.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{lambert-problem/geometry.png}
+    \caption{Lambert's problem geometry. The targeting orbit is represented by the red curve.}
+    \label{fig:lambert-geometry}
+\end{figure}
 
 \subsection{Mathematical model}
 
@@ -58,7 +58,3 @@ Perturbations are not considered neither.
 By sacrifying the accuracy of the model, the computational complexity of the
 problem gets reduced. This reduces the time required to solve the problem.
 Results obtained can be used as a first approximation for further refinement.
-
-\subsection{Porkchop plots}
-
-
