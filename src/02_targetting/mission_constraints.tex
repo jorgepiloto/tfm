@@ -1,21 +1,76 @@
 \section{Mission constraints}
 
-The characteristic energy $C_3$ is a good estimator for the propulsion
-requirements of a mission. If a propulsion system is imposed, its maximum
-specific energy can be retrieved and imposed as a mission constraint to know
-which targeting orbits can be followed.
+Despite simplifications, the mission design process is still a complex problem.
+There exists a wide range of mission constraints that can be imposed on the analysis
+to refine the results and make them more realistic. These include:
+
+\begin{itemize}
+    \item Fuel mass
+    \item Characteristic energy
+    \item Excess velocity at arrival
+    \item Time of flight
+    \item Tracking constraints
+    \item Communication constraints
+\end{itemize}
+
+\subsection{Fuel mass}
+
+The fuel mass is a critical constraint in mission design. For every impulse
+performed by the spacecraft, a certain amount of fuel is consumed. This loss in
+mass is modeled according to the Tsiolkovsky rocket equation:
+
+\begin{equation}
+        \Delta v = v_e \ln \left( \frac{m_0}{m_f} \right) = I_{sp} g_0 \ln \left( \frac{m_0}{m_f} \right)
+        \label{eq:tsiolkovsky}
+\end{equation}
+
+Where $\Delta v$ is the change in velocity, $v_e$ is the exhaust velocity, $m_0$
+is the initial mass of the spacecraft, $m_f$ is the final mass of the
+spacecraft. Other variants of the expression include the $I_{sp}$, the specific
+impulse of the propulsion system, and $g_0$, the standard gravity.
+
+\subsection{Characteristic energy}
+
+The characteristic energy $C_3$ is also a good estimator for the propulsion
+requirements of a mission.
+
+The $\Delta v$ relates with the characteristic energy $C_3$, also known as
+specific energy. Equation \ref{eq:c3} summarizes this relation for hyperbolic
+orbits:
+
+\begin{equation}
+        C_3 = v_{\infty}^2
+        \label{eq:c3}
+\end{equation}
+
+Given a propulsion system, a maximum specific energy is imposed, limiting the
+maximum $\Delta v$ that the spacecraft can achieve. If a spacraft can not reach
+a certain characteristic energy, then the mission is not feasible and the
+target orbit can not be achieved.
+
+\subsection{Excess velocity at arrival}
 
 Another mission constraint within the context of interlopers rendezvous is the
-excess velocity at arrival. The faster the rendezvous, the greater the thrust
-required for slowing down the spacecraft. If the final impulse is not applied to
-adapt the spacecraft to the orbit of the interloper, then the excess velocity at
-arrival limits the amount of time available for observation and data collection.
+excess velocity at arrival. Lauch and arrival velocities are used to compute the
+impulsed required to reach the target orbit. The first impulse $\Delta v_1$ is
+used to launch the spacecraft into the target orbit. The second impulse $\Delta
+v_2$ is used to adapt to the orbit of the interloper, leading to a rendezvous.
+Thus, two scenarios are possible:
 
-Finally, other constraints such as the time of flight, the launch window,
-tracking or communication constraints can be imposed to further refine the
-analysis.
+\begin{itemize}
 
-Some of these mission constraints can be visualized in a contour map relating
-the characteristic energy required for a given combination of launch and arrival
-dates. These maps are called porkchop plots and are useful to identify the most
-optimal transfer windows for a given mission.
+    \item \textbf{Targeting of the interloper.} The spacecraft overshoots the target by
+    not applying the final impulse. This ahieves a greater launch
+    impulse as more fuel mass can be allocated for this task. However, the
+    spacecraft is not able to rendezvous with the interloper, as the second
+    impulse is never applied.
+
+    \item \textbf{Rendezvous of the interloper.} The spacecraft performs the
+    arrival impulse to adapt to the orbit of the interloper. This reduces the
+    amount of fuel available for the launch impulse but allows the spacecraft to
+    follow the interloper.
+
+\end{itemize}
+
+Wether the spacecraft overshoots the target or rendezvous with the interloper,
+the excess velocity at arrival is a critical parameter. 
