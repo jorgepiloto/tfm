@@ -22,13 +22,15 @@ are also included in these plots.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/oumuamua/direct-transfer-porkchop.png}
-  \caption{Launch energy porkchop plot for 1I/'Oumuamua.}
+  \caption{Launch energy porkchop plot for 1I/'Oumuamua showing the isolines for
+        the time of flight required for a targeting.}
   \label{fig:oumuamua-direct-transfer-porkchop}
 \end{figure}
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/borisov/direct-transfer-porkchop.png}
-  \caption{Launch energy porkchop plot for 2I/Borisov.}
+  \caption{Launch energy porkchop plot for 2I/Borisov showing the isolines for
+        the time of flight required for a targeting.}
   \label{fig:borisov-direct-transfer-porkchop}
 \end{figure}
 \newpage
@@ -92,3 +94,25 @@ launch may have lead to a close targeting with these interplanetary objects.
   \label{fig:borisov-direct-transfer-porkchop-avl}
 \end{figure}
 \newpage
+
+\subsection{Optimum transfer}
+
+Previous porkchops contain an optimum transfer maneuver. This is the maneuver
+for which the $C_3$ energy is minimized. Table \ref{tab:direct-transfer-optimum}
+collects the values for the launch and arrival dates, the state vector, and the
+characteristic energy for each optimum transfer.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
+    \hline
+    1I/'Oumuamua & 2017-06-17 & 2032-01-01 & 720.30 \\
+    2I/Borisov & 2016-02-29 & 2032-01-01 & 819.40 \\
+    \hline
+  \end{tabular}
+  \caption{Optimum transfer orbits for a direct transfer between the Earth and the
+    two interstellar objects.}
+  \label{tab:direct-transfer-optimum}
+\end{table}
