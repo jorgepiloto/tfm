@@ -13,11 +13,11 @@ from poliastro.util import time_range
 def main():
 
     N = 75
-    launch_span = time_range("2016-01-01", end="2028-01-01", num_values=N)
-    arrival_span = time_range("2032-01-01", end="2035-01-01", num_values=N)
+    launch_span = time_range("2016-01-01", end="2028-01-01", num_values=N, scale="tdb")
+    arrival_span = time_range("2032-01-01", end="2035-01-01", num_values=N, scale="tdb")
 
     oumuamua_ephem = Ephem.from_horizons("'Oumuamua", launch_span)
-    oumuamua = Orbit.from_ephem(Sun, oumuamua_ephem, Time("2016-01-01"))
+    oumuamua = Orbit.from_ephem(Sun, oumuamua_ephem, Time("2016-01-01", scale="tdb"))
 
     _, ax = plt.subplots(figsize=(16, 8))
     porkchop = PorkchopPlotter(

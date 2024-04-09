@@ -13,11 +13,11 @@ from poliastro.util import time_range
 def main():
 
     N = 75
-    launch_span = time_range("2016-01-01", end="2028-01-01", num_values=N)
-    arrival_span = time_range("2032-01-01", end="2035-01-01", num_values=N)
+    launch_span = time_range("2016-01-01", end="2028-01-01", num_values=N, scale="tdb")
+    arrival_span = time_range("2032-01-01", end="2035-01-01", num_values=N, scale="tdb")
 
     borisov_ephem = Ephem.from_horizons("C/2019 Q4", launch_span)
-    borisov = Orbit.from_ephem(Sun, borisov_ephem, Time("2016-01-01"))
+    borisov = Orbit.from_ephem(Sun, borisov_ephem, Time("2016-01-01", scale="tdb"))
 
     _, ax = plt.subplots(figsize=(16, 8))
     porkchop = PorkchopPlotter(
