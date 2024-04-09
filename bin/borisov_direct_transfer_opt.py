@@ -29,6 +29,9 @@ borisov_at_arrival = Orbit.from_ephem(Sun, borisov_ephem, epoch=arrival_date)
 
 # Compute the transfer orbit
 maneuver = Maneuver.lambert(earth_at_launch, borisov_at_arrival)
+for ith_impulse, (_ , impulse) in enumerate(maneuver.impulses):
+    print(f"Impulse {ith_impulse}: {[val.to(u.km / u.s) for val in impulse]}")
+print(f"Total cost: {maneuver.get_total_cost().to(u.km / u.s)}")
 transfer_orbit, _ = earth_at_launch.apply_maneuver(maneuver, intermediate=True)
 
 plotter = plot_solar_system(epoch=launch_date, outer=True, plane=Planes.EARTH_EQUATOR, length_scale_units=u.AU)

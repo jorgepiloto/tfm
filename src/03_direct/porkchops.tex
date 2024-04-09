@@ -99,8 +99,8 @@ launch may have lead to a close targeting with these interplanetary objects.
 
 Previous porkchops contain an optimum transfer maneuver. This is the maneuver
 for which the $C_3$ energy is minimized. Table \ref{tab:direct-transfer-optimum}
-collects the values for the launch and arrival dates, the state vector, and the
-characteristic energy for each optimum transfer.
+collects the values for the launch and arrival dates, and the
+characteristic energy for each optimum direct transfer.
 
 \begin{table}[H]
   \centering
@@ -113,9 +113,22 @@ characteristic energy for each optimum transfer.
     \hline
   \end{tabular}
   \caption{Optimum transfer orbits for a direct transfer between the Earth and the
-    two interstellar objects.}
+    two interstellar objects. Similar arrival dates can be an indicator of the
+    lack of accuracy for long propagation times.}
   \label{tab:direct-transfer-optimum}
 \end{table}
+
+Table collects the required impulse vectors and the total cost of the maneuver:
+
+% Oumuamua 
+% Impulse 1: [<Quantity 13.72241383 km / s>, <Quantity -19.26701463 km / s>, <Quantity 12.42250913 km / s>]
+% Impulse 2: [<Quantity 0.33922597 km / s>, <Quantity -0.78085697 km / s>, <Quantity 0.08217307 km / s>]
+% Total cost: 27.573122615983337 km / s
+
+% Borisov
+% Impulse 1: [<Quantity -11.91558604 km / s>, <Quantity 3.68884889 km / s>, <Quantity -25.73471408 km / s>]
+% Impulse 2: [<Quantity 0.58455287 km / s>, <Quantity -5.36584991 km / s>, <Quantity -6.37104263 km / s>]
+% Total cost: 36.948430661828866 km / s
 
 \begin{figure}[H]
   \centering
@@ -136,4 +149,3 @@ characteristic energy for each optimum transfer.
         km$^2$/s$^2$ to achieve a targeting with the interloper.}
   \label{fig:borisov-direct-transfer-orbit}
 \end{figure}
-
