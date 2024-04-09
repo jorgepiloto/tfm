@@ -13,29 +13,29 @@ from matplotlib import pyplot as plt
 
 
 # Compute ephemeris
-epochs = time_range("2016-02-29", end="2032-01-01", scale="tdb")
+epochs = time_range("2017-06-17", end="2032-01-01", scale="tdb", num_values=75)
 earth_ephem = Ephem.from_body(Earth, epochs=epochs)
-borisov_ephem = Ephem.from_horizons("C/2019 Q4", epochs)
+oumuamua_ephem = Ephem.from_horizons("'Oumuamua", epochs)
 
 # Declare launch and arrival dates
-launch_date = Time("2016-02-29", scale="tdb")
+launch_date = Time("2017-06-17", scale="tdb")
 arrival_date = Time("2032-01-01", scale="tdb")
 
 # Compute Earth and 2I/Borisov orbits at launch and arrival
 earth_at_launch = Orbit.from_ephem(Sun, earth_ephem, epoch=launch_date)
 earth_at_arrival = Orbit.from_ephem(Sun, earth_ephem, epoch=arrival_date)
-borisov_at_launch = Orbit.from_ephem(Sun, borisov_ephem, epoch=launch_date)
-borisov_at_arrival = Orbit.from_ephem(Sun, borisov_ephem, epoch=arrival_date)
+oumuamua_at_launch = Orbit.from_ephem(Sun, oumuamua_ephem, epoch=launch_date)
+oumuamua_at_arrival = Orbit.from_ephem(Sun, oumuamua_ephem, epoch=arrival_date)
 
 # Compute the transfer orbit
-maneuver = Maneuver.lambert(earth_at_launch, borisov_at_arrival)
+maneuver = Maneuver.lambert(earth_at_launch, oumuamua_at_arrival)
 transfer_orbit, _ = earth_at_launch.apply_maneuver(maneuver, intermediate=True)
 
 plotter = plot_solar_system(epoch=launch_date, outer=True, plane=Planes.EARTH_EQUATOR, length_scale_units=u.AU)
 plotter.plot_ephem(transfer_orbit.to_ephem(strategy=EpochsArray(epochs)),
                    label="Transfer orbit", color="red")
-plotter.plot_ephem(borisov_ephem, epoch=arrival_date, label="2I/Borisov at arrival", color="black")
-plotter.backend.ax.set_xlim(-52, 15)
-plotter.backend.ax.set_ylim(-32, 32)
-plt.savefig("fig/static/borisov/direct-optimum-transfer.png", bbox_inches="tight")
+plotter.plot_ephem(oumuamua_ephem, epoch=arrival_date, label="1I/'Oumuamua at arrival", color="black")
+plotter.backend.ax.set_xlim(-33, 32)
+plotter.backend.ax.set_ylim(-80, 33)
+plt.savefig("fig/static/oumuamua/direct-optimum-transfer.png", bbox_inches="tight")
 plt.show()
