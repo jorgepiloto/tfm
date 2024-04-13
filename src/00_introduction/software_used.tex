@@ -1,0 +1,50 @@
+\section{Software used in this project}
+
+Modern astrodynamics and orbital mechanics require the use of numerical routines
+and software. In this project, the following software were used:
+\href{https://github.com/poliastro/poliastro}{poliastro} and
+\href{https://www.ansys.com/products/missions/ansys-stk}{Ansys Systems Tool Kit
+(STK)}.
+
+poliastro is an open-source Python library for astrodynamics. It provides tools
+focused on the analysis and design of orbits. It is built on top of other
+popular libraries such us \href{https://github.com/astropy/astropy}{Astropy} and
+\href{https://github.com/numpy/numpy}{NumPy}. Despite poliastro being archived,
+the author is a former maintainer of the project. This allowed him to build a
+set of custom numerical routines and improvements on top of the original source
+code.
+
+Main capabilities used from poliastro include the generation of scientific
+figures for visualizing orbits, ephemerides, and porkchop plots. For these last
+figures, their original source code was parallelized to maximize the
+performance, reducing computation times.
+
+\vspace{1cm}
+\begin{figure}[H] \centering
+        \includegraphics[width=0.75\textwidth]{static/poliastro_capabilities.png}
+        \caption[A collection of use cases of poliastro.]{A collection of use
+        cases of poliastro. Examples include orbit plotting in 2D and 3D,
+        perturbations, and porkchop plots.} 
+        \label{fig:poliastro_capabilities}
+\end{figure}
+
+STK, on the other hand, is a commercial software that provides a set of tools
+that extend beyong astrodynamic calculations. It is used for mission analysis,
+allowing customers to design, analyze, and visualize complex systems. Its
+outstanding performance, accuracy, visualization, and animation capabilities
+make this tool a standard in the aerospace industry.
+
+Main capabilities used from STK include validation of results and animations.
+Regarding animations, these are presented in the slides acompanying the defense
+of this project.
+
+\vspace{1cm}
+\begin{figure}[H] \centering
+        \includegraphics[width=0.75\textwidth]{static/stk_capabilities.png}
+        \caption[A collection of use cases of STK.]{A collection of use
+        cases of STK. Examples include orbit plotting in 3D, cislunar
+        trajectories, and orbit transfer optimization.} 
+        \label{fig:stk_capabilities}
+\end{figure}
+
+
