@@ -1,9 +1,16 @@
 \chapter{Direct transfer analysis}
 
 This chapter presents the direct transfer analysis performed on the two
-discovered interstellar objects, 1I/'Oumuamua and 2I/Borisov. The analysis
-includes porkchop plots for quickly visualizing different mission constraints.
-The optimum transfers are represented graphically too. A short discussion on the
-obtained values is presented at the end of the chapter.
+discovered interstellar objects, 1I/'Oumuamua and 2I/Borisov. The algorithm used
+is the one devised by \cite{izzo2015}, as it is proven to be more accurate and
+faster than other classical algorithms \cite{martinez2021}. The ephemerides for
+1I/'Omuaumua and 2I/Borisov are obtained from JPL Horizons API service. These
+are propagated under the two-body assumption to simplify the analysis.
+Propagation starts on January 1, 2016 and ends on January 1, 2035.
 
-\input{src/03_direct/porkchops.tex}
+The analysis includes porkchop plots for quickly visualizing different mission
+constraints. The optimum transfers are computed and their figures are generated
+for better undesrtanding the orbit. A short discussion on the obtained values is
+presented at the end of the chapter.
+
+\input{src/03_direct/launch_energy.tex}
