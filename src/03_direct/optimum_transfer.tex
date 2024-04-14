@@ -1,0 +1,93 @@
+\section{Optimum transfer}
+
+Once direct transfers (prograde and retrograde) have been computed for each pair
+of launch and arrival dates, the most optimum transfer orbit can be identified.
+
+It is important to define the concept of optimum transfer. In this context, this
+term refers to the orbit whose launch energy is the lowest. Other mission
+constrains may be considered but for the purpose of this work, the launch $C_3$
+energy is the only parameter considered. The reason is that the $\Delta v_1$
+required for a direct transfer is a limiting factor for nowadays technology.
+
+Porkchps represented in figures \ref{fig:oumuamua-direct-prograde-transfer-porkchop} and
+\ref{fig:borisov-direct-prograde-transfer-porkchop}
+
+
+contain an optimum transfer maneuver. This is the maneuver
+for which the $C_3$ energy is minimized. Table \ref{tab:direct-transfer-optimum}
+collects the values for the launch and arrival dates, and the
+characteristic energy for the most optimum transfer.
+
+\section{'Oumuamua}
+
+Among the prograde and retrogade direct transfers, the most optimum transfer is
+contained in the set of prograde orbits. Analyzing figure
+\ref{fig:oumuamua-direct-prograde-transfer-porkchop} reveals that the lowest
+characteristic energy is the one collected in table \ref{tab:oumua-direct-transfer-optimum}.
+
+\vspace{1cm}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
+    \hline
+    1I/'Oumuamua & 2017-08-15 & 2032-05-13 & 720.28 \\
+    \hline
+  \end{tabular}
+  \caption{Optimum transfer orbit for a direct transfer between the Earth and 1I/'Oumuamua.}
+  \label{tab:oumua-direct-transfer-optimum}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{static/oumuamua/direct-optimum-transfer.png}
+  \caption{Optimum direct transfer orbit between Earth and 1I/'Oumuamua. The
+    high speed of 'Oumuamua one passing through its perihelion leads to a low
+    resolution in the sampling of points close to this region.}
+  \label{fig:oumuamua-direct-transfer-orbit}
+\end{figure}
+
+Figure \ref{fig:oumuamua-direct-transfer-orbit} shows the trajectory of the
+optimum transfer between Earth and 1I/'Oumuamua.
+
+This scenario was analyzed by \cite{hein2018} too. However, the analysis
+presented in this work expands previous article by covering the retrograde case
+and providing the optimum solution.
+
+Despite having found and optimum solution, the value of $C_3 = 720.28$
+km$^2$/s$^2$ is still high. This characteristic energy at launch is equivalent
+to an heliocentric velocity of $v_{\infty, 1} = 26.83$ km/s.
+
+\section{Borisov}
+
+Regarding Borisov, the most optimum transfer is also a prograde transfer. The
+analysis of figure \ref{fig:borisov-direct-prograde-transfer-porkchop} shows
+that the lowest characteristic energy is the one collected in table
+\ref{tab:borisov-direct-transfer-optimum}.
+
+\vspace{1cm}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
+    \hline
+    2I/Borisov & 2016-04-28 & 2032-01-15 & 820.06 \\
+    \hline
+  \end{tabular}
+  \caption{Optimum transfer orbit for a direct transfer between the Earth and 2I/Borisov.}
+  \label{tab:borisov-direct-transfer-optimum}
+\end{table}
+
+Figure \ref{fig:borisov-direct-transfer-orbit} shows the trajectory of the
+optimum transfer between Earth and 2I/Borisov.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{static/borisov/direct-optimum-transfer.png}
+  \caption{Optimum direct transfer orbit between Earth and 2I/Borisov. This
+        trajectory does not pass close to the Sun. However, the transfer requires almost $820$
+        km$^2$/s$^2$ to achieve a targeting with the interloper.}
+  \label{fig:borisov-direct-transfer-orbit}
+\end{figure}
