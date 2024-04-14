@@ -13,13 +13,13 @@ from matplotlib import pyplot as plt
 
 
 # Compute ephemeris
-epochs = time_range("2017-06-17", end="2032-01-01", scale="tdb", num_values=75)
+epochs = time_range("2017-06-17", end="2032-05-13", scale="tdb", num_values=75)
 earth_ephem = Ephem.from_body(Earth, epochs=epochs)
 oumuamua_ephem = Ephem.from_horizons("'Oumuamua", epochs)
 
 # Declare launch and arrival dates
-launch_date = Time("2017-06-17", scale="tdb")
-arrival_date = Time("2032-01-01", scale="tdb")
+launch_date = Time("2017-08-15", scale="tdb")
+arrival_date = Time("2032-05-13", scale="tdb")
 
 # Compute Earth and 2I/Borisov orbits at launch and arrival
 earth_at_launch = Orbit.from_ephem(Sun, earth_ephem, epoch=launch_date)
@@ -41,4 +41,4 @@ plotter.plot_ephem(oumuamua_ephem, epoch=arrival_date, label="1I/'Oumuamua at ar
 plotter.backend.ax.set_xlim(-33, 32)
 plotter.backend.ax.set_ylim(-80, 33)
 plt.savefig("fig/static/oumuamua/direct-optimum-transfer.png", bbox_inches="tight")
-plt.show()
+#plt.show()
