@@ -38,7 +38,33 @@ def solve_launch_energy():
         )
         porkchop.ax.set_title(f"Launch energy $C_3$ for Earth - 1I/'Oumuamua\nDirect {inclination} transfer between 2016 and 2032")
         plt.savefig(f"fig/static/oumuamua/direct-{inclination}-transfer-porkchop.png", bbox_inches="tight")
-        #porkchop.show()
+
+def solve_arrival_velocity():
+    for prograde in [True, False]:
+        porkchop = solve_porkchop(prograde)
+        inclination = "prograde" if prograde else "retrograde"
+        _, ax = plt.subplots(1, 1, figsize=(16, 8))
+        porkchop.plot_launch_energy(
+            levels=np.linspace(0, 12e3, 13) * u.km ** 2 / u.s ** 2,
+            plot_contour_lines=False,
+            ax=ax,
+        )
+        porkchop.plot_arrival_velocity(
+            levels=np.linspace(20, 60, 5) * u.km / u.s,
+            ax=ax
+        )
+        porkchop.plot_arrival_velocity(
+            levels=np.linspace(0, 15, 6) * u.km / u.s,
+            ax=ax
+        )
+        porkchop.plot_arrival_velocity(
+            levels=np.linspace(0, 2, 3) * u.km / u.s,
+            ax=ax
+        )
+        porkchop.ax.set_title(f"Launch energy $C_3$ for Earth - 1I/'Oumuamua\nDirect {inclination} transfer between 2016 and 2032")
+        plt.savefig(f"fig/static/oumuamua/direct-{inclination}-transfer-porkchop-avl.png", bbox_inches="tight")
+
 
 if __name__ == "__main__":
-    solve_launch_energy()
+    #solve_launch_energy()
+    solve_arrival_velocity()
