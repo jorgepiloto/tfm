@@ -10,8 +10,7 @@ from poliastro.plotting.porkchop import PorkchopPlotter
 from poliastro.util import time_range
 
 
-def main():
-
+def solve_porkchop(prograde):
     N = 75
     launch_span = time_range("2016-01-01", end="2028-01-01", num_values=N, scale="tdb")
     arrival_span = time_range("2032-01-01", end="2035-01-01", num_values=N, scale="tdb")
@@ -19,22 +18,27 @@ def main():
     borisov_ephem = Ephem.from_horizons("C/2019 Q4", launch_span)
     borisov = Orbit.from_ephem(Sun, borisov_ephem, Time("2016-01-01", scale="tdb"))
 
-    _, ax = plt.subplots(figsize=(16, 8))
-    porkchop = PorkchopPlotter(
-        Earth, borisov, launch_span, arrival_span, ax=ax,
+    return PorkchopPlotter(
+        Earth, borisov, launch_span, arrival_span, prograde=prograde
     )
-    porkchop.plot(
-        c3_levels=np.linspace(0, 12e3, 13) * u.km ** 2 / u.s ** 2,
-        tof_levels=np.linspace(0, 20, 21) * u.year,
-        dv_levels=np.linspace(0, 60, 11) * u.km / u.s,
-        plot_c3_lines=False,
-        plot_tof_lines=True,
-        plot_dv_lines=False,
-        plot_av_lines=False,
-        title="Earth - 2I/Borisov transfers for years 2016 - 2028\nLaunch energy $C_3$ and required time of flight"
-    )
-    plt.savefig("fig/static/borisov/direct-transfer-porkchop.png", bbox_inches="tight")
-    plt.show()
+
+def solve_launch_energy():
+    for prograde in [True, False]:
+        porkchop = solve_porkchop(prograde)
+        inclination = "prograde" if prograde else "retrograde"
+        _, ax = plt.subplots(1, 1, figsize=(16, 8))
+        porkchop.plot_launch_energy(
+            levels=np.linspace(0, 12e3, 13) * u.km ** 2 / u.s ** 2,
+            plot_contour_lines=False,
+            ax=ax,
+        )
+        porkchop.plot_time_of_flight(
+            levels=np.linspace(0, 20, 21) * u.year,
+            ax=ax
+        )
+        porkchop.ax.set_title(f"Launch energy $C_3$ for Earth - 2I/Borisov\nDirect {inclination} transfer between 2016 and 2032")
+        plt.savefig(f"fig/static/borisov/direct-{inclination}-transfer-porkchop.png", bbox_inches="tight")
+        #porkchop.show()
 
 if __name__ == "__main__":
-    main()
+    solve_launch_energy()

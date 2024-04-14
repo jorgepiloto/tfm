@@ -7,13 +7,13 @@ target interloper, modeled again as a massless point. The only force acting on
 the spacecraft is the gravitational force of the Sun.
 
 Before launching, the spacecraft has the velocity of Earth, $\vec{v_{\oplus}}$.
-At launch, the spacecraft presents the velocity $\vec{v_1}$ that matches the
-solution of Lambert's problem. Vector $\Delta{\vec{v}}$ is the difference
-between the two velocities, and its modulus matches the required impulse
-velocity, as stated in Equation \ref{eq:launch_velocity}.
+At launch, the spacecraft presents an heliocentric velocity $\vec{v_{\infty
+,1}}$ that matches the solution of Lambert's problem. Vector $\Delta{\vec{v}}$
+is the difference between the two velocities, and its modulus matches the
+required impulse velocity, as stated in Equation \ref{eq:launch_velocity}.
 
 \begin{equation}
-    \Delta v_1 = \|\vec{v_1} - \vec{v_{\oplus}}\|
+    \Delta v_1 = \|\vec{v_{\infty ,1}} - \vec{v_{\oplus}}\|
     \label{eq:launch_velocity}
 \end{equation}
 
@@ -22,7 +22,7 @@ characteristic for launch.
 
 \subsection{'Oumuamua}
 
-Porkchop plots for 'Oumuamua representing the characteristic energy for launch
+Porkchop plots for 1I/'Oumuamua representing the characteristic energy for launch
 are shown in figure \ref{fig:oumuamua-direct-prograde-transfer-porkchop} and
 figure \ref{fig:oumuamua-direct-retrograde-transfer-porkchop}.
 
@@ -45,10 +45,53 @@ figure \ref{fig:oumuamua-direct-retrograde-transfer-porkchop}.
   \label{fig:oumuamua-direct-retrograde-transfer-porkchop}
 \end{figure}
 
+In figures \ref{fig:oumuamua-direct-prograde-transfer-porkchop} and
+\ref{fig:oumuamua-direct-retrograde-transfer-porkchop}, shorter time of flights
+require higher characteristic energies for launch. One may think that a
+retrograde transfer orbit would be more efficient considering that 'Oumuamua has
+this kind of inclination. However, retrograde orbits do not benefit from Earth's
+velocity at launch, which makes them less efficient. Therefore, characteristic
+energies for retrograde transfers are higher than for prograde transfers.
 
-
-
+Both porkchop plots present a pattern whose solutions alternate between low and
+high characteristic energies. This pattern is a consequence of the relative
+position of the earth with respect to the target. Low energy solutions
+correspong to positions in which the velocity of the Earth gets aligned with the
+launch velocity vector.
 
 \subsection{Borisov}
 
-TODO
+Porkchop plots for 2I/Borisov representing the characteristic energy for launch
+are shown in figure \ref{fig:borisov-direct-prograde-transfer-porkchop} and
+figure \ref{fig:borisov-direct-retrograde-transfer-porkchop}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{static/borisov/direct-prograde-transfer-porkchop.png}
+        \caption[Direct and prograde launch energy porkchop for
+        2I/Borisov]{Launch energy porkchop plot for 2I/Borisov for a direct and prograde
+        transfer showing the isolines for
+        the time of flight required for a targeting.}
+  \label{fig:borisov-direct-prograde-transfer-porkchop}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{static/borisov/direct-retrograde-transfer-porkchop.png}
+        \caption[Direct and retrograde launch energy porkchop for
+        2I/Borisov]{Launch energy porkchop plot for 2I/Borisov for a direct and
+        retrograde transfer showing the isolines for
+        the time of flight required for a targeting.}
+  \label{fig:borisov-direct-retrograde-transfer-porkchop}
+\end{figure}
+
+These figures remember to the ones for 1I/'Oumuamua although present different
+numerical values. Again, the shorter the time of flight, the greater the
+characteristic energy for launch. Also, retrograde transfers are less efficient
+than prograde and a pattern of low and high energy solutions is present.
+
+The main difference between the porkchop plots for 'Oumuamua and Borisov are the
+values. Overall, these are higher for Borisov than for 'Oumuamua. This is a
+consequence of the high velocity of Borisov with respect to the Sun. Due to this
+situation, a spacecraft targeting Borisov requires more energy to match its
+speed.
