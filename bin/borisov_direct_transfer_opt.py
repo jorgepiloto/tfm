@@ -14,8 +14,8 @@ from matplotlib import pyplot as plt
 
 # Compute ephemeris
 epochs = time_range("2016-02-29", end="2032-01-01", scale="tdb")
-earth_ephem = Ephem.from_body(Earth, epochs=epochs)
-borisov_ephem = Ephem.from_horizons("C/2019 Q4", epochs)
+earth_ephem = Ephem.from_body(Earth, epochs={'start': '2016-02-29', 'end': '2032-01-01', 'step': '1d'})
+borisov_ephem = Ephem.from_body("C/2019 Q4", epochs={'start': '2016-02-29', 'end': '2032-01-01', 'step': '1d'})
 
 # Declare launch and arrival dates
 launch_date = Time("2016-02-29", scale="tdb")

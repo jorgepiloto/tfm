@@ -5,21 +5,27 @@ import numpy as np
 
 from poliastro.bodies import Earth, Sun
 from poliastro.ephem import Ephem
+from poliastro.frames import Planes
 from poliastro.twobody import Orbit
 from poliastro.plotting.porkchop import PorkchopPlotter
 from poliastro.util import time_range
 
 
 def solve_porkchop(prograde=True):
-    N = 75
+    # Declare the launch and arrival spans
+    #launch_span = time_range("2016-01-01", spacing=1*u.day, end="2028-01-01", scale="tdb")
+    #arrival_span = time_range("2032-01-01", spacing=1*u.day, end="2035-01-01", scale="tdb")
+    N = 250
     launch_span = time_range("2016-01-01", end="2028-01-01", num_values=N, scale="tdb")
     arrival_span = time_range("2032-01-01", end="2035-01-01", num_values=N, scale="tdb")
 
-    oumuamua_ephem = Ephem.from_horizons("'Oumuamua", launch_span)
-    oumuamua = Orbit.from_ephem(Sun, oumuamua_ephem, Time("2016-01-01", scale="tdb"))
+    # Load the ephemerides for the Earth and 'Oumuamua
+    earth = Ephem.from_csv("bin/ephem/earth.csv", plane=Planes.EARTH_ECLIPTIC)
+    oumuamua = Ephem.from_csv("bin/ephem/oumuamua.csv", plane=Planes.EARTH_ECLIPTIC)
 
+    # Compute the porkchop plot
     return PorkchopPlotter(
-        Earth, oumuamua, launch_span, arrival_span, prograde=prograde
+        earth, oumuamua, launch_span, arrival_span, prograde=prograde
     )
 
 def solve_launch_energy():
@@ -38,6 +44,7 @@ def solve_launch_energy():
         )
         porkchop.ax.set_title(f"Launch energy $C_3$ for Earth - 1I/'Oumuamua\nDirect {inclination} transfer between 2016 and 2032")
         plt.savefig(f"fig/static/oumuamua/direct-{inclination}-transfer-porkchop.png", bbox_inches="tight")
+        #plt.show()
 
 def solve_arrival_velocity():
     for prograde in [True, False]:
