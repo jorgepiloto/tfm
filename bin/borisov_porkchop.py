@@ -37,9 +37,8 @@ def solve_launch_energy():
             levels=np.linspace(0, 20, 21) * u.year,
             ax=ax
         )
-        porkchop.ax.set_title(f"Launch energy $C_3$ for Earth - 2I/Borisov\nDirect {inclination} transfer between 2016 and 2032")
+        porkchop.ax.set_title(f"Launch energy $C_3$ and time of flight\nEarth - 2I/Borisov direct and {inclination} transfers between 2016 and 2032")
         plt.savefig(f"fig/static/borisov/direct-{inclination}-transfer-porkchop.png", bbox_inches="tight")
-        porkchop.show()
 
 def solve_launch_velocity():
     for prograde in [True, False]:
@@ -59,7 +58,7 @@ def solve_launch_velocity():
             levels=np.linspace(0, 15, 6) * u.km / u.s,
             ax=ax
         )
-        porkchop.ax.set_title(f"Launch energy $C_3$ for Earth - 2I/Borisov\nDirect {inclination} transfer between 2016 and 2032")
+        porkchop.ax.set_title(f"Launch energy $C_3$ and arrival velocity\nEarth - 2I/Borisov direct and {inclination} transfers between 2016 and 2032")
         plt.savefig(f"fig/static/borisov/direct-{inclination}-transfer-porkchop-avl.png", bbox_inches="tight")
 
 if __name__ == "__main__":
