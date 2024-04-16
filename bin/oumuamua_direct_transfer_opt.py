@@ -1,44 +1,46 @@
 from astropy import units as u
 from astropy.time import Time
-from poliastro.bodies import Sun, Earth
-from poliastro.ephem import Ephem
-from poliastro.twobody import Orbit
+import matplotlib.pyplot as plt
+
 from poliastro.frames import Planes
-from poliastro.plotting.misc import plot_solar_system
+from poliastro.bodies import Sun
+from poliastro.twobody import Orbit
 from poliastro.twobody.sampling import EpochsArray
-from poliastro.plotting.orbit import OrbitPlotter
-from poliastro.util import time_range
 from poliastro.maneuver import Maneuver
-from matplotlib import pyplot as plt
+from poliastro.ephem import Ephem
+from poliastro.plotting.misc import plot_solar_system
+from poliastro.util import time_range
 
 
-# Compute ephemeris
-epochs = time_range("2017-06-17", end="2032-05-13", scale="tdb", num_values=75)
-earth_ephem = Ephem.from_body(Earth, epochs=epochs)
-oumuamua_ephem = Ephem.from_horizons("'Oumuamua", epochs)
+# Build the ephemerides
+earth_ephem = Ephem.from_csv("bin/ephem/earth.csv", plane=Planes.EARTH_ECLIPTIC)
+oumuamua_ephem = Ephem.from_csv("bin/ephem/oumuamua.csv", plane=Planes.EARTH_ECLIPTIC)
 
-# Declare launch and arrival dates
-launch_date = Time("2017-08-15", scale="tdb")
-arrival_date = Time("2032-05-13", scale="tdb")
+# Define the desired times
+#at_launch = Time("2016-02-28 19:58:23", scale="tdb")
+#at_arrival = Time("2032-02-06 18:41:04", scale="tdb")
+at_launch = Time("2017-08-15", scale="tdb")
+at_arrival = Time("2032-05-13", scale="tdb")
+epochs = time_range(at_launch, end=at_arrival, num_values=1000, scale="tdb")
 
-# Compute Earth and 2I/Borisov orbits at launch and arrival
-earth_at_launch = Orbit.from_ephem(Sun, earth_ephem, epoch=launch_date)
-earth_at_arrival = Orbit.from_ephem(Sun, earth_ephem, epoch=arrival_date)
-oumuamua_at_launch = Orbit.from_ephem(Sun, oumuamua_ephem, epoch=launch_date)
-oumuamua_at_arrival = Orbit.from_ephem(Sun, oumuamua_ephem, epoch=arrival_date)
+# Build associated orbits
+earth = Orbit.from_ephem(Sun, earth_ephem, epoch=at_launch)
+oumuamua = Orbit.from_ephem(Sun, oumuamua_ephem, epoch=at_arrival)
 
-# Compute the transfer orbit
-maneuver = Maneuver.lambert(earth_at_launch, oumuamua_at_arrival)
-for ith_impulse, (_ , impulse) in enumerate(maneuver.impulses):
-    print(f"Impulse {ith_impulse}: {[val.to(u.km / u.s) for val in impulse]}")
-print(f"Total cost: {maneuver.get_total_cost().to(u.km / u.s)}")
-transfer_orbit, _ = earth_at_launch.apply_maneuver(maneuver, intermediate=True)
+# Compute the transfer maneuver
+lambert = Maneuver.lambert(earth, oumuamua)
+transfer, _ = earth.apply_maneuver(lambert, intermediate=True)
 
-plotter = plot_solar_system(epoch=launch_date, outer=True, plane=Planes.EARTH_EQUATOR, length_scale_units=u.AU)
-plotter.plot_ephem(transfer_orbit.to_ephem(strategy=EpochsArray(epochs)),
-                   label="Transfer orbit", color="red")
-plotter.plot_ephem(oumuamua_ephem, epoch=arrival_date, label="1I/'Oumuamua at arrival", color="black")
-plotter.backend.ax.set_xlim(-33, 32)
-plotter.backend.ax.set_ylim(-80, 33)
+# Model the transfer orbit as an ephem
+transfer_ephem = transfer.to_ephem(strategy=EpochsArray(epochs))
+
+
+# Visualize the transfer
+plotter = plot_solar_system(epoch=at_launch, outer=True, length_scale_units=u.AU, plane=Planes.EARTH_ECLIPTIC)
+plotter.plot_ephem(transfer_ephem, label="Transfer orbit", color="red")
+oumuamua_lines, _ = plotter.plot_coordinates(oumuamua_ephem.sample(epochs), position=oumuamua_ephem.rv(at_arrival)[0], label="1I/'Oumuamua at arrival", color="black")
+oumuamua_lines.set_linestyle("--")
+
+# Display the plot
 plt.savefig("fig/static/oumuamua/direct-optimum-transfer.png", bbox_inches="tight")
-#plt.show()
+plotter.show()
