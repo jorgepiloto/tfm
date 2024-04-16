@@ -6,7 +6,6 @@ from poliastro.twobody import Orbit
 from poliastro.frames import Planes
 from poliastro.plotting.misc import plot_solar_system
 from poliastro.twobody.sampling import EpochsArray
-from poliastro.plotting.orbit import OrbitPlotter
 from poliastro.util import time_range
 from poliastro.maneuver import Maneuver
 from matplotlib import pyplot as plt
