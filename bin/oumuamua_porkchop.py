@@ -15,7 +15,7 @@ def solve_porkchop(prograde=True):
     # Declare the launch and arrival spans
     #launch_span = time_range("2016-01-01", spacing=1*u.day, end="2028-01-01", scale="tdb")
     #arrival_span = time_range("2032-01-01", spacing=1*u.day, end="2035-01-01", scale="tdb")
-    N = 250
+    N = 150
     launch_span = time_range("2016-01-01", end="2028-01-01", num_values=N, scale="tdb")
     arrival_span = time_range("2032-01-01", end="2035-01-01", num_values=N, scale="tdb")
 
@@ -73,5 +73,5 @@ def solve_arrival_velocity():
 
 
 if __name__ == "__main__":
-    #solve_launch_energy()
+    solve_launch_energy()
     solve_arrival_velocity()

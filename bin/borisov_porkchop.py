@@ -1,31 +1,24 @@
 from astropy import units as u
-from astropy.time import Time
 from matplotlib import pyplot as plt
 import numpy as np
 
-from poliastro.bodies import Earth, Sun
 from poliastro.ephem import Ephem
-from poliastro.twobody import Orbit
+from poliastro.frames import Planes
 from poliastro.plotting.porkchop import PorkchopPlotter
 from poliastro.util import time_range
 
 
-def solve_porkchop(prograde):
-    min_launch_date = Time("2016-01-01", scale="tdb")
-    max_launch_date = Time("2028-01-01", scale="tdb")
-    min_arrival_date = Time("2032-01-01", scale="tdb")
-    max_arrival_date = Time("2035-01-01", scale="tdb")
+def solve_porkchop(prograde=True):
+    # Declare the launch and arrival spans
+    N = 150
+    launch_span = time_range("2016-01-01", end="2028-01-01", num_values=N, scale="tdb")
+    arrival_span = time_range("2032-01-01", end="2035-01-01", num_values=N, scale="tdb")
 
-    launch_span = time_range(min_launch_date, spacing=1*u.day, end=max_launch_date, scale="tdb")
-    arrival_span = time_range(min_arrival_date, spacing=1*u.day, end=max_arrival_date, scale="tdb")
-    epochs = time_range(min_launch_date, spacing=1*u.day, end=max_arrival_date, scale="tdb")
+    # Load the ephemerides for the Earth and 'Oumuamua
+    earth = Ephem.from_csv("bin/ephem/earth.csv", plane=Planes.EARTH_ECLIPTIC)
+    borisov = Ephem.from_csv("bin/ephem/borisov.csv", plane=Planes.EARTH_ECLIPTIC)
 
-
-    earth = Ephem.from_body(Earth, epochs=epochs)
-    borisov = Ephem.from_horizons("C/2019 Q4", epochs={'start': "2016-01-01",
-                                                    'stop': '2053-01-01',
-                                                    'step': '1d'})
-
+    # Compute the porkchop plot
     return PorkchopPlotter(
         earth, borisov, launch_span, arrival_span, prograde=prograde
     )
@@ -70,6 +63,5 @@ def solve_launch_velocity():
         plt.savefig(f"fig/static/borisov/direct-{inclination}-transfer-porkchop-avl.png", bbox_inches="tight")
 
 if __name__ == "__main__":
-    solve_porkchop(prograde=True)
     solve_launch_energy()
-    #solve_launch_velocity()
+    solve_launch_velocity()
