@@ -41,7 +41,6 @@ def main():
     )
     porkchop.ax.set_title(f"Detailed launch energy $C_3$ and time of flight\nEarth - 1I/'Oumuamua direct and prograde transfers between 2016 and 2019")
     plt.savefig(f"fig/static/oumuamua/direct-detailed-porkchop-tof.png", bbox_inches="tight")
-    plt.show()
 
     # Get launch energy and arrival velocity
     _, ax = plt.subplots(1, 1, figsize=(16, 8))
@@ -51,7 +50,7 @@ def main():
         ax=ax,
     )
     porkchop.plot_arrival_velocity(
-        levels=np.linspace(30, 40, 3) * u.km / u.s,
+        levels=[20, 25, 30, 35] * u.km / u.s,
         ax=ax
     )
     porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nEarth - 1I/'Oumuamua direct and prograde transfers between 2016 and 2032")
