@@ -26,7 +26,7 @@ def solve_porkchop(prograde=True):
 def solve_launch_energy(porkchop, inclination):
     _, ax = plt.subplots(1, 1, figsize=(16, 8))
     porkchop.plot_launch_energy(
-        levels=np.linspace(0, 12e3, 13) * u.km ** 2 / u.s ** 2,
+        levels=np.linspace(0, 10e3, int(1001)) * u.km ** 2 / u.s ** 2,
         plot_contour_lines=False,
         ax=ax,
     )
@@ -43,7 +43,7 @@ def solve_launch_energy(porkchop, inclination):
 def solve_launch_velocity(porkchop, inclination):
     _, ax = plt.subplots(1, 1, figsize=(16, 8))
     porkchop.plot_launch_energy(
-        levels=np.linspace(0, 12e3, 13) * u.km ** 2 / u.s ** 2,
+        levels=np.linspace(0, 10e3, int(1001)) * u.km ** 2 / u.s ** 2,
         plot_contour_lines=False,
         ax=ax,
     )
