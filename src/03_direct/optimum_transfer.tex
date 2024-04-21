@@ -21,7 +21,13 @@ Among the prograde and retrogade direct transfers, the most optimum transfer is
 contained in the set of prograde orbits. Analyzing figure
 \ref{fig:oumuamua-direct-prograde-transfer-porkchop} in detail, it is possible
 to limit the value of the characteristic energy at launch to ignore high speed
-impulse solutions. This reveals figure \ref{fig:oumuamua-optimum-porkchop}.
+impulse solutions. This reveals figure \ref{fig:oumuamua-optimum-porkchop}. The
+analysis is also expanded for considering the arrival velocity. This is depicted
+in figure \ref{fig:oumuamua-optimum-porkchop-avl}.
+
+The values associated with the point with the lowest characteristic energy for
+launching a spacecraft, indicated with a red cross in the figures, are collected
+in table \ref{tab:oumuamua-direct-transfer-optimum}.
 
 \begin{figure}[H]
   \centering
@@ -34,9 +40,6 @@ impulse solutions. This reveals figure \ref{fig:oumuamua-optimum-porkchop}.
   \label{fig:oumuamua-optimum-porkchop}
 \end{figure}
 
-The analysis is also expanded for considering the arrival velocity. This is
-depicted in figure \ref{fig:oumuamua-optimum-porkchop-avl}.
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/oumuamua/direct-detailed-porkchop-avl.png}
@@ -47,76 +50,62 @@ depicted in figure \ref{fig:oumuamua-optimum-porkchop-avl}.
   \label{fig:oumuamua-optimum-porkchop-avl}
 \end{figure}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\newpage
-
-
-
-
-
-
-reveals that the lowest
-characteristic energy is the one collected in table \ref{tab:oumua-direct-transfer-optimum}.
-
-\vspace{0.5cm}
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
     Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
     \hline
-    1I/'Oumuamua & 2017-08-15 & 2032-05-13 & 720.28 \\
+    1I/'Oumuamua & 2017-01-20 & 2017-10-12 & 8.82 \\
     \hline
   \end{tabular}
   \caption{Optimum transfer orbit for a direct transfer between the Earth and 1I/'Oumuamua.}
-  \label{tab:oumua-direct-transfer-optimum}
+  \label{tab:oumuamua-direct-transfer-optimum}
 \end{table}
+
+Figures \ref{fig:optimum_oumuamua_orbit_xy},
+\ref{fig:optimum_oumuamua_orbit_yz}, and \ref{fig:optimum_oumuamua_orbit_xz}
+represent the trajectory of the optimum transfer between Earth and 1I/'Oumuamua.
+Note how the orbit lies close to the ecliptic and has a very low inclination.
+This allows to take advantage of the Earth's velocity to intercept the
+interloper, reducing the required energy for the transfer.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{static/oumuamua/direct-optimum-transfer.png}
-  \caption{Optimum direct transfer orbit between Earth and 1I/'Oumuamua. The
-    high speed of 'Oumuamua one passing through its perihelion leads to a low
-    resolution in the sampling of points close to this region.}
-  \label{fig:oumuamua-direct-transfer-orbit}
+  \includegraphics[width=0.95\textwidth]{static/oumuamua/direct-optimum-transfer-xy.png}
+  \caption[Top view of the direct optimum transfer orbit from Earth to 1I/'Oumuamua]{
+    Top view of the direct optimum transfer orbit from Earth to 1I/'Oumuamua.
+    The orbit lies close to the ecliptic, taking advantage of the Earth's
+    velocity to intercept the interloper.
+  }
+  \label{fig:optimum_oumuamua_orbit_xy}
 \end{figure}
 
-Figure \ref{fig:oumuamua-direct-transfer-orbit} shows the trajectory of the
-optimum transfer between Earth and 1I/'Oumuamua. Impulses for this maneuver are
-described in table \ref{tab:oumuamua-direct-transfer-impulses}. Total cost is
-$42.00$ km/s.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{static/oumuamua/direct-optimum-transfer-xz.png}
+  \caption[Front view of the direct optimum transfer orbit from Earth to 1I/'Oumuamua]{
+    Front view of the direct optimum transfer orbit from Earth to 1I/'Oumuamua.
+    The inclination of the orbit is very low, maximizing the kinetic energy
+    provided by the Earth.
+  }
+  \label{fig:optimum_oumuamua_orbit_yz}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{static/oumuamua/direct-optimum-transfer-yz.png}
+  \caption[Side view of the direct optimum transfer orbit from Earth to 1I/'Oumuamua]{
+    Side view of the direct optimum transfer orbit from Earth to 1I/'Oumuamua.
+    This view shows again the low inclination of the transfer orbit.}
+  \label{fig:optimum_oumuamua_orbit_xz}
+\end{figure}
+
+However, a look to figure \ref{fig:oumuamua-optimum-porkchop-avl} reveals that
+the arrival velocity is very high. Even if a targeting with 'Oumuamua was
+attempted, the observation time would be very short. This is also evidenced by
+the impulses required for the maneuver, which are collected in table
+\ref{tab:oumuamua-direct-transfer-impulses}.
 
 \begin{table}[H]
   \centering
@@ -124,21 +113,18 @@ $42.00$ km/s.
     \hline
     Impulse & $\Delta v_x$ [km/s] & $\Delta v_y$ [km/s] & $\Delta v_z$ [km/s] \\
     \hline
-    Launch & 28.20 & -30.10 & 3.91 \\
+    Launch & 0.98 & -1.16 & 2.54 \\
     \hline
-    Arrival & 0.28 & -0.49 & -0.02 \\
+    Arrival & 59.10 & -14.22 & 14.33 \\
     \hline
   \end{tabular}
   \caption{Impulses required for the optimum transfer between Earth and 1I/'Oumuamua.}
   \label{tab:oumuamua-direct-transfer-impulses}
 \end{table}
 
-This scenario was analyzed by \cite{hein2018} too. However, the analysis
-presented in this work expands previous article by covering the retrograde case
-and providing the optimum solution.
-
-Despite having found and optimum solution, the value of $C_3 = 720.28$
-km$^2$/s$^2$ is still a high value for orbit transfers.
+The total time of flight is 265 days. The cost for the launch is around $2.96$
+km/s, while the arrival impulse is $66.45$ km/s. The total cost for the transfer
+is $65.41$ km/s.
 
 \subsection{Borisov}
 
