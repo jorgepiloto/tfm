@@ -1,43 +1,61 @@
 from astropy import units as u
 from astropy.time import Time
-from poliastro.bodies import Sun, Earth
-from poliastro.ephem import Ephem
-from poliastro.twobody import Orbit
+import matplotlib.pyplot as plt
+
 from poliastro.frames import Planes
-from poliastro.plotting.misc import plot_solar_system
+from poliastro.bodies import Sun
+from poliastro.twobody import Orbit
 from poliastro.twobody.sampling import EpochsArray
-from poliastro.util import time_range
 from poliastro.maneuver import Maneuver
-from matplotlib import pyplot as plt
+from poliastro.ephem import Ephem
+from poliastro.plotting.misc import plot_solar_system
+from poliastro.util import time_range
 
 
-# Compute ephemeris
-epochs = time_range("2016-02-29", end="2032-01-01", scale="tdb")
-earth_ephem = Ephem.from_body(Earth, epochs={'start': '2016-02-29', 'end': '2032-01-01', 'step': '1d'})
-borisov_ephem = Ephem.from_body("C/2019 Q4", epochs={'start': '2016-02-29', 'end': '2032-01-01', 'step': '1d'})
+# Build the ephemerides
+earth_ephem = Ephem.from_csv("bin/ephem/earth.csv", plane=Planes.EARTH_ECLIPTIC)
+borisov_ephem = Ephem.from_csv("bin/ephem/borisov.csv", plane=Planes.EARTH_ECLIPTIC)
 
-# Declare launch and arrival dates
-launch_date = Time("2016-02-29", scale="tdb")
-arrival_date = Time("2032-01-01", scale="tdb")
+# Define the desired times
+at_launch = Time("2018-07-11", scale="tdb")
+at_arrival = Time("2019-10-27", scale="tdb")
+epochs = time_range(at_launch, end=at_arrival, num_values=1000, scale="tdb")
 
-# Compute Earth and 2I/Borisov orbits at launch and arrival
-earth_at_launch = Orbit.from_ephem(Sun, earth_ephem, epoch=launch_date)
-earth_at_arrival = Orbit.from_ephem(Sun, earth_ephem, epoch=arrival_date)
-borisov_at_launch = Orbit.from_ephem(Sun, borisov_ephem, epoch=launch_date)
-borisov_at_arrival = Orbit.from_ephem(Sun, borisov_ephem, epoch=arrival_date)
+# Build associated orbits
+earth = Orbit.from_ephem(Sun, earth_ephem, epoch=at_launch)
+borisov = Orbit.from_ephem(Sun, borisov_ephem, epoch=at_arrival)
 
-# Compute the transfer orbit
-maneuver = Maneuver.lambert(earth_at_launch, borisov_at_arrival)
-for ith_impulse, (_ , impulse) in enumerate(maneuver.impulses):
-    print(f"Impulse {ith_impulse}: {[val.to(u.km / u.s) for val in impulse]}")
-print(f"Total cost: {maneuver.get_total_cost().to(u.km / u.s)}")
-transfer_orbit, _ = earth_at_launch.apply_maneuver(maneuver, intermediate=True)
+# Compute the transfer maneuver
+lambert = Maneuver.lambert(earth, borisov)
+print(f"Total cost: {lambert.get_total_cost()}")
+print(f"Total time: {lambert.get_total_time().to(u.day)}")
+for _, dv in lambert.impulses:
+    print(f"Impulses: {dv.to(u.km / u.s)}")
+    print(f"Cost: {(sum(impulse ** 2 for impulse in dv) ** 0.5).to(u.km/u.s)}")
+transfer, _ = earth.apply_maneuver(lambert, intermediate=True)
 
-plotter = plot_solar_system(epoch=launch_date, outer=True, plane=Planes.EARTH_EQUATOR, length_scale_units=u.AU)
-plotter.plot_ephem(transfer_orbit.to_ephem(strategy=EpochsArray(epochs)),
-                   label="Transfer orbit", color="red")
-plotter.plot_ephem(borisov_ephem, epoch=arrival_date, label="2I/Borisov at arrival", color="black")
-plotter.backend.ax.set_xlim(-52, 15)
-plotter.backend.ax.set_ylim(-32, 32)
-plt.savefig("fig/static/borisov/direct-optimum-transfer.png", bbox_inches="tight")
-plt.show()
+# Model the transfer orbit as an ephem
+transfer_ephem = transfer.to_ephem(strategy=EpochsArray(epochs))
+
+view_and_limits = {
+    "xy": [[-3, 3], [-3, 3]],
+    "xz": [[-0.2, 3], [-0.2, 1]],
+    "yz": [[-0.2, 3], [-0.2, 1]],
+}
+
+for view, (xlim, ylim) in view_and_limits.items():
+    plotter = plot_solar_system(epoch=at_launch, outer=False,
+                                length_scale_units=u.AU,
+                                plane=Planes.EARTH_ECLIPTIC, view=view)
+    plotter.plot_ephem(transfer_ephem, label="Transfer orbit", color="red")
+    oumuamua_lines, _ = plotter.plot_coordinates(borisov_ephem.sample(epochs),
+                                                 position=borisov_ephem.rv(at_arrival)[0],
+                                                 label="2I/Borisov at arrival", color="black")
+    oumuamua_lines.set_linestyle("--")
+
+    plotter.backend.ax.set_xlim(xlim)
+    plotter.backend.ax.set_ylim(ylim)
+    if view != "xy":
+        plotter.backend.ax.legend().remove()
+
+    plt.savefig(f"fig/static/borisov/direct-optimum-transfer-{view}.png", bbox_inches="tight")

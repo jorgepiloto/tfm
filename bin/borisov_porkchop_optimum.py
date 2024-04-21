@@ -27,6 +27,10 @@ def main():
     # Compute the porkchop plot
     porkchop = solve_porkchop(prograde=True)
 
+    print(f"Minimum energy: {porkchop.c3_launch_min:.2f}")
+    print(f"Launch date: {porkchop.launch_date_at_c3_launch_min}")
+    print(f"Arrivla date: {porkchop.arrival_date_at_c3_launch_min}")
+
     # Get launch energy and time of flight
     _, ax = plt.subplots(1, 1, figsize=(16, 8))
     porkchop.plot_launch_energy(
@@ -39,6 +43,16 @@ def main():
         ax=ax
     )
     porkchop.ax.set_title(f"Detailed launch energy $C_3$ and time of flight\nEarth - 2I/Borisov direct and prograde transfers between 2016 and 2019")
+    porkchop.ax.plot(
+            porkchop.launch_date_at_c3_launch_min.to_datetime(),
+            porkchop.arrival_date_at_c3_launch_min.to_datetime(),
+            "ko", markersize=15
+    )
+    porkchop.ax.plot(
+            porkchop.launch_date_at_c3_launch_min.to_datetime(),
+            porkchop.arrival_date_at_c3_launch_min.to_datetime(),
+            color="red", marker="x", mew=2, label="Lowest energy transfer"
+    )
     plt.savefig(f"fig/static/borisov/direct-detailed-porkchop-tof.png", bbox_inches="tight")
 
     # Get launch energy and arrival velocity
@@ -53,6 +67,16 @@ def main():
         ax=ax
     )
     porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nEarth - 2I/Borisov direct and prograde transfers between 2016 and 2032")
+    porkchop.ax.plot(
+            porkchop.launch_date_at_c3_launch_min.to_datetime(),
+            porkchop.arrival_date_at_c3_launch_min.to_datetime(),
+            "ko", markersize=15
+    )
+    porkchop.ax.plot(
+            porkchop.launch_date_at_c3_launch_min.to_datetime(),
+            porkchop.arrival_date_at_c3_launch_min.to_datetime(),
+            color="red", marker="x", mew=2, label="Lowest energy transfer"
+    )
     plt.savefig(f"fig/static/borisov/direct-detailed-porkchop-avl.png", bbox_inches="tight")
 
 

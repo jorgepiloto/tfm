@@ -34,7 +34,7 @@ in table \ref{tab:oumuamua-direct-transfer-optimum}.
   \includegraphics[width=\textwidth]{static/oumuamua/direct-detailed-porkchop-tof.png}
         \caption[Detailed porkchop showing the optimum transfer for
         1I/'Oumuamua with the time of flight.]{Detailed porkchop showing the optimum transfer for
-        1I/'Oumuamua. A region under 100 km$^2$/s$^2$ is found, indicating that
+        1I/'Oumuamua. A region under 50 km$^2$/s$^2$ is found, indicating that
         a low energy transfer is possible. The porkchop is limited up to $25$
         km/s, which is a feasible value for nowadays technology.}
   \label{fig:oumuamua-optimum-porkchop}
@@ -123,78 +123,95 @@ the impulses required for the maneuver, which are collected in table
 \end{table}
 
 The total time of flight is 265 days. The cost for the launch is around $2.96$
-km/s, while the arrival impulse is $66.45$ km/s. The total cost for the transfer
+km/s, while the arrival impulse is $62.45$ km/s. The total cost for the transfer
 is $65.41$ km/s.
 
 \subsection{Borisov}
 
 Regarding Borisov, the most optimum transfer is also a prograde transfer. The
-analysis of figure \ref{fig:borisov-direct-prograde-transfer-porkchop} shows
-that the lowest characteristic energy is the one collected in table
-\ref{tab:borisov-direct-transfer-optimum}.
+analysis of figure \ref{fig:borisov-direct-prograde-transfer-porkchop} reveals a
+series of periodic regions in the lower left region. The region containing the
+lowest characteristic energy is shown in figure
+\ref{fig:borisov-optimum-transfer-porkchop-tof}. The analysis is expanded again
+to the arrival velocity, which is shown in figure
+\ref{fig:borisov-optimum-transfer-porkchop-avl}.
 
-Previously found literature shows that \cite{hibberd2021} analyzed the direct
-transfer to the interloper, where he states that the optimum transfer happens 
+The values associated with the point with the lowest characteristic energy for
+2I/Borisov are collected in table \ref{tab:borisov-direct-transfer-optimum}.
 
-Impulses for this maneuver are described in table
-\ref{tab:borisov-direct-transfer-impulses}. Total cost is $36.95$ km/s.
-
-\begin{table}[H]
-  \centering
-  \begin{tabular}{|c|c|c|c|}
-    \hline
-    Impulse & $\Delta v_x$ [km/s] & $\Delta v_y$ [km/s] & $\Delta v_z$ [km/s] \\
-    \hline
-    Launch & -11.92 & 3.69 & -25.73 \\
-    \hline
-    Arrival & 0.58 & -5.37 & -6.37 \\
-    \hline
-  \end{tabular}
-  \caption{Impulses required for the optimum transfer between Earth and 2I/Borisov.}
-  \label{tab:borisov-direct-transfer-impulses}
-\end{table}
-
-
-\vspace{1cm}
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
     Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
     \hline
-    2I/Borisov & 2016-04-28 & 2032-01-15 & 820.06 \\
+    2I/Borisov & 2018-07-11 & 2019-10-27 & 32.14 \\
     \hline
   \end{tabular}
   \caption{Optimum transfer orbit for a direct transfer between the Earth and 2I/Borisov.}
   \label{tab:borisov-direct-transfer-optimum}
 \end{table}
 
-Figure \ref{fig:borisov-direct-transfer-orbit} shows the trajectory of the
-optimum transfer between Earth and 2I/Borisov.
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/borisov/direct-detailed-porkchop-tof.png}
-  \caption{Optimum direct transfer orbit between Earth and 2I/Borisov. This
-        trajectory does not pass close to the Sun. However, the transfer requires almost $820$
-        km$^2$/s$^2$ to achieve a targeting with the interloper.}
-  \label{fig:borisov-direct-transfer-orbit}
+        \caption[Detailed porkchop showing the optimum transfer for
+        2I/Borisov with the time of flight.]{Detailed porkchop showing the
+        optmum transfer for 2I/Borisov with isolines for the time of flight. A
+        region below 50 km$^2$/s$^2$ is found, similarly to the case of
+        'Oumuamua.}
+  \label{fig:borisov-optimum-transfer-porkchop-tof}
 \end{figure}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/borisov/direct-detailed-porkchop-avl.png}
-  \caption{Optimum direct transfer orbit between Earth and 2I/Borisov. This
-        trajectory does not pass close to the Sun. However, the transfer requires almost $820$
-        km$^2$/s$^2$ to achieve a targeting with the interloper.}
-  \label{fig:borisov-direct-transfer-orbit}
+        \caption[Detailed porkchop showing the optimum trasnfer for 2I/Borisov
+        with the arrival velocity]{Detailed porkchop showing the optimum transfer for
+        2I/Borisov with isolines for the arrival velocity. Despite having found
+        an optimum transfer, the arrival velocity is very high.}
+  \label{fig:borisov-optimum-transfer-porkchop-avl}
+\end{figure}
+
+The total time of flight is 473 days. The total cost for the launch is around
+$5.65$ km/s and the arrival impulse is $32.95$ km/s. The total cost for the
+maneuver is $38.61$ km/s.
+
+Figures \ref{fig:optimum_borisov_orbit_xy}, \ref{fig:optimum_borisov_orbit_yz},
+and \ref{fig:optimum_borisov_orbit_xz} represent the trajectory of the optimum
+transfer from Earth to 2I/Borisov. Again, the transfer does not present a high
+inclination, which allows the spacecraft to benefit from Earth's velocity.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{static/borisov/direct-optimum-transfer-xy.png}
+  \caption[Top view of the direct optimum transfer orbit from Earth to
+        2I/Borisov]{
+    Top view of the direct optimum transfer orbit from Earth to 2I/Borisov.
+    The orbit lies close to the ecliptic, taking advantage of the Earth's
+    velocity to intercept the interloper.
+  }
+  \label{fig:optimum_borisov_orbit_xy}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{static/borisov/direct-detailed-porkchop.png}
-        \caption[Detailed porkchop showing the optimum transfer for
-        2I/Borisov]{The porkchop reveals a series of optimum transfer orbits.
-        These values remain suitable for modern chemical propulsion media.}
-  \label{fig:borisov-direct-detailed-porkchop}
+  \includegraphics[width=0.95\textwidth]{static/borisov/direct-optimum-transfer-xz.png}
+  \caption[Front view of the direct optimum transfer orbit from Earth to 2I/Borisov]{
+    Front view of the direct optimum transfer orbit from Earth to 2I/Borisov.
+    The inclination of the orbit is very low, maximizing the kinetic energy
+    provided by the Earth.
+  }
+  \label{fig:optimum_borisov_orbit_yz}
 \end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{static/borisov/direct-optimum-transfer-yz.png}
+  \caption[Side view of the direct optimum transfer orbit from Earth to 2I/Borisov]{
+    Side view of the direct optimum transfer orbit from Earth to 2I/Borisov.
+    This view shows again the low inclination of the transfer orbit.}
+  \label{fig:optimum_borisov_orbit_xz}
+\end{figure}
+
+
