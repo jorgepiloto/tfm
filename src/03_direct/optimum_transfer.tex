@@ -34,9 +34,9 @@ in table \ref{tab:oumuamua-direct-transfer-optimum}.
   \includegraphics[width=\textwidth]{static/oumuamua/direct-detailed-porkchop-tof.png}
         \caption[Detailed porkchop showing the optimum transfer for
         1I/'Oumuamua with the time of flight.]{Detailed porkchop showing the optimum transfer for
-        1I/'Oumuamua. A region under 50 km$^2$/s$^2$ is found, indicating that
-        a low energy transfer is possible. The porkchop is limited up to $25$
-        km/s, which is a feasible value for nowadays technology.}
+        1I/'Oumuamua. A region close to 200 km$^2$/s$^2$ is found. Escape
+        velocity from Earth is considered too.
+  }
   \label{fig:oumuamua-optimum-porkchop}
 \end{figure}
 
@@ -50,25 +50,52 @@ in table \ref{tab:oumuamua-direct-transfer-optimum}.
   \label{fig:oumuamua-optimum-porkchop-avl}
 \end{figure}
 
+The total time of flight $\Delta t$ is 264 days. The total cost of the launch is
+$\Delta v_\text{launch} = \Delta_e + \Delta v_1 = 11.20 + 2.96 = 14.16$ km/s.
+The arrival impulse is $\Delta v_2 = 62.33$ km/s. If the rendezvous is
+considered, the total cost of the maneuver adds up to $\Delta v = 76.49$ km/s.
+All the impulses are collected in table
+\ref{tab:oumuamua-direct-transfer-impulses}.
+
+\vspace{1cm}
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
     Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
     \hline
-    1I/'Oumuamua & 2017-01-20 & 2017-10-12 & 8.82 \\
+    1I/'Oumuamua & 2017-01-20 & 2017-10-12 & 200.64 \\
     \hline
   \end{tabular}
-  \caption{Optimum transfer orbit for a direct transfer between the Earth and 1I/'Oumuamua.}
+  \caption[Optimum transfer orbit for a direct transfer between the Earth and
+        1I/'Oumuamua.]{Optimum transfer orbit for a direct transfer between the
+        Earth and 1I/'Oumuamua. The energy includes the required impulse for
+        escaping the Earth and for performing a targeting maneuver.}
   \label{tab:oumuamua-direct-transfer-optimum}
 \end{table}
 
 Figures \ref{fig:optimum_oumuamua_orbit_xy},
 \ref{fig:optimum_oumuamua_orbit_yz}, and \ref{fig:optimum_oumuamua_orbit_xz}
 represent the trajectory of the optimum transfer between Earth and 1I/'Oumuamua.
-Note how the orbit lies close to the ecliptic and has a very low inclination.
-This allows to take advantage of the Earth's velocity to intercept the
-interloper, reducing the required energy for the transfer.
+Note that the transfer orbit lies close to the ecliptic and has a very low
+inclination. This allows to take advantage of the Earth's velocity to intercept
+the interloper, reducing the required energy for the transfer.
+
+\vspace{1cm}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Impulse & $\Delta v_x$ [km/s] & $\Delta v_y$ [km/s] & $\Delta v_z$ [km/s] \\
+    \hline
+    Launch & 1.02 & -1.22 & 2.49 \\
+    \hline
+    Arrival & 58.97 & -14.18 & 14.37 \\
+    \hline
+  \end{tabular}
+  \caption{Impulses required for the optimum transfer between Earth and 1I/'Oumuamua.}
+  \label{tab:oumuamua-direct-transfer-impulses}
+\end{table}
 
 \begin{figure}[H]
   \centering
@@ -101,31 +128,6 @@ interloper, reducing the required energy for the transfer.
   \label{fig:optimum_oumuamua_orbit_xz}
 \end{figure}
 
-However, a look to figure \ref{fig:oumuamua-optimum-porkchop-avl} reveals that
-the arrival velocity is very high. Even if a targeting with 'Oumuamua was
-attempted, the observation time would be very short. This is also evidenced by
-the impulses required for the maneuver, which are collected in table
-\ref{tab:oumuamua-direct-transfer-impulses}.
-
-\begin{table}[H]
-  \centering
-  \begin{tabular}{|c|c|c|c|}
-    \hline
-    Impulse & $\Delta v_x$ [km/s] & $\Delta v_y$ [km/s] & $\Delta v_z$ [km/s] \\
-    \hline
-    Launch & 0.98 & -1.16 & 2.54 \\
-    \hline
-    Arrival & 59.10 & -14.22 & 14.33 \\
-    \hline
-  \end{tabular}
-  \caption{Impulses required for the optimum transfer between Earth and 1I/'Oumuamua.}
-  \label{tab:oumuamua-direct-transfer-impulses}
-\end{table}
-
-The total time of flight is 265 days. The cost for the launch is around $2.96$
-km/s, while the arrival impulse is $62.45$ km/s. The total cost for the transfer
-is $65.41$ km/s.
-
 \subsection{Borisov}
 
 Regarding Borisov, the most optimum transfer is also a prograde transfer. The
@@ -135,25 +137,6 @@ lowest characteristic energy is shown in figure
 \ref{fig:borisov-optimum-transfer-porkchop-tof}. The analysis is expanded again
 to the arrival velocity, which is shown in figure
 \ref{fig:borisov-optimum-transfer-porkchop-avl}.
-
-The values associated with the point with the lowest characteristic energy for
-2I/Borisov are collected in table \ref{tab:borisov-direct-transfer-optimum}.
-
-\begin{table}[H]
-  \centering
-  \begin{tabular}{|c|c|c|c|}
-    \hline
-    Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
-    \hline
-    2I/Borisov & 2018-07-12 & 2019-10-26 & 283.74 \\
-    \hline
-  \end{tabular}
-  \caption[Optimum orbit for a direct transfer between the Earth and
-    2I/Borisov.]{Optimum orbit for a direct transfer between the Earth and
-    2I/Borisov. The enegy includes the required impulse for escaping the Earth
-    and for performing a targeting maneuver.}
-  \label{tab:borisov-direct-transfer-optimum}
-\end{table}
 
 \begin{figure}[H]
   \centering
@@ -176,6 +159,26 @@ The values associated with the point with the lowest characteristic energy for
   \label{fig:borisov-optimum-transfer-porkchop-avl}
 \end{figure}
 
+The values associated with the point with the lowest characteristic energy for
+2I/Borisov are collected in table \ref{tab:borisov-direct-transfer-optimum}.
+
+\vspace{1cm}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
+    \hline
+    2I/Borisov & 2018-07-12 & 2019-10-26 & 283.74 \\
+    \hline
+  \end{tabular}
+  \caption[Optimum orbit for a direct transfer between the Earth and
+    2I/Borisov.]{Optimum orbit for a direct transfer between the Earth and
+    2I/Borisov. The enegy includes the required impulse for escaping the Earth
+    and for performing a targeting maneuver.}
+  \label{tab:borisov-direct-transfer-optimum}
+\end{table}
+
 The total time of flight $\Delta t$ is 470 days. The total cost of the launch is
 $\Delta v_\text{launch} = \Delta_e + \Delta v_1 = 11.20 + 5.64 = 16.86$ km/s.
 The arrival impulse is $\Delta v_2 = 33.00$ km/s. If the rendezvous is
@@ -183,6 +186,12 @@ considered, the total cost of the maneuver adds up to $\Delta v = 49.86$ km/s.
 All the impulses are collected in table
 \ref{tab:borisov-direct-transfer-impulses}.
 
+Figures \ref{fig:optimum_borisov_orbit_xy}, \ref{fig:optimum_borisov_orbit_yz},
+and \ref{fig:optimum_borisov_orbit_xz} represent the trajectory of the optimum
+transfer from Earth to 2I/Borisov. Again, the transfer does not present a high
+inclination, which allows the spacecraft to benefit from Earth's velocity.
+
+\vspace{1cm}
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|c|}
@@ -200,11 +209,6 @@ All the impulses are collected in table
         reached its escape velocity.}
   \label{tab:borisov-direct-transfer-impulses}
 \end{table}
-
-Figures \ref{fig:optimum_borisov_orbit_xy}, \ref{fig:optimum_borisov_orbit_yz},
-and \ref{fig:optimum_borisov_orbit_xz} represent the trajectory of the optimum
-transfer from Earth to 2I/Borisov. Again, the transfer does not present a high
-inclination, which allows the spacecraft to benefit from Earth's velocity.
 
 \begin{figure}[H]
   \centering
@@ -237,5 +241,3 @@ inclination, which allows the spacecraft to benefit from Earth's velocity.
     This view shows again the low inclination of the transfer orbit.}
   \label{fig:optimum_borisov_orbit_xz}
 \end{figure}
-
-

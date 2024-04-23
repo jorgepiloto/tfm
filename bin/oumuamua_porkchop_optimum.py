@@ -43,7 +43,7 @@ def main():
     # Get launch energy and time of flight
     _, ax = plt.subplots(1, 1, figsize=(16, 8))
     porkchop.plot_launch_energy(
-        levels=np.linspace(0, 25**2, 11) * u.km ** 2 / u.s ** 2,
+        levels=[0, 200, 250, 300, 350, 400, 450, 500, 600, 650] * u.km ** 2 / u.s ** 2,
         plot_contour_lines=True,
         ax=ax,
     )
@@ -68,7 +68,7 @@ def main():
     # Get launch energy and arrival velocity
     _, ax = plt.subplots(1, 1, figsize=(16, 8))
     porkchop.plot_launch_energy(
-        levels=np.linspace(0, 25**2, 11) * u.km ** 2 / u.s ** 2,
+        levels=[0, 200, 250, 300, 350, 400, 450, 500, 600, 650] * u.km ** 2 / u.s ** 2,
         plot_contour_lines=True,
         ax=ax,
     )
@@ -104,11 +104,11 @@ def main():
 
     # Compute the transfer maneuver
     lambert = Maneuver.lambert(earth, oumuamua)
-    print(f"Total cost: {lambert.get_total_cost()}")
-    print(f"Total time: {lambert.get_total_time().to(u.day)}")
+    print(f"Total cost: {lambert.get_total_cost():.2f}")
+    print(f"Total time: {lambert.get_total_time().to(u.day):.2f}")
     for _, dv in lambert.impulses:
         print(f"Impulses: {dv.to(u.km / u.s)}")
-        print(f"Cost: {(sum(impulse ** 2 for impulse in dv) ** 0.5).to(u.km/u.s)}")
+        print(f"Cost: {(sum(impulse ** 2 for impulse in dv) ** 0.5).to(u.km/u.s):.2f}")
     transfer, _ = earth.apply_maneuver(lambert, intermediate=True)
 
     # Model the transfer orbit as an ephem
