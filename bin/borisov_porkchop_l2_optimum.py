@@ -20,7 +20,7 @@ def solve_porkchop(prograde=True):
     launch_span = time_range("2018-04-01", end="2018-10-01", num_values=N, scale="tdb")
     arrival_span = time_range("2019-09-01", end="2020-01-01", num_values=N, scale="tdb")
 
-    # Load the ephemerides for the L2 and 'Oumuamua
+    # Load the ephemerides for the L2 and Borisov
     l2 = Ephem.from_csv("bin/ephem/semb-l2.csv", plane=Planes.EARTH_ECLIPTIC)
     borisov = Ephem.from_csv("bin/ephem/borisov.csv", plane=Planes.EARTH_ECLIPTIC)
 
@@ -52,7 +52,7 @@ def main():
         ax=ax,
         use_years=False,
     )
-    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and time of flight\nL2 - 1I/'Oumuamua direct and prograde optimum transfer")
+    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and time of flight\nL2 - 2I/Borisov direct and prograde optimum transfer")
     porkchop.ax.plot(
             porkchop.launch_date_at_c3_launch_min.to_datetime(),
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
@@ -77,7 +77,7 @@ def main():
         levels=[20, 25, 30, 35] * u.km / u.s,
         ax=ax
     )
-    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nL2 - 1I/'Oumuamua direct and prograde optimum transfer")
+    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nL2 - 2I/Borisov direct and prograde optimum transfer")
     porkchop.ax.plot(
             porkchop.launch_date_at_c3_launch_min.to_datetime(),
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),

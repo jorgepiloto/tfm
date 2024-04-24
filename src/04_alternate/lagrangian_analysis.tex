@@ -87,6 +87,14 @@ between L2 and 'Oumuamua.
   \label{fig:l2-oumuamua-optimum-porkchop}
 \end{figure}
 
+Note that these figures are very similar to the ones in
+\ref{fig:direct-detailed-porkchop-tof} and
+\ref{fig:direct-detailed-porkchop-avl}. The main difference is that launching
+from L2 requires less fuel, since the escape velocity is lower. The required
+launch energy reduces about 92.81\%. Despite this advantage, the arrival
+velocity is still high. Launch and arrival dates are shown in table
+\ref{tab:l2-oumuamua-direct-transfer-optimum}.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/oumuamua/l2-direct-detailed-porkchop-avl.png}
@@ -96,14 +104,6 @@ between L2 and 'Oumuamua.
         velocity.}
   \label{fig:l2-oumuamua-optimum-porkchop-avl}
 \end{figure}
-
-Note that these figures are very similar to the ones in
-\ref{fig:direct-detailed-porkchop-tof} and
-\ref{fig:direct-detailed-porkchop-avl}. The main difference is that launching
-from L2 requires less fuel, since the escape velocity is lower. The required
-launch energy reduces about 92.81\%. Despite this advantage, the arrival
-velocity is still high. Launch and arrival dates are shown in table
-\ref{tab:l2-oumuamua-direct-transfer-optimum}.
 
 \vspace{1cm}
 \begin{table}[H]
@@ -160,7 +160,8 @@ between L2 and Borisov.
   \includegraphics[width=\textwidth]{static/borisov/l2-direct-detailed-porkchop-tof.png}
         \caption[Detailed porkchop showing the optimum transfer for
         L2 to 2I/Borisov with the time of flight.]{Detailed porkchop showing the optimum transfer for
-        L2 to 2I/Borisov. 
+        L2 to 2I/Borisov. A point under 50 km$^2$/s$^2$ is found, highly
+        reducing the launch cost from this Lagrange point.
   }
   \label{fig:l2-oumuamua-optimum-porkchop}
 \end{figure}
@@ -171,9 +172,30 @@ between L2 and Borisov.
         \caption[Detailed porkchop showing the optimum transfer for
         L2 to 2I/Borisov with the arrival velocity.]{Detailed porkchop showing the
         optimum transfer for L2 to 2I/Borisov with isolines for the arrival
-        velocity.}
+        velocity. The optimum transfer point is found to have an arrival speed
+        close to 33 km$^2$/s$^2$.}
   \label{fig:l2-borisov-optimum-porkchop-avl}
 \end{figure}
+
+  \label{fig:oumuamua-optimum-porkchop}
+Again, these figures are very similar to the ones in
+\ref{fig:borisov-optimum-porkchop} and
+\ref{fig:borisov-optimum-porkchop}. The main difference is that launching
+from L2 requires less fuel, since the escape velocity is lower. The required
+launch energy reduces about 92.81\%. Despite this advantage, the arrival
+velocity is still high. Launch and arrival dates are shown in table
+\ref{tab:l2-oumuamua-direct-transfer-optimum}.
+
+
+
+
+The optimum transfer orbit is found to have a time of flight $\Delta t = 470.79$
+days. The total cost of the launch is $\Delta v_\text{launch} = \Delta_e +
+\Delta v_1 = 0.73 \text{ km/s} + 5.13 \text{ km/s} = 5.83$ km/s. The arrival
+impulse is $\Delta v_2 = 33.02$ km/s. If the rendezvous is considered, the total
+cost of the maneuver adds up to $\Delta v = 38.85$ km/s. Detailed impulses are
+shown in table \ref{tab:l2-oumuamua-direct-transfer-impulses}.
+
 
 
 % Minimum energy: 34.30
