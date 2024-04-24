@@ -52,7 +52,6 @@ where in $\mu$ is the gravitational parameter of the Earth-Moon system, and $r$
 is the distance from the point of interest to the barycenter of the Earth-Moon
 system, which can be computed using equation \ref{eq:earth_moon_distance}.
 
-% TODO: use astronomical symbols
 \begin{equation}
     r_{\text{Barycenter}} = \frac{r_{\text{\Terra}} \cdot m_{\text{\Terra}}
         + r_{\text{\Moon}} \cdot m_{\text{\Moon}}}{m_{\text{\Terra}} +
@@ -65,11 +64,136 @@ been computed by solving previous equations for a span of time ranging between
 years 2000 and 2050. The mean value for the escape velocity from L2 is $0.73$
 km/s.
 
-\subsection{Direct optimum transfer from L2}
+\subsection{Optimum direct transfers from L2}
 
 The analysis for a direct optimum transfer from L2 to each one of the discovered
 ISOs follows the same model than the one presented in chapter
 \ref{ch:direct-transfer}.
+
+\subsubsection{'Oumuamua}
+
+Figures \ref{fig:l2-oumuamua-optimum-porkchop} and
+\ref{fig:l2-oumuamua-optimum-porkchop-avl} show the porkchop plots showing the
+launch energy, time of flight, and arrival velocity for a direct prograde launch
+between L2 and 'Oumuamua.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{static/oumuamua/l2-direct-detailed-porkchop-tof.png}
+        \caption[Detailed porkchop showing the optimum transfer for
+        L2 to 1I/'Oumuamua with the time of flight.]{Detailed porkchop showing the optimum transfer for
+        L2 to 1I/'Oumuamua. 
+  }
+  \label{fig:l2-oumuamua-optimum-porkchop}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{static/oumuamua/l2-direct-detailed-porkchop-avl.png}
+        \caption[Detailed porkchop showing the optimum transfer for
+        L2 to 1I/'Oumuamua with the arrival velocity.]{Detailed porkchop showing the
+        optimum transfer for L2 to 1I/'Oumuamua with isolines for the arrival
+        velocity.}
+  \label{fig:l2-oumuamua-optimum-porkchop-avl}
+\end{figure}
+
+Note that these figures are very similar to the ones in
+\ref{fig:direct-detailed-porkchop-tof} and
+\ref{fig:direct-detailed-porkchop-avl}. The main difference is that launching
+from L2 requires less fuel, since the escape velocity is lower. The required
+launch energy reduces about 92.81\%. Despite this advantage, the arrival
+velocity is still high. Launch and arrival dates are shown in table
+\ref{tab:l2-oumuamua-direct-transfer-optimum}.
+
+\vspace{1cm}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
+    \hline
+    1I/'Oumuamua & 2017-01-22 & 2017-10-13 & 14.41 \\
+    \hline
+  \end{tabular}
+  \caption[Optimum transfer orbit for a direct transfer between L2 and
+        1I/'Oumuamua.]{Optimum transfer orbit for a direct transfer between
+        L2 and 1I/'Oumuamua. The energy includes the required impulse for
+        escaping the L2 point and for performing a targeting maneuver.}
+  \label{tab:l2-oumuamua-direct-transfer-optimum}
+\end{table}
+
+The optimum transfer orbit is found to have a time of flight $\Delta t = 263.67$
+days. The total cost of the launch is $\Delta v_\text{launch} = \Delta_e +
+\Delta v_1 = 0.73 \text{ km/s} + 3.07 \text{ km/s} = 3.80$ km/s. The arrival
+impulse is $\Delta v_2 = 61.46$ km/s. If the rendezvous is considered, the total
+cost of the maneuver adds up to $\Delta v = 64.53$ km/s. Detailed impulses are
+shown in table \ref{tab:l2-oumuamua-direct-transfer-impulses}.
+
+\vspace{1cm}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Impulse & $\Delta v_x$ [km/s] & $\Delta v_y$ [km/s] & $\Delta v_z$ [km/s] \\
+    \hline
+    Launch & 1.67 & -1.30 & 2.21 \\
+    \hline
+    Arrival & 58.04 & -14.06 & 14.47 \\
+    \hline
+  \end{tabular}
+    \caption[Required impulses for a direct prograde transfer between L2 and
+    'Oumuamua]{Required impulses for a direct prograde transfer between L2 and
+    'Oumuamua.}
+  \label{tab:l2-oumuamua-direct-transfer-impulses}
+\end{table}
+
+
+\subsubsection{Borisov}
+
+Figures \ref{fig:l2-borisov-optimum-porkchop} and
+\ref{fig:l2-borisov-optimum-porkchop-avl} show the porkchop plots showing the
+launch energy, time of flight, and arrival velocity for a direct prograde launch
+between L2 and Borisov.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{static/borisov/l2-direct-detailed-porkchop-tof.png}
+        \caption[Detailed porkchop showing the optimum transfer for
+        L2 to 2I/Borisov with the time of flight.]{Detailed porkchop showing the optimum transfer for
+        L2 to 2I/Borisov. 
+  }
+  \label{fig:l2-oumuamua-optimum-porkchop}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{static/borisov/l2-direct-detailed-porkchop-avl.png}
+        \caption[Detailed porkchop showing the optimum transfer for
+        L2 to 2I/Borisov with the arrival velocity.]{Detailed porkchop showing the
+        optimum transfer for L2 to 2I/Borisov with isolines for the arrival
+        velocity.}
+  \label{fig:l2-borisov-optimum-porkchop-avl}
+\end{figure}
+
+
+% Minimum energy: 34.30
+% Launch date: 2018-07-12 23:52:45.829
+% Arrivla date: 2019-10-26 18:56:04.824
+% Total cost: 38.15 km / s
+% Total time: 470.79 d
+% Impulses: [4.82265173 1.71203514 0.30288116] km / s
+% Cost: 5.13 km / s
+% Impulses: [ -1.60913588 -18.3371453  -27.41824731] km / s
+% Cost: 33.02 km / s
+
+
+
+
+
+
+
+
+
 
 
 

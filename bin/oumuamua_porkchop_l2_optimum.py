@@ -1,3 +1,4 @@
+
 from astropy import units as u
 from matplotlib import pyplot as plt
 import numpy as np
@@ -63,7 +64,7 @@ def main():
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
             color="red", marker="x", mew=2, label="Lowest energy transfer"
     )
-    #plt.savefig(f"fig/static/oumuamua/direct-detailed-porkchop-tof.png", bbox_inches="tight")
+    plt.savefig(f"fig/static/oumuamua/l2-direct-detailed-porkchop-tof.png", bbox_inches="tight")
     plt.show()
 
     # Get launch energy and arrival velocity
@@ -88,7 +89,7 @@ def main():
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
             color="red", marker="x", mew=2, label="Lowest energy transfer"
     )
-    #plt.savefig(f"fig/static/oumuamua/direct-detailed-porkchop-avl.png", bbox_inches="tight")
+    plt.savefig(f"fig/static/oumuamua/l2-direct-detailed-porkchop-avl.png", bbox_inches="tight")
     plt.show()
 
     # Compute optimum transfer orbit
@@ -134,7 +135,7 @@ def main():
         plotter.backend.ax.set_ylim(ylim)
         if view != "xy":
             plotter.backend.ax.legend().remove()
-        #plt.savefig(f"fig/static/oumuamua/direct-optimum-transfer-{view}.png", bbox_inches="tight")
+        plt.savefig(f"fig/static/oumuamua/l2-direct-optimum-transfer-{view}.png", bbox_inches="tight")
         plt.show()
 
 if __name__ == "__main__":

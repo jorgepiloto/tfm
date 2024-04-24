@@ -17,19 +17,19 @@ from poliastro.plotting.misc import plot_solar_system
 def solve_porkchop(prograde=True):
     # Declare the launch and arrival spans
     N = 200
-    launch_span = time_range("2016-10-01", end="2017-11-01", num_values=N, scale="tdb")
-    arrival_span = time_range("2017-09-12", end="2019-01-01", num_values=N, scale="tdb")
+    launch_span = time_range("2018-04-01", end="2018-10-01", num_values=N, scale="tdb")
+    arrival_span = time_range("2019-09-01", end="2020-01-01", num_values=N, scale="tdb")
 
-    # Load the ephemerides for the Earth and 'Oumuamua
+    # Load the ephemerides for the L2 and 'Oumuamua
     l2 = Ephem.from_csv("bin/ephem/semb-l2.csv", plane=Planes.EARTH_ECLIPTIC)
-    oumuamua = Ephem.from_csv("bin/ephem/oumuamua.csv", plane=Planes.EARTH_ECLIPTIC)
+    borisov = Ephem.from_csv("bin/ephem/borisov.csv", plane=Planes.EARTH_ECLIPTIC)
 
     # Compute the escape velocity
     escape_velocity = 0.73 * u.km / u.s
 
     # Compute the porkchop plot
     return PorkchopPlotter(
-        l2, oumuamua, launch_span, arrival_span, prograde=prograde, escape_velocity=escape_velocity
+        l2, borisov, launch_span, arrival_span, prograde=prograde, escape_velocity=escape_velocity
     )
 
 def main():
@@ -52,7 +52,7 @@ def main():
         ax=ax,
         use_years=False,
     )
-    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and time of flight\nEarth - 1I/'Oumuamua direct and prograde transfers between 2016 and 2019")
+    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and time of flight\nL2 - 1I/'Oumuamua direct and prograde optimum transfer")
     porkchop.ax.plot(
             porkchop.launch_date_at_c3_launch_min.to_datetime(),
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
@@ -63,7 +63,7 @@ def main():
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
             color="red", marker="x", mew=2, label="Lowest energy transfer"
     )
-    #plt.savefig(f"fig/static/oumuamua/direct-detailed-porkchop-tof.png", bbox_inches="tight")
+    plt.savefig(f"fig/static/borisov/l2-direct-detailed-porkchop-tof.png", bbox_inches="tight")
     plt.show()
 
     # Get launch energy and arrival velocity
@@ -77,7 +77,7 @@ def main():
         levels=[20, 25, 30, 35] * u.km / u.s,
         ax=ax
     )
-    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nEarth - 1I/'Oumuamua direct and prograde transfers between 2016 and 2032")
+    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nL2 - 1I/'Oumuamua direct and prograde optimum transfer")
     porkchop.ax.plot(
             porkchop.launch_date_at_c3_launch_min.to_datetime(),
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
@@ -88,12 +88,12 @@ def main():
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
             color="red", marker="x", mew=2, label="Lowest energy transfer"
     )
-    #plt.savefig(f"fig/static/oumuamua/direct-detailed-porkchop-avl.png", bbox_inches="tight")
+    plt.savefig(f"fig/static/borisov/l2-direct-detailed-porkchop-avl.png", bbox_inches="tight")
     plt.show()
 
     # Compute optimum transfer orbit
     l2_ephem = Ephem.from_csv("bin/ephem/semb-l2.csv", plane=Planes.EARTH_ECLIPTIC)
-    oumuamua_ephem = Ephem.from_csv("bin/ephem/oumuamua.csv", plane=Planes.EARTH_ECLIPTIC)
+    borisov_ephem = Ephem.from_csv("bin/ephem/borisov.csv", plane=Planes.EARTH_ECLIPTIC)
 
     # Define the desired times
     at_launch = porkchop.launch_date_at_c3_launch_min
@@ -102,10 +102,10 @@ def main():
 
     # Build associated orbits
     l2 = Orbit.from_ephem(Sun, l2_ephem, epoch=at_launch)
-    oumuamua = Orbit.from_ephem(Sun, oumuamua_ephem, epoch=at_arrival)
+    borisov = Orbit.from_ephem(Sun, borisov_ephem, epoch=at_arrival)
 
     # Compute the transfer maneuver
-    lambert = Maneuver.lambert(l2, oumuamua)
+    lambert = Maneuver.lambert(l2, borisov)
     print(f"Total cost: {lambert.get_total_cost():.2f}")
     print(f"Total time: {lambert.get_total_time().to(u.day):.2f}")
     for _, dv in lambert.impulses:
@@ -117,9 +117,9 @@ def main():
     transfer_ephem = transfer.to_ephem(strategy=EpochsArray(epochs))
 
     view_and_limits = {
-        "xy": [[-2, 2], [-2, 2]],
-        "xz": [[-1.5, 1.5], [-0.5, 1]],
-        "yz": [[-1.5, 1.5], [-0.5, 1]],
+        "xy": [[-3, 3], [-3, 3]],
+        "xz": [[-0.8, 2.5], [-0.2, 1]],
+        "yz": [[-1.6, 1.7], [-0.2, 1]],
     }
 
     for view, (xlim, ylim) in view_and_limits.items():
@@ -127,14 +127,16 @@ def main():
                                     length_scale_units=u.AU,
                                     plane=Planes.EARTH_ECLIPTIC, view=view)
         plotter.plot_ephem(transfer_ephem, label="Transfer orbit", color="red")
-        oumuamua_lines, _ = plotter.plot_coordinates(oumuamua_ephem.sample(epochs), position=oumuamua_ephem.rv(at_arrival)[0], label="1I/'Oumuamua at arrival", color="black")
-        oumuamua_lines.set_linestyle("--")
+        borisov_lines, _ = plotter.plot_coordinates(borisov_ephem.sample(epochs),
+                                 position=borisov_ephem.rv(at_arrival)[0],
+                                 label="2I/Borisov at arrival", color="black")
+        borisov_lines.set_linestyle("--")
 
         plotter.backend.ax.set_xlim(xlim)
         plotter.backend.ax.set_ylim(ylim)
         if view != "xy":
             plotter.backend.ax.legend().remove()
-        #plt.savefig(f"fig/static/oumuamua/direct-optimum-transfer-{view}.png", bbox_inches="tight")
+        plt.savefig(f"fig/static/borisov/l2-direct-optimum-transfer-{view}.png", bbox_inches="tight")
         plt.show()
 
 if __name__ == "__main__":
