@@ -85,23 +85,22 @@ for lpoint, (label, position) in points_and_labels.items():
     zoom_plotter.backend.ax.annotate(
             "Earth", 
             earth_position,
-            (earth_position[0], earth_position[1] - 0.002),
+            (earth_position[0], earth_position[1] - 0.003),
             color="blue"
     )
     moon_position = (0.98336, -0.00273)
     zoom_plotter.backend.ax.annotate(
             "Moon", 
             moon_position,
-            (moon_position[0], moon_position[1] - 0.002),
+            (moon_position[0], moon_position[1] - 0.003),
             color="gray"
     )
 
 
-
-
-
 axins.set_xlim(0.97, 0.993)
 axins.set_ylim(-0.01, 0.0075)
+axins.set_xlabel("")
+axins.set_ylabel("")
 axins.legend().remove()
 
 plotter.backend.ax.indicate_inset_zoom(axins, edgecolor="black")

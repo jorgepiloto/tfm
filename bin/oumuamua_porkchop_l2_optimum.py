@@ -21,7 +21,7 @@ def solve_porkchop(prograde=True):
     launch_span = time_range("2016-10-01", end="2017-11-01", num_values=N, scale="tdb")
     arrival_span = time_range("2017-09-12", end="2019-01-01", num_values=N, scale="tdb")
 
-    # Load the ephemerides for the Earth and 'Oumuamua
+    # Load the ephemerides for the L2 and 'Oumuamua
     l2 = Ephem.from_csv("bin/ephem/semb-l2.csv", plane=Planes.EARTH_ECLIPTIC)
     oumuamua = Ephem.from_csv("bin/ephem/oumuamua.csv", plane=Planes.EARTH_ECLIPTIC)
 
@@ -53,7 +53,7 @@ def main():
         ax=ax,
         use_years=False,
     )
-    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and time of flight\nEarth - 1I/'Oumuamua direct and prograde transfers between 2016 and 2019")
+    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and time of flight\nL2 - 1I/'Oumuamua direct and prograde transfers between 2016 and 2019")
     porkchop.ax.plot(
             porkchop.launch_date_at_c3_launch_min.to_datetime(),
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
@@ -78,7 +78,7 @@ def main():
         levels=[20, 25, 30, 35] * u.km / u.s,
         ax=ax
     )
-    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nEarth - 1I/'Oumuamua direct and prograde transfers between 2016 and 2032")
+    porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nL2 - 1I/'Oumuamua direct and prograde transfers between 2016 and 2032")
     porkchop.ax.plot(
             porkchop.launch_date_at_c3_launch_min.to_datetime(),
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
