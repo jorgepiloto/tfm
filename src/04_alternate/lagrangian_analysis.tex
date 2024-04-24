@@ -7,7 +7,8 @@ L1, L2, and L3 are collinear with the two massive bodies, while L4 and L5 are
 located at the vertices of the equilateral triangle formed by the two massive
 bodies. The L1, L2, and L3 points are unstable, while L4 and L5 are stable. The
 L4 and L5 points are sometimes called Trojan points, and the two massive bodies
-are sometimes called the primaries.
+are sometimes called the primaries. Figure \ref{fig:lagrange_points} shows the
+Lagrange points in the Sun - Earth-Moon barycenter system.
 
 Despite L1, L2, and L3 being unstable, they are of particular interest because
 of their proximity to the primaries. In fact, stable orbits can be achieved
@@ -26,8 +27,38 @@ Interceptor, see \cite{jones2019}.
     \centering
     \includegraphics[width=\textwidth]{static/lagrange_points.png}
     \caption[Lagrange points in the Sun - Earth system.]{Lagrange points in the
-        Sun - Earth system. All points are shown except L3. Ephemerides for this
+        Sun - Earth-Moon barycenter system. All points are shown except L3. Ephemerides for this
         point are not provided by the JPL Horizons system. Despite this
         situation, the point is not analyzed in this work.}
     \label{fig:lagrange_points}
 \end{figure}
+
+\subsection{Escape velocity from L2}
+
+For the computation of the escape velocity in the vicinity of the Lagrange
+points, the gravitation effects of the Earth and the Moon are considered. Even
+if the Lagrange points only appear in the restricted three-body problem,
+computing the escape velocity requires using the two-body problem is still a
+valid approach as long as the barycenter of the Earth-Moon system is used.
+
+Thus, the escape velocity can be computed using equation \ref{eq:escape_velocity}.
+
+\begin{equation}
+        v_{\text{esc}} = \sqrt{\frac{2 \mu}{r}}
+\label{eq:escape_velocity}
+\end{equation}
+
+where in $\mu$ is the gravitational parameter of the Earth-Moon system, and $r$
+is the distance from the point of interest to the barycenter of the Earth-Moon
+system, which can be computed using equation \ref{eq:earth_moon_distance}.
+
+% TODO: use astronomical symbols
+\begin{equation}
+    r_{\text{Earth - Moon}} = \frac{r_{\text{Earth}} \cdot m_{\text{Earth}} + r_{\text{Moon}} \cdot m_{\text{Moon}}}{m_{\text{Earth}} + m_{\text{Moon}}}
+    \label{eq:earth_moon_distance}
+\end{equation}
+
+To simplify the computer routines, an average value for the escape velocity has
+been computed by solving previous equations for a span of time ranging between
+years 2000 and 2050. The mean value for the escape velocity from L2 is $0.73$
+km/s.
