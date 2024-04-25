@@ -16,7 +16,7 @@ def max_deflection_angle(k, vh, r):
 vh_values = np.linspace(0, 25, 100) * u.km / u.s
 
 fig, ax = plt.subplots(figsize=(10, 7))
-ax.set_xlabel(r"$v_{\infty}$ (km/s)")
+ax.set_xlabel(r"Hyperbolic velocity ${v}_{\infty}$ (km/s)")
 ax.set_ylabel(r"Maximum deflection angle (deg)")
 ax.set_xlim(0, 25)
 ax.set_ylim(0, 180)
@@ -32,7 +32,7 @@ for planet in planets:
       deflection_angles.append(max_deflection_angle(k, vh.to_value(u.km/u.s), r))
 
     ax.plot(vh_values, deflection_angles, label=planet.name,
-            color=BODY_COLORS[planet.name], lw=2)
+            color=BODY_COLORS[planet.name], lw=2.5)
 
 labelLines(ax.get_lines(), align=False, fontsize=14)
 ax.legend(shadow=True)
