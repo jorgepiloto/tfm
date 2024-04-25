@@ -1,4 +1,5 @@
 \section{Gravity assist analysis}
+\label{sec:gravity-assist-analysis}
 
 Gravity assists are a well-known maneuver for changing the velocity of a
 spacecraft by using the gravitational pull of a planet. The spacecraft flies by
@@ -11,7 +12,7 @@ missions like Voyayer I and Voyayer II.
 This analysis only considers unpowered gravity assists, in which the spacecraft
 does not lose mass or performs any propulsive maneuvers.
 
-\subsection{Revisiting gravity assists}
+%\subsection{Revisiting gravity assists}
 
 The characteristic energy of a spacecraft in the heliocentric frame is given by
 equation \ref{eq:helio-energy}:
@@ -86,15 +87,6 @@ hyperbolic speed is not linear and is given by equation
 where $f_{\text{max}}$ is the maximum energy increment factor given by equation
 \ref{eq:max-energy-increment-factor}:
 
-%def max_f(epsilon, max_psi):
-%    max_psi = np.deg2rad(max_psi)
-%
-%    if epsilon >= (np.pi - max_psi):
-%        f = (np.cos(epsilon) + 1) / 2
-%    else:
-%        f = (np.cos(epsilon) - np.cos(max_psi + epsilon)) / 2
-%    return f
-
 \begin{equation}
         f_{\text{max}} = \begin{cases}
             \frac{\cos{\epsilon} + 1}{2} & \text{if } \epsilon \geq \pi - \psi_{\max} \\
@@ -102,6 +94,9 @@ where $f_{\text{max}}$ is the maximum energy increment factor given by equation
         \end{cases}
         \label{eq:max-energy-increment-factor}
 \end{equation}
+
+where $\epsilon$ is the angle between the direction of the asymptote and the
+planet's velocity vector.
  
 Note that for a certain hyperbolic speed, the maximum energy other planets
 rather than Jupiter may provide higher energy increments. For example, below

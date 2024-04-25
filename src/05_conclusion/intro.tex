@@ -1,0 +1,75 @@
+\chapter{Conclusion}
+
+After the direct transfer analysis from Earth in \ref{ch:direct-transfer}, the
+direct transfer analysis from L2 in \ref{sec:lagrange-points-analysis}, and a
+the gravity assist review in \ref{sec:gravity-assist-analysis}, this chapter
+sumarizes all the results and presents the final conclusions.
+
+\section{Summary of results}
+
+Results collected in the previous chapters are summarized in table
+\ref{tab:summary-results-c3}. A high reduction in the launch energy is observed
+when launching from L2 instead of Earth. This reduction is mainly due to the low
+escape velocity at L2, which allows for a more efficient transfer.
+
+\vspace{1cm}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Object & $C_3$ launch Earth [km$^2$/s$^2$] & $C_3$ launch L2 [km$^2$/s$^2$] & Reduction [\%] \\
+    \hline
+    1I/'Oumuamua & 192.00 & 14.41 & 92.51 \\
+    \hline
+    2I/Borisov & 286.00 & 34.30 & 88.08 \\
+    \hline
+  \end{tabular}
+  \caption[Comparison of the launch energy for direct transfers from Earth and
+  L2.]{Comparison of the launch energy for direct transfers from Earth and L2.}
+  \label{tab:summary-results-c3}
+\end{table}
+
+Furthermore, L2 allows for parking a spacecraft while waiting for new ISOs to be
+discovered. By having a spacecraft already in space, the flexibility of the
+mission is increased. More reaction time is available to plan the mission and
+optimize the trajectory.
+
+From the gravity assist analysis, it is concluded that the use of a gravity
+assist depends on various factors including:
+
+\begin{itemize}
+  \item The relative position of the planets at the time of the launch
+  \item The time of flight of the mission
+  \item The inclination with respect to the ecliptic plane of the ISO
+  \item The velocity of the interloper
+  \item The launch velocity
+\end{itemize}
+
+It is likely that a multiple gravity assist with some of the inner planets could
+be performed in an optimistic scenario.
+
+This conclusion is similar to the one achieved by the Comet Interceptor mission,
+where a direct extern transfer orbit from L2 to the interloper is proposed as a
+first solution to the transfer problem.
+
+\section{Future work}
+
+While working on this work, the author has found a lack of robust software for
+optimizing gravity assist trajectories. 
+
+Trajectory optimization in the context of astrodynamics is a complex topic.
+Gravity assist can also become complicated if considering multiple flybys on
+multiple planets, and impulsive maneuvers in between.
+
+The development of a software tool for optimizing gravity assist trajectories
+given a set of planets, times spans, fuel constrains, and other requirements
+would be a great tool. 
+
+If such a software is devised, it could be used to quickly design an optimum
+mission to intercept an ISO. By doing so, astrodynamicists overcome the high
+relative speeds and inclinations expected to be found in interlopers.
+
+Finally, the simulation of synthetic ISOs could be used to test the software and
+prepare draft mission flight plans, reducing even more the reaction time. If
+combined with the optimization software, the achieved results could be
+outstanding.
