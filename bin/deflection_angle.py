@@ -1,6 +1,7 @@
 from astropy import units as u
 import numpy as np
 import matplotlib.pyplot as plt
+from labellines import labelLines
 
 from poliastro.bodies import Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
 from poliastro.plotting.util import BODY_COLORS
@@ -33,5 +34,6 @@ for planet in planets:
     ax.plot(vh_values, deflection_angles, label=planet.name,
             color=BODY_COLORS[planet.name], lw=2)
 
+labelLines(ax.get_lines(), align=False, fontsize=14)
 ax.legend(shadow=True)
 plt.savefig("fig/static/deflection_angle.png", bbox_inches="tight")

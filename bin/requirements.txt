@@ -2,3 +2,4 @@ astropy
 httpx
 numpy
 matplotlib
+matplotlib-label-lines
