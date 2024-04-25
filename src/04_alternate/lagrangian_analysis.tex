@@ -25,13 +25,13 @@ the James Webb Space Telescope, see \cite{gardner2006}, or the future Comet
 Interceptor, see \cite{jones2019}.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{static/lagrange_points.png}
-    \caption[Lagrange points in the Sun - Earth system.]{Lagrange points in the
-        Sun - Earth-Moon barycenter system. All points are shown except L3. Ephemerides for this
-        point are not provided by the JPL Horizons system. Despite this
-        situation, the point is not analyzed in this work.}
-    \label{fig:lagrange_points}
+  \centering
+  \includegraphics[width=\textwidth]{static/lagrange_points.png}
+  \caption[Lagrange points in the Sun - Earth system.]{Lagrange points in the
+    Sun - Earth-Moon barycenter system. All points are shown except L3. Ephemerides for this
+    point are not provided by the JPL Horizons system. Despite this
+    situation, the point is not analyzed in this work.}
+  \label{fig:lagrange_points}
 \end{figure}
 
 \subsection{Escape velocity from L2}
@@ -45,8 +45,8 @@ valid approach as long as the barycenter of the Earth-Moon system is used.
 Thus, the escape velocity can be computed using equation \ref{eq:escape_velocity}.
 
 \begin{equation}
-        v_{\text{esc}} = \sqrt{\frac{2 \mu}{d}} = \sqrt{\frac{2 \mu}{\norm{\vec{r_b} - \vec{r}}}}
-\label{eq:escape_velocity}
+  v_{\text{esc}} = \sqrt{\frac{2 \mu}{d}} = \sqrt{\frac{2 \mu}{\norm{\vec{r_b} - \vec{r}}}}
+  \label{eq:escape_velocity}
 \end{equation}
 
 where in $\mu$ is the gravitational parameter of the Earth-Moon system, and $d$
@@ -54,10 +54,10 @@ is the distance from the point of interest to the barycenter of the Earth-Moon
 system, which can be computed using equation \ref{eq:earth_moon_distance}.
 
 \begin{equation}
-        \vec{r_{b}} = \frac{\vec{r_{\text{\Terra}}} \cdot m_{\text{\Terra}}
-        + \vec{r_{\text{\Moon}}} \cdot m_{\text{\Moon}}}{m_{\text{\Terra}} +
-        m_{\text{\Moon}}}
-    \label{eq:earth_moon_distance}
+  \vec{r_{b}} = \frac{\vec{r_{\text{\Terra}}} \cdot m_{\text{\Terra}}
+    + \vec{r_{\text{\Moon}}} \cdot m_{\text{\Moon}}}{m_{\text{\Terra}} +
+    m_{\text{\Moon}}}
+  \label{eq:earth_moon_distance}
 \end{equation}
 
 To simplify the computer routines, an average value for the escape velocity has
@@ -81,9 +81,9 @@ between L2 and 'Oumuamua.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/oumuamua/l2-direct-detailed-porkchop-tof.png}
-        \caption[Detailed porkchop showing the optimum transfer for
-        L2 to 1I/'Oumuamua with the time of flight.]{Detailed porkchop showing the optimum transfer for
-        L2 to 1I/'Oumuamua. 
+  \caption[Detailed porkchop showing the optimum transfer for
+    L2 to 1I/'Oumuamua with the time of flight.]{Detailed porkchop showing the optimum transfer for
+    L2 to 1I/'Oumuamua.
   }
   \label{fig:l2-oumuamua-optimum-porkchop}
 \end{figure}
@@ -98,10 +98,10 @@ dates are shown in table \ref{tab:l2-oumuamua-direct-transfer-optimum}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/oumuamua/l2-direct-detailed-porkchop-avl.png}
-        \caption[Detailed porkchop showing the optimum transfer for
-        L2 to 1I/'Oumuamua with the arrival velocity.]{Detailed porkchop showing the
-        optimum transfer for L2 to 1I/'Oumuamua with isolines for the arrival
-        velocity.}
+  \caption[Detailed porkchop showing the optimum transfer for
+    L2 to 1I/'Oumuamua with the arrival velocity.]{Detailed porkchop showing the
+    optimum transfer for L2 to 1I/'Oumuamua with isolines for the arrival
+    velocity.}
   \label{fig:l2-oumuamua-optimum-porkchop-avl}
 \end{figure}
 
@@ -110,21 +110,21 @@ dates are shown in table \ref{tab:l2-oumuamua-direct-transfer-optimum}.
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
-    Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
+    Object       & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
     \hline
-    1I/'Oumuamua & 2017-01-22 & 2017-10-13 & 14.41 \\
+    1I/'Oumuamua & 2017-01-22  & 2017-10-13   & 14.41                         \\
     \hline
   \end{tabular}
   \caption[Optimum transfer orbit for a direct transfer between L2 and
-        1I/'Oumuamua.]{Optimum transfer orbit for a direct transfer between
-        L2 and 1I/'Oumuamua. The energy includes the required impulse for
-        escaping the L2 point and for performing a targeting maneuver.}
+    1I/'Oumuamua.]{Optimum transfer orbit for a direct transfer between
+    L2 and 1I/'Oumuamua. The energy includes the required impulse for
+    escaping the L2 point and for performing a targeting maneuver.}
   \label{tab:l2-oumuamua-direct-transfer-optimum}
 \end{table}
 
 The optimum transfer orbit is found to have a time of flight $\Delta t = 263.67$
 days. The total cost of the launch is $\Delta v_\text{launch} = \Delta v_e +
-\Delta v_1 = 0.73 \text{ km/s} + 3.07 \text{ km/s} = 3.80$ km/s. The arrival
+  \Delta v_1 = 0.73 \text{ km/s} + 3.07 \text{ km/s} = 3.80$ km/s. The arrival
 impulse is $\Delta v_2 = 61.46$ km/s. If the rendezvous is considered, the total
 cost of the maneuver adds up to $\Delta v = 64.53$ km/s. Detailed impulses are
 shown in table \ref{tab:l2-oumuamua-direct-transfer-impulses}.
@@ -136,12 +136,12 @@ shown in table \ref{tab:l2-oumuamua-direct-transfer-impulses}.
     \hline
     Impulse & $\Delta v_x$ [km/s] & $\Delta v_y$ [km/s] & $\Delta v_z$ [km/s] \\
     \hline
-    Launch & 1.67 & -1.30 & 2.21 \\
+    Launch  & 1.67                & -1.30               & 2.21                \\
     \hline
-    Arrival & 58.04 & -14.06 & 14.47 \\
+    Arrival & 58.04               & -14.06              & 14.47               \\
     \hline
   \end{tabular}
-    \caption[Required impulses for a direct prograde transfer between L2 and
+  \caption[Required impulses for a direct prograde transfer between L2 and
     'Oumuamua]{Required impulses for a direct prograde transfer between L2 and
     'Oumuamua.}
   \label{tab:l2-oumuamua-direct-transfer-impulses}
@@ -158,10 +158,10 @@ between L2 and Borisov.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/borisov/l2-direct-detailed-porkchop-tof.png}
-        \caption[Detailed porkchop showing the optimum transfer for
-        L2 to 2I/Borisov with the time of flight.]{Detailed porkchop showing the optimum transfer for
-        L2 to 2I/Borisov. A point under 50 km$^2$/s$^2$ is found, highly
-        reducing the launch cost from this Lagrange point.
+  \caption[Detailed porkchop showing the optimum transfer for
+    L2 to 2I/Borisov with the time of flight.]{Detailed porkchop showing the optimum transfer for
+    L2 to 2I/Borisov. A point under 50 km$^2$/s$^2$ is found, highly
+    reducing the launch cost from this Lagrange point.
   }
   \label{fig:l2-borisov-optimum-porkchop}
 \end{figure}
@@ -169,11 +169,11 @@ between L2 and Borisov.
 \begin{figure}[H]
   \centering
   \includegraphics[width=\textwidth]{static/borisov/l2-direct-detailed-porkchop-avl.png}
-        \caption[Detailed porkchop showing the optimum transfer for
-        L2 to 2I/Borisov with the arrival velocity.]{Detailed porkchop showing the
-        optimum transfer for L2 to 2I/Borisov with isolines for the arrival
-        velocity. The optimum transfer point is found to have an arrival speed
-        close to 33 km/s.}
+  \caption[Detailed porkchop showing the optimum transfer for
+    L2 to 2I/Borisov with the arrival velocity.]{Detailed porkchop showing the
+    optimum transfer for L2 to 2I/Borisov with isolines for the arrival
+    velocity. The optimum transfer point is found to have an arrival speed
+    close to 33 km/s.}
   \label{fig:l2-borisov-optimum-porkchop-avl}
 \end{figure}
 
@@ -189,21 +189,21 @@ arrival velocity is still high. Launch and arrival dates are shown in table
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
-    Object & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
+    Object     & Launch date & Arrival date & Required $C_3$ [km$^2$/s$^2$] \\
     \hline
-    2I/Borisov & 2018-07-12 & 2019-10-26 & 34.30 \\
+    2I/Borisov & 2018-07-12  & 2019-10-26   & 34.30                         \\
     \hline
   \end{tabular}
   \caption[Optimum transfer orbit for a direct transfer between L2 and
-        2I/Borisov.]{Optimum transfer orbit for a direct transfer between
-        L2 and 2I/Borisov. The energy includes the required impulse for
-        escaping the L2 point and for performing a targeting maneuver.}
+    2I/Borisov.]{Optimum transfer orbit for a direct transfer between
+    L2 and 2I/Borisov. The energy includes the required impulse for
+    escaping the L2 point and for performing a targeting maneuver.}
   \label{tab:l2-borisov-direct-transfer-optimum}
 \end{table}
 
 The optimum transfer orbit is found to have a time of flight $\Delta t = 470.79$
 days. The total cost of the launch is $\Delta v_\text{launch} = \Delta v_e +
-\Delta v_1 = 0.73 \text{ km/s} + 5.13 \text{ km/s} = 5.83$ km/s. The arrival
+  \Delta v_1 = 0.73 \text{ km/s} + 5.13 \text{ km/s} = 5.83$ km/s. The arrival
 impulse is $\Delta v_2 = 33.02$ km/s. If the rendezvous is considered, the total
 cost of the maneuver adds up to $\Delta v = 38.85$ km/s. Detailed impulses are
 shown in table \ref{tab:l2-borisov-direct-transfer-optimum}.
@@ -215,12 +215,12 @@ shown in table \ref{tab:l2-borisov-direct-transfer-optimum}.
     \hline
     Impulse & $\Delta v_x$ [km/s] & $\Delta v_y$ [km/s] & $\Delta v_z$ [km/s] \\
     \hline
-    Launch & 4.82 & 1.71 & 0.30 \\
+    Launch  & 4.82                & 1.71                & 0.30                \\
     \hline
-    Arrival & -1.61 & -18.34 & -27.42 \\
+    Arrival & -1.61               & -18.34              & -27.42              \\
     \hline
   \end{tabular}
-    \caption[Required impulses for a direct prograde transfer between L2 and
+  \caption[Required impulses for a direct prograde transfer between L2 and
     Borisov]{Required impulses for a direct prograde transfer between L2 and
     Borisov.}
   \label{tab:l2-borisov-direct-transfer-impulses}

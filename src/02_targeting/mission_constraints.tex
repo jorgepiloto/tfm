@@ -16,8 +16,8 @@ performed by the spacecraft, a certain amount of fuel is consumed. This loss in
 mass is modeled according to the Tsiolkovsky rocket equation \ref{eq:tsiolkovsky}:
 
 \begin{equation}
-        \Delta v = v_e \ln \left( \frac{m_0}{m_f} \right) = I_{sp} g_0 \ln \left( \frac{m_0}{m_f} \right)
-        \label{eq:tsiolkovsky}
+  \Delta v = v_e \ln \left( \frac{m_0}{m_f} \right) = I_{sp} g_0 \ln \left( \frac{m_0}{m_f} \right)
+  \label{eq:tsiolkovsky}
 \end{equation}
 
 Where $\Delta v$ is the change in velocity, $v_e$ is the exhaust velocity, $m_0$
@@ -35,8 +35,8 @@ specific energy. Equation \ref{eq:c3} summarizes this relation for hyperbolic
 orbits:
 
 \begin{equation}
-        C_3 = v_{\infty}^2
-        \label{eq:c3}
+  C_3 = v_{\infty}^2
+  \label{eq:c3}
 \end{equation}
 
 Given a propulsion system, a maximum specific energy is imposed, limiting the
@@ -51,21 +51,21 @@ Another mission constraint within the context of interlopers rendezvous is the
 excess velocity at arrival. Lauch and arrival velocities are used to compute the
 impulsed required to reach the target orbit. The first impulse $\Delta v_1$ is
 used to launch the spacecraft into the target orbit. The second impulse $\Delta
-v_2$ is used to adapt to the orbit of the interloper, leading to a rendezvous.
+  v_2$ is used to adapt to the orbit of the interloper, leading to a rendezvous.
 Thus, two scenarios are possible:
 
 \begin{itemize}
 
-    \item \textbf{Targeting of the interloper.} The spacecraft overshoots the target by
-    not applying the final impulse. This ahieves a greater launch
-    impulse as more fuel mass can be allocated for this task. However, the
-    spacecraft is not able to rendezvous with the interloper, as the second
-    impulse is never applied.
+  \item \textbf{Targeting of the interloper.} The spacecraft overshoots the target by
+        not applying the final impulse. This ahieves a greater launch
+        impulse as more fuel mass can be allocated for this task. However, the
+        spacecraft is not able to rendezvous with the interloper, as the second
+        impulse is never applied.
 
-    \item \textbf{Rendezvous of the interloper.} The spacecraft performs the
-    arrival impulse to adapt to the orbit of the interloper. This reduces the
-    amount of fuel available for the launch impulse but allows the spacecraft to
-    follow the interloper.
+  \item \textbf{Rendezvous of the interloper.} The spacecraft performs the
+        arrival impulse to adapt to the orbit of the interloper. This reduces the
+        amount of fuel available for the launch impulse but allows the spacecraft to
+        follow the interloper.
 
 \end{itemize}
 

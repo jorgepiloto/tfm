@@ -5,12 +5,12 @@ restricted two-body problem dynamics. Equation \ref{eq:lambert-bvp} models this
 problem and figure \ref{fig:lambert-geometry} depicts its geometry.
 
 \begin{equation}
-    \ddot{\vec{r}} = -\frac{\mu}{r^3}\vec{r} \quad \begin{cases}
-        \vec{r}(t_1) = \vec{r}_1 \\ 
-        \vec{r}(t_2) = \vec{r}_2 \\ 
-        \Delta t = t_2 - t_1
-    \end{cases}
-    \label{eq:lambert-bvp}
+  \ddot{\vec{r}} = -\frac{\mu}{r^3}\vec{r} \quad \begin{cases}
+    \vec{r}(t_1) = \vec{r}_1 \\
+    \vec{r}(t_2) = \vec{r}_2 \\
+    \Delta t = t_2 - t_1
+  \end{cases}
+  \label{eq:lambert-bvp}
 \end{equation}
 
 If the initial position vector $\vec{r}_1$ is the launch position at time
@@ -33,10 +33,10 @@ achieved by the propulsion system in order to insert the spacecraft into the
 desired targeting orbit.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{lambert-problem/geometry.png}
-    \caption{Lambert's problem geometry. The targeting orbit is represented by the red curve.}
-    \label{fig:lambert-geometry}
+  \centering
+  \includegraphics[width=0.75\textwidth]{lambert-problem/geometry.png}
+  \caption{Lambert's problem geometry. The targeting orbit is represented by the red curve.}
+  \label{fig:lambert-geometry}
 \end{figure}
 
 \subsection{Mathematical model}
@@ -49,25 +49,25 @@ in table \ref{tab:lambert-parameters}.
 
 \vspace{1cm}
 \begin{table}[H]
-    \centering
-    \begin{tabular}{|c|c|}
-        \hline
-        Parameter & Description \\
-        \hline
-        $\mu$ & Gravitational parameter \\
-        $\vec{r}_1$ & Initial position vector \\
-        $\vec{r}_2$ & Final position vector \\
-        $\Delta t$ & Time of flight \\
-        $M$ & Number of desired revolutions \\
-        Prograde & Inclination of the final orbit \\
-        Low path & Type of path when more than two solutions are available \\
-        Maxiter & Maximum number of iterations when finding a solution \\
-        Atol & Absolute tolerance of the numerical routine \\
-        Rtol & Relative tolerance of the numerical routien \\
-        \hline
-    \end{tabular}
-    \caption{Parameters accepted by any Lambert's problem solver}
-    \label{tab:lambert-parameters}
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+    Parameter   & Description                                             \\
+    \hline
+    $\mu$       & Gravitational parameter                                 \\
+    $\vec{r}_1$ & Initial position vector                                 \\
+    $\vec{r}_2$ & Final position vector                                   \\
+    $\Delta t$  & Time of flight                                          \\
+    $M$         & Number of desired revolutions                           \\
+    Prograde    & Inclination of the final orbit                          \\
+    Low path    & Type of path when more than two solutions are available \\
+    Maxiter     & Maximum number of iterations when finding a solution    \\
+    Atol        & Absolute tolerance of the numerical routine             \\
+    Rtol        & Relative tolerance of the numerical routien             \\
+    \hline
+  \end{tabular}
+  \caption{Parameters accepted by any Lambert's problem solver}
+  \label{tab:lambert-parameters}
 \end{table}
 
 This work assumes Lambert's problem in the context of the restricted two-body

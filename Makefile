@@ -7,7 +7,7 @@ BINDIR = bin
 FIGDIR = fig
 TEXDIR = tex
 SRCDIR = src
-CHDIRS = $(SRCDIR)/00_introduction
+CHDIRS = $(SRCDIR)/00_introduction $(SRCDIR)/01_background $(SRCDIR)/02_targeting $(SRCDIR)/03_direct $(SRCDIR)/04_alternate $(SRCDIR)/05_conclusion
 STRUCTURE := $(PROJECTDIR) $(CHDIRS) $(TEXDIR)
 
 # Main project file
@@ -83,7 +83,7 @@ binaries:
 	@echo "Done!"
 
 # Reformat all the required files for good code quality
-reformat:
+style:
 	@echo "Reformating all TEX files..."
 	@for tex_file in $(TEXFILES); do\
 		echo "$${tex_file}";\
