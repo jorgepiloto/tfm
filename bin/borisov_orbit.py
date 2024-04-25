@@ -12,15 +12,16 @@ discovery = Time("2019-08-30", scale="tdb")
 
 view_and_limits = {
     "xy": [[-3, 3], [-3, 3]],
-    "xz": [[-0.2, 3], [-0.2, 1]],
-    "yz": [[-0.2, 3], [-0.2, 1]],
+    "xz": [[-0.2, 3], [-0.2, 1.2]],
+    "yz": [[-1.6, 1.7], [-0.2, 1]],
 }
 
 for view, (xlim, ylim) in view_and_limits.items():
     plotter = plot_solar_system(epoch=discovery, outer=False,
                                 length_scale_units=u.AU,
                                 plane=Planes.EARTH_ECLIPTIC, view=view)
-    borisov_orbit_lines, _ = plotter.plot_ephem(borisov, epoch=discovery, color="black", label="2I/Borisov")
+    borisov_orbit_lines, _ = plotter.plot_ephem(borisov, epoch=discovery,
+                                                color="black", label="2I/Borisov at its discovery")
     borisov_orbit_lines.set_linestyle("--")
     plotter.backend.ax.set_xlim(xlim)
     plotter.backend.ax.set_ylim(ylim)

@@ -20,7 +20,9 @@ for view, (xlim, ylim) in view_and_limits.items():
     plotter = plot_solar_system(epoch=discovery, outer=False,
                                 length_scale_units=u.AU,
                                 plane=Planes.EARTH_ECLIPTIC, view=view)
-    borisov_orbit_lines, _ = plotter.plot_ephem(oumuamua, epoch=discovery, color="black", label="1I/'Oumuamua")
+    borisov_orbit_lines, _ = plotter.plot_ephem(oumuamua, epoch=discovery,
+                                                color="black",
+                                                label="1I/'Oumuamua at its discovery")
     borisov_orbit_lines.set_linestyle("--")
 
     plotter.backend.ax.set_xlim(xlim)
