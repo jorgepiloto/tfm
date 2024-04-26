@@ -1,5 +1,6 @@
-
 from astropy import units as u
+from astropy.time import Time
+from labellines import labelLines
 from matplotlib import pyplot as plt
 import numpy as np
 
@@ -64,8 +65,12 @@ def main():
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
             color="red", marker="x", mew=2, label="Lowest energy transfer"
     )
+    discovery = Time("2017-10-19", scale="tdb")
+    discovery_line = porkchop.ax.axvline(x=discovery.to_datetime(),
+                                         color='black', linewidth=3,
+                                         label="Discovery of Oumuamua")
+    labelLines([discovery_line], align=True, fontsize=14, backgroundcolor="white")
     plt.savefig(f"fig/static/oumuamua/l2-direct-detailed-porkchop-tof.png", bbox_inches="tight")
-    plt.show()
 
     # Get launch energy and arrival velocity
     _, ax = plt.subplots(1, 1, figsize=(16, 8))
@@ -89,8 +94,11 @@ def main():
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
             color="red", marker="x", mew=2, label="Lowest energy transfer"
     )
+    discovery_line = porkchop.ax.axvline(x=discovery.to_datetime(),
+                                         color='black', linewidth=3,
+                                         label="Discovery of Oumuamua")
+    labelLines([discovery_line], align=True, fontsize=14, backgroundcolor="white")
     plt.savefig(f"fig/static/oumuamua/l2-direct-detailed-porkchop-avl.png", bbox_inches="tight")
-    plt.show()
 
     # Compute optimum transfer orbit
     l2_ephem = Ephem.from_csv("bin/ephem/semb-l2.csv", plane=Planes.EARTH_ECLIPTIC)

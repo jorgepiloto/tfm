@@ -1,5 +1,7 @@
 from astropy import units as u
+from astropy.time import Time
 from matplotlib import pyplot as plt
+from labellines import labelLines
 import numpy as np
 
 from poliastro.bodies import Sun
@@ -63,6 +65,11 @@ def main():
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
             color="red", marker="x", mew=2, label="Lowest energy transfer"
     )
+    discovery = Time("2017-10-19", scale="tdb")
+    discovery_line = porkchop.ax.axvline(x=discovery.to_datetime(),
+                                         color='black', linewidth=3,
+                                         label="Discovery of Oumuamua")
+    labelLines([discovery_line], align=True, fontsize=14, backgroundcolor="white")
     plt.savefig(f"fig/static/oumuamua/direct-detailed-porkchop-tof.png", bbox_inches="tight")
 
     # Get launch energy and arrival velocity
@@ -87,6 +94,10 @@ def main():
             porkchop.arrival_date_at_c3_launch_min.to_datetime(),
             color="red", marker="x", mew=2, label="Lowest energy transfer"
     )
+    discovery_line = porkchop.ax.axvline(x=discovery.to_datetime(),
+                                         color='black', linewidth=3,
+                                         label="Discovery of Oumuamua")
+    labelLines([discovery_line], align=True, fontsize=14, backgroundcolor="white")
     plt.savefig(f"fig/static/oumuamua/direct-detailed-porkchop-avl.png", bbox_inches="tight")
 
     # Compute optimum transfer orbit
