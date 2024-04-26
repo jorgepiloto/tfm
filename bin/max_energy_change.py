@@ -59,4 +59,5 @@ for planet in PLANETS:
             lw=2.5)
 
 labelLines(ax.get_lines(), align=True, fontsize=14)
+ax.grid(True)
 plt.savefig("fig/static/max_energy.png", bbox_inches="tight")

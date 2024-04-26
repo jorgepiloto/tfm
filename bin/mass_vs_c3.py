@@ -55,8 +55,9 @@ def main():
     ax.set_ylabel('Payload mass (kg)')
     ax.set_xlim(0, 100)
     ax.set_ylim(500, 10000)
-    labelLines(ax.get_lines(), align=True, fontsize=14)
+    labelLines(ax.get_lines(), align=True, fontsize=10, backgroundcolor="white")
     ax.legend(shadow=True)
+    ax.grid(True)
     plt.savefig('fig/static/payload_vs_c3.png', bbox_inches='tight')
 
 if __name__ == '__main__':
