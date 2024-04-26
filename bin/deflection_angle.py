@@ -34,6 +34,6 @@ for planet in planets:
     ax.plot(vh_values, deflection_angles, label=planet.name,
             color=BODY_COLORS[planet.name], lw=2.5)
 
-labelLines(ax.get_lines(), align=False, fontsize=14)
+labelLines(ax.get_lines(), align=True, fontsize=14)
 ax.legend(shadow=True)
 plt.savefig("fig/static/deflection_angle.png", bbox_inches="tight")

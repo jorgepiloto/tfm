@@ -58,5 +58,5 @@ for planet in PLANETS:
     ax.plot(vh_list, energy, label=planet.name, color=BODY_COLORS[planet.name],
             lw=2.5)
 
-labelLines(ax.get_lines(), align=False, fontsize=14)
+labelLines(ax.get_lines(), align=True, fontsize=14)
 plt.savefig("fig/static/max_energy.png", bbox_inches="tight")
