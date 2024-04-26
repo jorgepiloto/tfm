@@ -37,7 +37,7 @@ def main():
         },
     }
 
-    _, ax = plt.subplots(figsize=(10, 6))
+    _, ax = plt.subplots(figsize=(10, 6), dpi=300)
     for rocket, params in rocket_params.items():
         c3, payload = params['c3'], params['payload']
         
@@ -55,7 +55,7 @@ def main():
     ax.set_ylabel('Payload mass (kg)')
     ax.set_xlim(0, 100)
     ax.set_ylim(500, 10000)
-    labelLines(ax.get_lines(), align=True, fontsize=10, backgroundcolor="white")
+    labelLines(ax.get_lines(), align=True, fontsize=8, backgroundcolor="white")
     ax.legend(shadow=True)
     ax.grid(True)
     plt.savefig('fig/static/payload_vs_c3.png', bbox_inches='tight')

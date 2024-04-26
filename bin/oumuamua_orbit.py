@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 from poliastro.frames import Planes
 from poliastro.ephem import Ephem
 from poliastro.plotting.misc import plot_solar_system
+from poliastro.plotting.orbit.backends import Matplotlib2D
 
 oumuamua = Ephem.from_csv("bin/ephem/oumuamua.csv", plane=Planes.EARTH_ECLIPTIC)
 discovery = Time("2017-10-19", scale="tdb")
@@ -16,6 +17,8 @@ view_and_limits = {
     "yz": [[-1.5, 1.5], [-0.5, 1]],
 }
 
+_, ax = plt.subplots(figsize=(10, 7), dpi=300)
+backend = Matplotlib2D(ax=ax)
 for view, (xlim, ylim) in view_and_limits.items():
     plotter = plot_solar_system(epoch=discovery, outer=False,
                                 length_scale_units=u.AU,

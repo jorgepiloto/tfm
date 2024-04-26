@@ -43,7 +43,7 @@ def max_energy_at_vh(planet, vh):
 
 vh_list = np.linspace(0, 25, 100)
 
-fig, ax = plt.subplots(figsize=(10, 7))
+fig, ax = plt.subplots(figsize=(10, 7), dpi=300)
 ax.set_xlabel(r"Hyperbolic velocity ${v}_{\infty}$ (km/s)")
 ax.set_ylabel(r"Maximum energy increase (km$^2$/s$^2$)")
 ax.set_xlim(0, 25)

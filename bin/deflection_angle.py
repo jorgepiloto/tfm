@@ -15,7 +15,7 @@ def max_deflection_angle(k, vh, r):
 
 vh_values = np.linspace(0, 25, 100) * u.km / u.s
 
-fig, ax = plt.subplots(figsize=(10, 7))
+fig, ax = plt.subplots(figsize=(10, 7), dpi=300)
 ax.set_xlabel(r"Hyperbolic velocity ${v}_{\infty}$ (km/s)")
 ax.set_ylabel(r"Maximum deflection angle (deg)")
 ax.set_xlim(0, 25)
