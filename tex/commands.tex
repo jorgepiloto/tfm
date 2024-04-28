@@ -97,6 +97,9 @@
 {\multicitedelim}
 {\usebibmacro{postnote}}
 
+% Use custom text to cite references
+\newcommand{\customcite}[2]{#1~\cite{#2}}
+
 % Reduce top and lower space in equations
 \xpatchcmd{\NCC@ignorepar}{%
   \abovedisplayskip\abovedisplayshortskip}
