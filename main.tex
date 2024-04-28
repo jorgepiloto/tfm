@@ -10,6 +10,10 @@
 % Style: https://www.overleaf.com/learn/latex/Biblatex_bibliography_styles
 % Cite style: https://www.overleaf.com/learn/latex/Biblatex_citation_styles
 \usepackage[backend=biber, style=verbose, citestyle=authoryear, sorting=ynt]{biblatex}
+
+% Define how author names are formatted in citations
+\DeclareNameAlias{sortname}{family-given}
+
 \bibliography{bib/articles_modern}
 \bibliography{bib/books_classic}
 \bibliography{bib/books_modern}
