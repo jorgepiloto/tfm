@@ -145,7 +145,7 @@ dmypy.json
 .venv
 
 # Ignore output pdf
-*.pdf
+main.pdf
 
 # External dependencies
 ext/
