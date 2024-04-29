@@ -1,5 +1,12 @@
 # Interstellar Interceptors. Mission design for rendezvous with objects in hyperbolic orbits.
 
+<div align="center">
+     <img width="128px" src="https://github.com/jorgepiloto/tfm/blob/main/fig/static/shots/1.png" />
+     <img width="128px" src="https://github.com/jorgepiloto/tfm/blob/main/fig/static/shots/2.png" />
+     <img width="128px" src="https://github.com/jorgepiloto/tfm/blob/main/fig/static/shots/3.png" />
+     <img width="128px" src="https://github.com/jorgepiloto/tfm/blob/main/fig/static/shots/4.png" />
+</div>
+
 ## About
 
 This repository contains all the files required to generate my master's thesis
