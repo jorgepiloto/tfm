@@ -71,7 +71,7 @@ def main():
         ax=ax,
     )
     porkchop.plot_arrival_velocity(
-        levels=np.linspace(30, 40, 3) * u.km / u.s,
+        levels=[20, 25, 30, 35, 40, 50, 60] * u.km / u.s,
         ax=ax
     )
     porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nEarth - 2I/Borisov direct and prograde transfers between 2016 and 2032")

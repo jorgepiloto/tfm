@@ -41,7 +41,7 @@ def solve_launch_energy(porkchop, inclination):
         use_years=True,
     )
     porkchop.ax.set_title(f"Launch energy $C_3$ and time of flight\nEarth - 1I/'Oumuamua direct and {inclination} transfers between 2016 and 2028")
-    plt.savefig(f"fig/static/oumuamua/direct-{inclination}-transfer-porkchop.png", bbox_inches="tight")
+    #plt.savefig(f"fig/static/oumuamua/direct-{inclination}-transfer-porkchop.png", bbox_inches="tight")
 
 def solve_arrival_velocity(porkchop, inclination):
     _, ax = plt.subplots(1, 1, figsize=(16, 8))
@@ -57,7 +57,8 @@ def solve_arrival_velocity(porkchop, inclination):
         ax=ax
     )
     porkchop.ax.set_title(f"Launch energy $C_3$ and arrival velocity\nEarth - 1I/'Oumuamua direct and {inclination} transfers between 2016 and 2028")
-    plt.savefig(f"fig/static/oumuamua/direct-{inclination}-transfer-porkchop-avl.png", bbox_inches="tight")
+    #plt.savefig(f"fig/static/oumuamua/direct-{inclination}-transfer-porkchop-avl.png", bbox_inches="tight")
+    plt.show()
 
 
 if __name__ == "__main__":

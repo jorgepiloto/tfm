@@ -80,7 +80,7 @@ def main():
         ax=ax,
     )
     porkchop.plot_arrival_velocity(
-        levels=[20, 25, 30, 35] * u.km / u.s,
+        levels=[5, 10, 15, 20, 25, 30, 35, 40, 50] * u.km / u.s,
         ax=ax
     )
     porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nL2 - 1I/'Oumuamua direct and prograde transfers between 2016 and 2032")

@@ -70,7 +70,7 @@ def main():
                                          color='black', linewidth=3,
                                          label="Discovery of Oumuamua")
     labelLines([discovery_line], align=True, fontsize=14, backgroundcolor="white")
-    plt.savefig(f"fig/static/oumuamua/direct-detailed-porkchop-tof.png", bbox_inches="tight")
+    #plt.savefig(f"fig/static/oumuamua/direct-detailed-porkchop-tof.png", bbox_inches="tight")
 
     # Get launch energy and arrival velocity
     _, ax = plt.subplots(1, 1, figsize=(16, 8))
@@ -80,7 +80,7 @@ def main():
         ax=ax,
     )
     porkchop.plot_arrival_velocity(
-        levels=[20, 25, 30, 35] * u.km / u.s,
+        levels=[20, 25, 30, 35, 40, 50, 60] * u.km / u.s,
         ax=ax
     )
     porkchop.ax.set_title(f"Detailed launch energy $C_3$ and arrival velocity\nEarth - 1I/'Oumuamua direct and prograde transfers between 2016 and 2032")
