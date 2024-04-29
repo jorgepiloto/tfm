@@ -50,8 +50,8 @@ def main():
         
         ax.plot(c3_interp, payload_interp, label=rocket, lw=2.5)
 
-    ax.set_title('Payload mass at given C3 for modern launchers')
-    ax.set_xlabel(r'C3 launch (km$^2$/s$^2$)')
+    ax.set_title(r'Payload mass at given $C_3$ for modern launchers')
+    ax.set_xlabel(r'$C_3$ launch (km$^2$/s$^2$)')
     ax.set_ylabel('Payload mass (kg)')
     ax.set_xlim(0, 100)
     ax.set_ylim(500, 10000)
