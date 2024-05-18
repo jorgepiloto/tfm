@@ -1,6 +1,8 @@
 \documentclass[xcolor={dvipsnames}]{beamer}
 \usepackage[utf8]{inputenc}
 
+\usepackage{amsmath}
+
 \usepackage{graphicx}  % For including graphics
 \usepackage{subcaption} % For subfigures
 \usepackage{caption}   % For customizing captions
@@ -9,7 +11,7 @@
   singlelinecheck=off,
   labelsep=colon,
   labelfont=bf,
-  font=small,
+  font=footnotesize,
   justification=centering,
 }
 
@@ -158,7 +160,9 @@ Their study can unleash information about:\\[0.5cm]
 
 %---------------------------------------------------------
 \begin{frame}
-\frametitle{Why are they interesting?}
+\frametitle{Discovered interstellar objects}
+
+There are two confirmed ISOs to this day:
 
 \begin{figure}
     \centering
@@ -177,32 +181,61 @@ Their study can unleash information about:\\[0.5cm]
     \end{minipage}
 \end{figure}
 
+\pause
+\vspace{-0.25cm}
+These interlopers present the following orbit attributes:
+\vspace{0.25cm}
+
+\begin{itemize}
+    \item Hyperbolic orbits
+    \item High relative velocity
+    \item High inclination w.r.t. the ecliptic plane
+    \item Discovered close to the direction of the Solar Apex
+\end{itemize}
 
 \end{frame}
 %---------------------------------------------------------
 
-\section{Second section}
-
 %---------------------------------------------------------
-%Highlighting text
 \begin{frame}
-\frametitle{Sample frame title}
+\frametitle{Orbits of 1I/'Oumuamua and 2I/Borisov}
 
-In this slide, some important text will be
-\alert{highlighted} because it's important.
-Please, don't abuse it.
+\begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/static/oumuamua/orbit_xy.png}
+        \caption{1I/'Oumuamua orbit top view}
+        \label{fig:figure1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/static/oumuamua/orbit_yz.png}
+        \caption{1I/'Oumuamua orbit side view}
+        \label{fig:figure2}
+    \end{minipage}
+\end{figure}
 
-\begin{block}{Remark}
-Sample text
-\end{block}
+\vspace{-0.35cm}
 
-\begin{alertblock}{Important theorem}
-Sample text in red box
-\end{alertblock}
+\begin{figure}
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/static/borisov/orbit_xy.png}
+        \caption{2I/Borisov orbit top view}
+        \label{fig:figure1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{fig/static/borisov/orbit_yz.png}
+        \caption{2I/Borisov orbit side view}
+        \label{fig:figure2}
+    \end{minipage}
+\end{figure}
 
-\begin{examples}
-Sample text in green box. The title of the block is ``Examples".
-\end{examples}
 \end{frame}
 %---------------------------------------------------------
 
@@ -210,23 +243,38 @@ Sample text in green box. The title of the block is ``Examples".
 %---------------------------------------------------------
 %Two columns
 \begin{frame}
-\frametitle{Two-column slide}
+\frametitle{Navigating through space: the Lambert's problem}
+
+Lambert's problem is the Boundary Value Problem (BVP) in the context of the
+restricted two-body problem dynamics.
 
 \begin{columns}
 
-\column{0.5\textwidth}
-This is a text in first column.
-$$E=mc^2$$
-\begin{itemize}
-\item First item
-\item Second item
-\end{itemize}
+  \column{0.5\textwidth}
 
-\column{0.5\textwidth}
-This text will be in the second column
-and on a second tought this is a nice looking
-layout in some cases.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.85\textwidth]{fig/lambert-problem/geometry.png}
+        \caption{Geometry of the Lambert's problem}
+        \label{fig:example_figure}
+    \end{figure}
+  
+  \column{0.5\textwidth}
+
+  $$\ddot{\vec{r}} = -\frac{\mu}{r^3}\vec{r} \quad \begin{cases}
+     & \vec{r}\;(t_1) = \vec{r_1} \\ 
+     & \vec{r}\;(t_2) = \vec{r_2}
+     \end{cases}$$
+
+
+\pause
+
+\vspace{1cm}
+Solve for the orbit which passes through $\vec{r_1}$ and $\vec{r_2}$ over a
+finite amount of time $\Delta t = t_2 - t_1$.
+
 \end{columns}
+
 \end{frame}
 %---------------------------------------------------------
 
