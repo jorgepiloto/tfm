@@ -31,7 +31,9 @@ BCFFILES := $(addsuffix /*.bcf,$(STRUCTURE))
 BLGFILES := $(addsuffix /*.blg,$(STRUCTURE))
 BLXFILES := $(addsuffix /*blx.bib,$(STRUCTURE))
 RUNFILES := $(addsuffix /*run.xml,$(STRUCTURE))
-JUNKFILES := $(AUXFILES) $(OUTFILES) $(LOFFILES) $(LOTFILES) $(LOGFILES) $(TOCFILES) $(GZFILES) $(BBLFILES) $(BCFFILES) $(BLGFILES) $(BLXFILES) $(RUNFILES)
+NAVFILES := $(addsuffix /*.nav,$(STRUCTURE))
+SNMFILES := $(addsuffix /*.snm,$(STRUCTURE))
+JUNKFILES := $(AUXFILES) $(OUTFILES) $(LOFFILES) $(LOTFILES) $(LOGFILES) $(TOCFILES) $(GZFILES) $(BBLFILES) $(BCFFILES) $(BLGFILES) $(BLXFILES) $(RUNFILES) $(NAVFILES) $(SNMFILES)
 
 # Latex engine and compiling options
 LATEXENGINE = xelatex
@@ -99,3 +101,6 @@ clean:
 	@rm -f $(JUNKFILES)
 	@rm -f $(FIGDIR)/*.png
 	@echo "Done!"
+
+slides:
+	@pdflatex sld/slides.tex
