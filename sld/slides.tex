@@ -6,12 +6,22 @@
 \usepackage{graphicx}  % For including graphics
 \usepackage{subcaption} % For subfigures
 \usepackage{caption}   % For customizing captions
+
 \captionsetup[figure]{
   name=,
   singlelinecheck=off,
   labelsep=colon,
   labelfont=bf,
   font=footnotesize,
+  justification=centering,
+}
+
+\captionsetup[table]{
+  name=,
+  singlelinecheck=off,
+  labelsep=colon,
+  labelfont=bf,
+  font=normal,
   justification=centering,
 }
 
@@ -241,7 +251,6 @@ These interlopers present the following orbit attributes:
 
 
 %---------------------------------------------------------
-%Two columns
 \begin{frame}
 \frametitle{Navigating through space: the Lambert's problem}
 
@@ -274,6 +283,258 @@ Solve for the orbit which passes through $\vec{r_1}$ and $\vec{r_2}$ over a
 finite amount of time $\Delta t = t_2 - t_1$.
 
 \end{columns}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Estimating the cost of the maneuver using the $C_3$ energy}
+
+Lambert's problem computes the initial velocity $\vec{v_1}$ and final velocity
+$\vec{v_2}$ of the orbit.
+
+\vspace{0.25cm}
+    \begin{itemize}
+        \item First impulse: $\Delta v_1 = \left \|  v_{1} - v_{\text{origin}} \right \|$
+        \item Last impulse: $\Delta v_2 = \left \|  v_{2} - v_{\text{iso}} \right \|$
+    \end{itemize}
+\vspace{0.25cm}
+
+\pause
+The total cost of the maneuver is $\Delta v = \Delta v_1 + \Delta v_2$. This
+relates with the fuel mass via the Tsiolkovsky rocket equation:
+
+$$ \Delta v = v_{e} \ln \left( \frac{m_0}{m_f} \right) $$
+
+\pause
+\vspace{0.25cm}
+The characteristic energy for hyperbolic orbits $C_3$ is defined as:
+
+$$ C_3 = v_{\infty}^2 $$
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Minimizing the cost of the maneuver}
+
+Porkchop plots are used to find the optimal launch and arrival dates by solving
+Lambert's problem for a variety of trajectories.
+
+\pause
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig/static/porkchop.png}
+    \caption{Porkchop plot between Earth and Mars}
+    \label{fig:porkchop}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Analyzed scenarios}
+
+The analyzed scenarios in this work for each discovered ISO include:
+
+\vspace{0.25cm}
+\begin{itemize}
+    \item Direct transfer between the Earth and the ISO
+    \item Direct transfer between the L2 point and the ISO
+\end{itemize}
+
+\pause
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig/static/lagrange_points.png}
+    \caption{Lagrange points for the Sun Earth-Moon system}
+    \label{fig:lagrange}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{1I/'Oumuamua: direct prograde transfer from Earth}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fig/static/oumuamua/direct-detailed-porkchop-tof.png}
+    \caption{Direct transfer from Earth}
+    \label{fig:oumuamua-earth-transfer}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{1I/'Oumuamua: direct prograde transfer from L2}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fig/static/oumuamua/l2-direct-detailed-porkchop-tof.png}
+    \caption{Direct transfer from L2}
+    \label{fig:oumuamua-l2-transfer}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{1I/'Oumuamua: summary of results}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $\Delta v$ launch Earth [km/s] & $\Delta v$ launch L2 [km/s] & Reduction [\%] \\
+    \hline
+    13.85                          & 3.80                        & 72.56          \\
+    \hline
+  \end{tabular}
+  \caption{Launch energy comparison}
+  \label{tab:oumuamua-summary-results-v-launch}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $\Delta V$ arrival Earth [km/s] & $\Delta V$ arrival L2 [km/s] & Reduction [\%] \\
+    \hline
+    62.33                           & 61.46                        & 1.40           \\
+    \hline
+  \end{tabular}
+  \caption{Arrival velocity comparison}
+  \label{tab:oumuamua-summary-results-arrival-v}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $C_3$ launch Earth [km$^2$/s$^2$] & $C_3$ launch L2 [km$^2$/s$^2$] & Reduction [\%] \\
+    \hline
+    192.00                            & 14.41                          & 92.51          \\
+    \hline
+  \end{tabular}
+  \caption{Characteristic energy comparison}
+  \label{tab:oumuamua-summary-results-c3-launch}
+\end{table}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{2I/Borisov: direct prograde transfer from Earth}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fig/static/borisov/direct-detailed-porkchop-tof.png}
+    \caption{Direct transfer from Earth}
+    \label{fig:borisov-earth-transfer}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{2I/Borisov: direct prograde transfer from L2}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fig/static/borisov/l2-direct-detailed-porkchop-tof.png}
+    \caption{Direct transfer from Earth}
+    \label{fig:borisov-l2-transfer}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{2I/Borisov: summary of results}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $\Delta v$ launch Earth [km/s] & $\Delta v$ launch L2 [km/s] & Reduction [\%] \\
+    \hline
+    16.90                          & 5.85                        & 65.38          \\
+    \hline
+  \end{tabular}
+  \caption{Launch energy comparison}
+  \label{tab:borisov-summary-results-v-launch}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $\Delta V$ arrival Earth [km/s] & $\Delta V$ arrival L2 [km/s] & Reduction [\%] \\
+    \hline
+    33.00                           & 33.02                        & -0.06          \\
+    \hline
+  \end{tabular}
+  \caption{Arrival velocity comparison}
+  \label{tab:borisov-summary-results-arrival-v}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $C_3$ launch Earth [km$^2$/s$^2$] & $C_3$ launch L2 [km$^2$/s$^2$] & Reduction [\%] \\
+    \hline
+    286.00                            & 34.30                          & 88.08          \\
+    \hline
+  \end{tabular}
+  \caption{Characteristic energy comparison}
+  \label{tab:borisov-summary-results-c3-launch}
+\end{table}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Conclusions}
+
+\begin{block}{L2 as the optimal launch point}
+Launching an intercepting spacecraft from L2 is more fuel efficient. These
+results agree with the ones presented by the Comet Interceptor mission.
+\end{block}
+
+\pause
+
+\vspace{0.25cm}
+Other advantages of launching from L2 include:
+
+\vspace{0.25cm}
+\begin{itemize}
+    \item Higher reaction time by having a parking orbit
+    \item Possibility of studying long period comets if no ISO is found
+\end{itemize}
+
+\vspace{0.25cm}
+\pause
+
+\begin{alertblock}{Further studies}
+A simulation considering multiple ISOs orbits could find optimum solutions for a
+variety of scenarios. Multiple-gravity assists with deep space maneuvers
+could be considered to further reduce the cost of the mission.
+\end{alertblock}
 
 \end{frame}
 %---------------------------------------------------------
