@@ -11,6 +11,8 @@
 *.blg
 *blx.bib
 *run.xml
+*.nav
+*.snm
 
 # Ignore articles folder
 art/

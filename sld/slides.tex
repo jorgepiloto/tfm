@@ -2,7 +2,6 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{amsmath}
-
 \usepackage{graphicx}  % For including graphics
 \usepackage{subcaption} % For subfigures
 \usepackage{caption}   % For customizing captions
@@ -152,7 +151,7 @@ Their study can unleash information about:\\[0.5cm]
 
 \begin{itemize}
     \item Better understanding the formation of planetary systems
-    \item Exploring the origins of life by analyzing their chemical composition
+    \item Exploring their physical and chemical composition
     \item Technological motivation
 \end{itemize}
 
@@ -161,7 +160,7 @@ Their study can unleash information about:\\[0.5cm]
     \vspace{0.5cm}
     \begin{alertblock}{Motivation of this work}
     \vspace{0.2cm}
-    Devise orbits for rendezvous with ISOs to study their physical properties.
+    Design orbits for rendezvous with ISOs to study their physical properties.
     \vspace{0.2cm}
 \end{alertblock}
 
@@ -179,14 +178,14 @@ There are two confirmed ISOs to this day:
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{fig/static/oumuamua/shape.png}
-        \caption{1I/'Oumuamua}
+            \caption{1I/'Oumuamua\\[0.25cm]\tiny{ESO's VLT and GST Telescopes}}
         \label{fig:figure1}
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{fig/static/borisov/shape.jpg}
-        \caption{2I/Borisov}
+            \caption{2I/Borisov\\[0.25cm]\tiny{NASA Hubble Space Telescope}}
         \label{fig:figure2}
     \end{minipage}
 \end{figure}
@@ -194,12 +193,12 @@ There are two confirmed ISOs to this day:
 \pause
 \vspace{-0.25cm}
 These interlopers present the following orbit attributes:
-\vspace{0.25cm}
+\vspace{0.1cm}
 
 \begin{itemize}
     \item Hyperbolic orbits
-    \item High relative velocity
-    \item High inclination w.r.t. the ecliptic plane
+    \item High relative velocity w.r.t. the Sun
+    \item Random inclination
     \item Discovered close to the direction of the Solar Apex
 \end{itemize}
 
@@ -312,6 +311,20 @@ $$ \Delta v = v_{e} \ln \left( \frac{m_0}{m_f} \right) $$
 The characteristic energy for hyperbolic orbits $C_3$ is defined as:
 
 $$ C_3 = v_{\infty}^2 $$
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Modern launching technologies}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fig/static/payload_vs_c3.png}
+    \caption{Maximum payload mass vs. $C_3$ energy for different launchers}
+    \label{fig:payload_vs_c3}
+\end{figure}
 
 \end{frame}
 %---------------------------------------------------------
@@ -560,6 +573,78 @@ a more efficient transfer to an ISO, depending on the scenario.
 
 \end{frame}
 %---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{References}
+
+\begin{alertblock}{Official repository}
+\vspace{0.2cm}
+This work is hosted in \textbf{\href{https://github.com/jorgepiloto/tfm}{https://github.com/jorgepiloto/tfm}}
+\vspace{0.2cm}
+\end{alertblock}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Additional materials: 1I/'Oumuamua shape}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fig/static/oumuamua-shape.png}
+        \caption{1I/'Oumuamua shape\\\tiny{Illustration by William Hartmann/Michael Belton/AP}}
+    \label{fig:oumuamua-shape}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Additional materials: ISEE-3 mission}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{fig/static/isee-mission.png}
+        \caption{ISEE-3 mission\\\tiny{Illustration by NASA}}
+    \label{fig:isee-mission}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Additional materials: NEO surveyor}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\textwidth]{fig/static/neo-surveyor.jpg}
+        \caption{NEO surveyor\\\tiny{Illustration by NASA}}
+    \label{fig:isee-mission}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Additional materials: Large Synoptic Survey Telescope}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{fig/static/lsst.png}
+        \caption{LSST\\\tiny{Illustration by LSST Project Office}}
+    \label{fig:lsst}
+\end{figure}
+
+\end{frame}
+%---------------------------------------------------------
+
+
+
 
 
 \end{document}
